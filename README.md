@@ -2,6 +2,8 @@
 
 A tool to generate a program slice of your JavaScript code
 
+**It's definitely a work in progress!**
+
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
 [![Dependencies][dependencyci-badge]][dependencyci]
@@ -46,8 +48,9 @@ sliceJS()
 
 ## Inspiration
 
-A talk by [@inconshreveable](https://github.com/inconshreveable) at The Strange Loop 2016 about program slicing and the
-amazing tools that can be built with it.
+A talk by [@inconshreveable](https://github.com/inconshreveable) at The Strange Loop 2016 called
+["Idealized Commit Logs: Code Simplification via Program Slicing"](https://youtu.be/dSqLt8BgbRQ)
+about the amazing tools that can be built with program slicing.
 
 ## Other Solutions
 
