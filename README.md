@@ -41,10 +41,7 @@ npm install --save-dev slice-js
 
 ## Usage
 
-```
-const sliceJS = require('slice-js')
-sliceJS()
-```
+This is still being worked on... See the test/fixtures...
 
 ## Inspiration
 
