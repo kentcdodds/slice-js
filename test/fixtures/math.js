@@ -3,7 +3,7 @@
  * ensure we're developing a good slice, not to have a good math
  * module :)
  */
-export {sum, subtract, multiply, divide, randomBool}
+export {sum, subtract, multiply, divide, isGreaterThan, isFooOrBar}
 
 function sum(a, b) {
   return a + b
@@ -26,10 +26,17 @@ function divide(a, b) {
   return a / b
 }
 
-function randomBool() {
-  if (Math.random() > 0.5) {
+function isGreaterThan(a, b) {
+  if (a > b) {
     return true
-  } else {
+  } else if (b > a) {
     return false
+  } else {
+    return null
   }
+}
+
+function isFooOrBar(a) {
+  /* eslint no-nested-ternary:0, no-unneeded-ternary:0 */
+  return a === 'foo' ? true : a === 'bar' ? true : false
 }
