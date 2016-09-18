@@ -7,6 +7,7 @@ export default sliceCode
 function sliceCode(coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
+  // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   const code = fs.readFileSync(filename, 'utf8')
   return babel.transform(code, {
     filename,
@@ -129,9 +130,11 @@ function isLineColumnEqual(obj1, obj2) {
 function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
   const replacementNode = parent[key]
-  if (replacementNode.body) {
+  if (replacementNode && replacementNode.body) {
     parentPath.replaceWithMultiple(replacementNode.body)
-  } else {
+  } else if (replacementNode) {
     parentPath.replaceWith(replacementNode)
+  } else {
+    parentPath.remove()
   }
 }

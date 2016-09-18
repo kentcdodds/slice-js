@@ -1,10 +1,71 @@
+exports[`test ifElse(false) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElse(passIf) {
+  return !passIf;
+}"
+`;
+
+exports[`test ifElse(true) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElse(passIf) {
+  return passIf;
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  return !passIf1 && !passIf2;
+}"
+`;
+
+exports[`test ifElseIfElse(false, true) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  return passIf2;
+}"
+`;
+
+exports[`test ifElseIfElse(true, false) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  return passIf1;
+}"
+`;
+
+exports[`test ifElseIfElse(true, true) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  return passIf1;
+}"
+`;
+
+exports[`test ifOnly(false) 1`] = `
+"/* eslint no-constant-condition:0, consistent-return:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifOnly(passIf) {}"
+`;
+
 exports[`test ifOnly(true) 1`] = `
-"/* eslint no-constant-condition:0 */
+"/* eslint no-constant-condition:0, consistent-return:0 */
 export { ifOnly, ifElse, ifElseIfElse };
 
 function ifOnly(passIf) {
   if (passIf) {
-    return;
+    return passIf;
   }
 }"
 `;

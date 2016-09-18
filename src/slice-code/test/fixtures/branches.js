@@ -1,26 +1,26 @@
-/* eslint no-constant-condition:0 */
+/* eslint no-constant-condition:0, consistent-return:0 */
 export {ifOnly, ifElse, ifElseIfElse}
 
 function ifOnly(passIf) {
   if (passIf) {
-    return
+    return passIf
   }
 }
 
 function ifElse(passIf) {
   if (passIf) {
-    return
+    return passIf
   } else {
-    return
+    return !passIf
   }
 }
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
-    return
+    return passIf1
   } else if (passIf2) {
-    return
+    return passIf2
   } else {
-    return
+    return !passIf1 && !passIf2
   }
 }
