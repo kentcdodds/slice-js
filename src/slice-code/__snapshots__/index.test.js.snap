@@ -1,0 +1,44 @@
+exports[`test divide 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test multiply 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}"
+`;
+
+exports[`test subtract 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}"
+`;
+
+exports[`test sum 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}"
+`;

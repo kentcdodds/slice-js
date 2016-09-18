@@ -5,8 +5,8 @@ module.exports = {
       script: 'git-cz',
     },
     test: {
-      default: `jest`,
-      watch: 'jest --watch',
+      default: 'jest --config ./jest-config.json',
+      watch: 'jest --config ./jest-config.json --watch',
     },
     build: {
       description: 'delete the dist directory and run babel to build the files',
