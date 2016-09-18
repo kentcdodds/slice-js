@@ -1,0 +1,10 @@
+exports[`test ifOnly(true) 1`] = `
+"/* eslint no-constant-condition:0 */
+export { ifOnly, ifElse, ifElseIfElse };
+
+function ifOnly(passIf) {
+  if (passIf) {
+    return;
+  }
+}"
+`;

@@ -56,7 +56,8 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/fixtures/"
+      "/fixtures/",
+      "/helpers/"
     ]
   },
   "config": {
