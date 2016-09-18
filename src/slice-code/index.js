@@ -9,13 +9,14 @@ function sliceCode(coverageData) {
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   const code = fs.readFileSync(filename, 'utf8')
-  return babel.transform(code, {
+  const slicedCode = babel.transform(code, {
     filename,
     babelrc: false,
     plugins: [
       getSliceCodeTransform(filteredCoverage),
     ],
   }).code
+  return slicedCode
 }
 
 function getSliceCodeTransform(filteredCoverage) {
@@ -108,6 +109,9 @@ function getBranchCoverageData(branches, node) {
     } else if (branch.type === 'cond-expr' && node.type !== 'ConditionalExpression') {
       return false
     }
+    if (!node.loc) {
+      return false
+    }
     return isLocationEqual(branch.loc, node.loc)
   })
   return branches[index]
@@ -115,7 +119,7 @@ function getBranchCoverageData(branches, node) {
 
 function isBranchSideCovered(branches, side, node, parentNode) {
   const branch = getBranchCoverageData(branches, parentNode)
-  return branch[side].covered
+  return branch && branch[side].covered
 }
 
 function isLocationEqual(loc1, loc2) {

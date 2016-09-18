@@ -30,6 +30,7 @@
     "babel-preset-node6": "11.0.0",
     "babel-register": "6.14.0",
     "codecov": "^1.0.1",
+    "combs": "0.0.1",
     "commitizen": "^2.8.6",
     "cz-conventional-changelog": "^1.2.0",
     "eslint": "^3.4.0",
