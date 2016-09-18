@@ -2,10 +2,9 @@
 
 ## Want to do
 
-- Remove unused variables/exports/arguments
+- Remove unused variables/exports/arguments (I think that this should be the responsibility of `babel-plugin-minify-dead-code-elimination`). Need to report an issue/file a PR there.
 - Remove comments associated with removed functions
 - Handle side-effects (for example: `if (node = node.parentNode) {/* uncovered */}` should result in `node = node.parentNode`)
-- Remove all code after an early return
 
 ## Might do
 

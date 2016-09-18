@@ -14,5 +14,9 @@ runAllCombosTests({
         [false, false], [false, true],
       ],
     },
+    {
+      methodName: 'uncoveredConditionalExpression',
+      possibleArguments: [[true], [false]],
+    },
   ],
 })

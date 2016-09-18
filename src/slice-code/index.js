@@ -1,5 +1,6 @@
 import fs from 'fs'
 import * as babel from 'babel-core'
+import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import transformCoverage from './transform-coverage'
 
 export default sliceCode
@@ -9,14 +10,24 @@ function sliceCode(coverageData) {
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   const code = fs.readFileSync(filename, 'utf8')
-  const slicedCode = babel.transform(code, {
+  const sliced = babel.transform(code, {
     filename,
     babelrc: false,
     plugins: [
       getSliceCodeTransform(filteredCoverage),
     ],
-  }).code
-  return slicedCode
+  })
+  const {code: deadCodeEliminated} = babel.transform(sliced.code, {
+    filename,
+    babelrc: false,
+    plugins: [
+      deadCodeElimination,
+    ],
+  })
+  // TODO: perf - save time parsing by just transforming the AST from the previous run
+  // This will probably significantly speed things up.
+  // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
+  return deadCodeEliminated
 }
 
 function getSliceCodeTransform(filteredCoverage) {
@@ -51,9 +62,6 @@ function getSliceCodeTransform(filteredCoverage) {
           })
         },
         ConditionalExpression(path) {
-          if (path.removed) {
-            return
-          }
           const {branchMap} = filteredCoverage
           const branchCoverageData = getBranchCoverageData(branchMap, path.node)
           if (!branchCoverageData) {
@@ -109,9 +117,6 @@ function getBranchCoverageData(branches, node) {
     } else if (branch.type === 'cond-expr' && node.type !== 'ConditionalExpression') {
       return false
     }
-    if (!node.loc) {
-      return false
-    }
     return isLocationEqual(branch.loc, node.loc)
   })
   return branches[index]
@@ -123,6 +128,9 @@ function isBranchSideCovered(branches, side, node, parentNode) {
 }
 
 function isLocationEqual(loc1, loc2) {
+  if (!loc1 || !loc2) {
+    return false
+  }
   return isLineColumnEqual(loc1.start, loc2.start) &&
     isLineColumnEqual(loc1.end, loc2.end)
 }
@@ -133,12 +141,10 @@ function isLineColumnEqual(obj1, obj2) {
 
 function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
-  const replacementNode = parent[key]
-  if (replacementNode && replacementNode.body) {
+  const replacementNode = parent[key] || path.node
+  if (replacementNode.body) {
     parentPath.replaceWithMultiple(replacementNode.body)
-  } else if (replacementNode) {
-    parentPath.replaceWith(replacementNode)
   } else {
-    parentPath.remove()
+    parentPath.replaceWith(replacementNode)
   }
 }

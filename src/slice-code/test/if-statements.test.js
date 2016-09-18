@@ -1,14 +1,12 @@
-import {runAllCombosTests, snapSlice} from './helpers/utils'
+import {runAllCombosTests} from './helpers/utils'
 
 // TODO This is broken
-xit(
-  'test case',
-  snapSlice(require.resolve('./fixtures/if-statements'), ({ifElseIfElse}) => {
-    ifElseIfElse(true, true)
-    ifElseIfElse(true, false)
-    ifElseIfElse(false, false)
-  })
-)
+// fit(
+//   'testing nestedIf(true, false)',
+//   snapSlice(require.resolve('./fixtures/if-statements'), ({nestedIf}) => {
+//     nestedIf(true, false)
+//   })
+// )
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/if-statements'),
