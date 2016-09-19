@@ -1,0 +1,251 @@
+exports[`test divide(1, 2) 1`] = `
+"export { divide };
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test multiply(1, 2) && divide(1, 2) 1`] = `
+"export { sum, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test multiply(1, 2) 1`] = `
+"export { sum, multiply };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}"
+`;
+
+exports[`test subtract(1, 2) && divide(1, 2) 1`] = `
+"export { sum, subtract, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test subtract(1, 2) && multiply(1, 2) && divide(1, 2) 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test subtract(1, 2) && multiply(1, 2) 1`] = `
+"export { sum, subtract, multiply };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}"
+`;
+
+exports[`test subtract(1, 2) 1`] = `
+"export { sum, subtract };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}"
+`;
+
+exports[`test sum(1, 2) && divide(1, 2) 1`] = `
+"export { sum, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test sum(1, 2) && multiply(1, 2) && divide(1, 2) 1`] = `
+"export { sum, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test sum(1, 2) && multiply(1, 2) 1`] = `
+"export { sum, multiply };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}"
+`;
+
+exports[`test sum(1, 2) && subtract(1, 2) && divide(1, 2) 1`] = `
+"export { sum, subtract, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test sum(1, 2) && subtract(1, 2) && multiply(1, 2) && divide(1, 2) 1`] = `
+"export { sum, subtract, multiply, divide };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
+exports[`test sum(1, 2) && subtract(1, 2) && multiply(1, 2) 1`] = `
+"export { sum, subtract, multiply };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}
+
+function multiply(a, b) {
+  let product, i;
+  product = 0;
+  for (i = 0; i < b; i++) {
+    product = sum(product, a);
+  }
+  return product;
+}"
+`;
+
+exports[`test sum(1, 2) && subtract(1, 2) 1`] = `
+"export { sum, subtract };
+
+function sum(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return sum(a, -b);
+}"
+`;
+
+exports[`test sum(1, 2) 1`] = `
+"export { sum };
+
+function sum(a, b) {
+  return a + b;
+}"
+`;

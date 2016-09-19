@@ -3,7 +3,8 @@
   "plugins": [
     ["istanbul", {
       "exclude": [
-        "*.+(test|stub).*"
+        "*.+(test|stub).*",
+        "**/helpers/**/*"
       ]
     }]
   ]

@@ -44,7 +44,7 @@ exports[`test ./test/fixtures/module.slicer.js 1`] = `
      * ensure we\'re developing a good slice, not to have a good math
      * module :)
      */
-    export { sum, subtract, multiply, divide, isGreaterThan, isFooOrBar };
+    export { sum, multiply };
 
     function sum(a, b) {
       return a + b;
