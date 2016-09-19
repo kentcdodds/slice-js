@@ -8,7 +8,6 @@ export default sliceCode
 function sliceCode(coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
-  // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   const code = fs.readFileSync(filename, 'utf8')
   const sliced = babel.transform(code, {
     filename,
@@ -50,11 +49,11 @@ function getSliceCodeTransform(filteredCoverage) {
               const {key, node, parent, parentPath} = childPath
               const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
               if (
-              !parentPath.removed &&
-              parentPath === path &&
-              (key === 'consequent' || key === 'alternate') &&
-              !isBranchSideCovered(branchMap, key, node, parent)
-            ) {
+                !parentPath.removed &&
+                parentPath === path &&
+                (key === 'consequent' || key === 'alternate') &&
+                (!isBranchSideCovered(branchMap, key, node, parent) || !path.node[otherKey])
+              ) {
                 replaceNodeWithNodeFromParent(childPath, otherKey)
               }
             },
@@ -126,10 +125,16 @@ function getBranchCoverageData(branches, node) {
 
 function isBranchSideCovered(branches, side, node, parentNode) {
   const branch = getBranchCoverageData(branches, parentNode)
+  if (!branch) {
+    return false
+  }
   return branch[side].covered
 }
 
 function isLocationEqual(loc1, loc2) {
+  if (!loc1 || !loc2) {
+    return false
+  }
   return isLineColumnEqual(loc1.start, loc2.start) &&
     isLineColumnEqual(loc1.end, loc2.end)
 }
@@ -140,7 +145,7 @@ function isLineColumnEqual(obj1, obj2) {
 
 function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
-  const replacementNode = parent[key]
+  const replacementNode = parent[key] || path.node
   if (replacementNode && replacementNode.body) {
     parentPath.replaceWithMultiple(replacementNode.body)
   } else if (replacementNode) {

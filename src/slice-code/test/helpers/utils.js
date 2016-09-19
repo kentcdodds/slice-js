@@ -2,9 +2,8 @@
 import Module from 'module'
 import path from 'path'
 import combs from 'combs'
-import {uniqueId} from 'lodash'
+import {random} from 'lodash'
 import * as babel from 'babel-core'
-// import requireFromString from 'require-from-string'
 import sliceCode from '../..'
 
 export {snapSlice, runAllCombosTests}
@@ -49,7 +48,7 @@ function runAllCombosTests({filename, methods}) {
 
 function slicedCoverageIs100(filename, slicedCode, tester) {
   const {dir, name, ext} = path.parse(filename)
-  const slicedFilename = path.join(dir, `${name}.sliced-${uniqueId()}${ext}`)
+  const slicedFilename = path.join(dir, `${name}.sliced-${random(0, 99999999)}${ext}`)
   const {code} = babel.transform(slicedCode, {
     filename: slicedFilename,
     babelrc: false,
@@ -67,34 +66,19 @@ function slicedCoverageIs100(filename, slicedCode, tester) {
     const cov = coverageData[slicedFilename]
     const functions100 = Object.keys(cov.f).every(k => cov.f[k] > 0)
     const statements100 = Object.keys(cov.s).every(k => cov.s[k] > 0)
-    const branches100 = Object.keys(cov.b).every(k => cov.b[k][0] > 0 && cov.b[k][0] > 0)
+    const branches100 = Object.keys(cov.b).every(k => cov.b[k][0] > 0 && cov.b[k][1] > 0)
     return functions100 && statements100 && branches100
   }
 }
 
-function requireFromString(code, filename, opts) {
-  if (typeof filename === 'object') {
-    opts = filename
-    filename = undefined
-  }
-
-  opts = opts || {}
-  filename = filename || ''
-
-  opts.appendPaths = opts.appendPaths || []
-  opts.prependPaths = opts.prependPaths || []
-
-  if (typeof code !== 'string') {
-    throw new Error(`code must be a string, not ${typeof code}`)
-  }
-
-  const paths = Module._nodeModulePaths(path.dirname(filename))
-
+/*
+ * copied and modified from require-from-string
+ */
+function requireFromString(code, filename) {
   const m = new Module(filename, module.parent)
   m.filename = filename
-  m.paths = [].concat(opts.prependPaths).concat(paths).concat(opts.appendPaths)
+  m.paths = Module._nodeModulePaths(path.dirname(filename))
   m._compile(code, filename)
-
   return m.exports
 }
 
