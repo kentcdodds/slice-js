@@ -1,4 +1,11 @@
-import {runAllCombosTests} from './helpers/utils'
+import {runAllCombosTests, snapSlice} from './helpers/utils'
+
+// fit(
+//   'testing uncoveredConditionalExpression(false)',
+//   snapSlice(require.resolve('./fixtures/cond-expr'), ({uncoveredConditionalExpression}) => {
+//     uncoveredConditionalExpression(false)
+//   })
+// )
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/cond-expr'),

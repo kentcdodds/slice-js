@@ -8,6 +8,7 @@ export default sliceCode
 function sliceCode(coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
+  // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   const code = fs.readFileSync(filename, 'utf8')
   const sliced = babel.transform(code, {
     filename,
@@ -16,6 +17,7 @@ function sliceCode(coverageData) {
       getSliceCodeTransform(filteredCoverage),
     ],
   })
+  // console.log('sliced', sliced.code)
   const {code: deadCodeEliminated} = babel.transform(sliced.code, {
     filename,
     babelrc: false,
@@ -26,6 +28,7 @@ function sliceCode(coverageData) {
   // TODO: perf - save time parsing by just transforming the AST from the previous run
   // This will probably significantly speed things up.
   // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
+  // console.log('deadCodeEliminated', deadCodeEliminated)
   return deadCodeEliminated
 }
 
@@ -51,10 +54,23 @@ function getSliceCodeTransform(filteredCoverage) {
               if (
                 !parentPath.removed &&
                 parentPath === path &&
-                (key === 'consequent' || key === 'alternate') &&
-                (!isBranchSideCovered(branchMap, key, node, parent) || !path.node[otherKey])
+                (key === 'consequent' || key === 'alternate')
               ) {
-                replaceNodeWithNodeFromParent(childPath, otherKey)
+                const sideIsCovered = isBranchSideCovered(branchMap, key, node, parent)
+                const otherSideExists = !!path.node[otherKey]
+                const otherSideIsCovered = isBranchSideCovered(branchMap, otherKey, node, parent)
+                if (!sideIsCovered && !otherSideExists) {
+                  if (otherSideIsCovered) {
+                    path.remove()
+                  } else {
+                    childPath.remove()
+                  }
+                } else if (
+                  ((!sideIsCovered || !otherSideExists) && !otherSideIsCovered) ||
+                  !sideIsCovered && otherSideIsCovered
+                ) {
+                  replaceNodeWithNodeFromParent(childPath, otherKey)
+                }
               }
             },
           })

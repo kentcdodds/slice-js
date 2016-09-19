@@ -214,9 +214,7 @@ exports[`test ifOnly(false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
 export { ifOnly };
 
-function ifOnly(passIf) {
-  return passIf;
-}"
+function ifOnly(passIf) {}"
 `;
 
 exports[`test ifOnly(true) && ifOnly(false) 1`] = `
@@ -224,7 +222,9 @@ exports[`test ifOnly(true) && ifOnly(false) 1`] = `
 export { ifOnly };
 
 function ifOnly(passIf) {
-  return passIf;
+  if (passIf) {
+    return passIf;
+  }
 }"
 `;
 
@@ -241,27 +241,21 @@ exports[`test nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
 export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
 export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
 export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(true, false) && nestedIf(false, false) 1`] = `
@@ -269,7 +263,9 @@ exports[`test nestedIf(true, false) && nestedIf(false, false) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf1;
+  }
 }"
 `;
 
@@ -278,7 +274,9 @@ exports[`test nestedIf(true, false) && nestedIf(false, true) && nestedIf(false, 
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf1;
+  }
 }"
 `;
 
@@ -287,7 +285,9 @@ exports[`test nestedIf(true, false) && nestedIf(false, true) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf1;
+  }
 }"
 `;
 
@@ -296,7 +296,7 @@ exports[`test nestedIf(true, false) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  return passIf1;
 }"
 `;
 
@@ -305,7 +305,9 @@ exports[`test nestedIf(true, true) && nestedIf(false, false) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf2;
+  }
 }"
 `;
 
@@ -314,7 +316,9 @@ exports[`test nestedIf(true, true) && nestedIf(false, true) && nestedIf(false, f
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf2;
+  }
 }"
 `;
 
@@ -323,7 +327,9 @@ exports[`test nestedIf(true, true) && nestedIf(false, true) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    return passIf2;
+  }
 }"
 `;
 
@@ -332,7 +338,12 @@ exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, f
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
 }"
 `;
 
@@ -341,7 +352,12 @@ exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, t
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
 }"
 `;
 
@@ -350,7 +366,12 @@ exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, t
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
 }"
 `;
 
@@ -359,7 +380,10 @@ exports[`test nestedIf(true, true) && nestedIf(true, false) 1`] = `
 export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
-  return passIf2;
+  if (passIf2) {
+    return passIf2;
+  }
+  return passIf1;
 }"
 `;
 

@@ -165,9 +165,6 @@ exports[`test uncoveredConditionalExpression(false) 1`] = `
 export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  if (cover) {
-    return cover;
-  }
   return !cover;
 }"
 `;
@@ -177,10 +174,7 @@ exports[`test uncoveredConditionalExpression(true) && uncoveredConditionalExpres
 export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  if (cover) {
-    return cover;
-  }
-  return !cover;
+  return cover;
 }"
 `;
 
@@ -189,9 +183,6 @@ exports[`test uncoveredConditionalExpression(true) 1`] = `
 export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  if (cover) {
-    return cover;
-  }
-  return !cover;
+  return cover;
 }"
 `;
