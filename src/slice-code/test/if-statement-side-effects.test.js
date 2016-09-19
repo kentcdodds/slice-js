@@ -1,14 +1,14 @@
 import {runAllCombosTests, snapSlice} from './helpers/utils'
 
-// fit(
-//   'ifElse(true)',
-//   snapSlice(require.resolve('./fixtures/if-statements'), ({ifElse}) => {
-//     ifElse(true)
-//   })
-// )
 // TODO: Fix these:
 // - ifWithAssignment(true)
 // - ifWithFunctionCall(true)
+// fit(
+//   'ifWithAssignment(false)',
+//   snapSlice(require.resolve('./fixtures/if-statement-side-effects'), ({ifWithAssignment}) => {
+//     ifWithAssignment(false)
+//   })
+// )
 
 
 runAllCombosTests({

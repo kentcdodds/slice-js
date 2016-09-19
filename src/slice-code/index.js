@@ -61,14 +61,23 @@ function getSliceCodeTransform(filteredCoverage) {
                 const otherSideIsCovered = isBranchSideCovered(branchMap, otherKey, node, parent)
                 if (!sideIsCovered && !otherSideExists) {
                   if (otherSideIsCovered) {
+                    // if (foo) { /* not covered */ } (else-path doesn't exist but is covered) // result: removed
+                    // console.log('path.remove()')
                     path.remove()
                   } else {
+                    // if (foo) { /* not covered */ } // (else-path doesn't exist and isn't covered) // result: ... not sure :shrug:
+                    // console.log('childPath.remove()')
                     childPath.remove()
                   }
                 } else if (
                   ((!sideIsCovered || !otherSideExists) && !otherSideIsCovered) ||
                   !sideIsCovered && otherSideIsCovered
                 ) {
+                  // if (foo) { /* not covered */ } else { /* covered */ } // result: /* covered */
+                  // if (foo) { /* not covered */ } else { /* not covered */ } // result: removed
+                  // if (foo) { /* covered */ } (else-path doesn't exist and isn't covered) // result: /* covered */
+                  // if (foo) { /* covered */ } else { /* not covered */ } // result: ... not sure :shrug:
+                  // console.log('replaceNodeWithNodeFromParent(childPath, otherKey)', childPath, otherKey)
                   replaceNodeWithNodeFromParent(childPath, otherKey)
                 }
               }
@@ -162,6 +171,18 @@ function isLineColumnEqual(obj1, obj2) {
 function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
   const replacementNode = parent[key] || path.node
+  if (parentPath.type === 'IfStatement') {
+    const typesToPreserve = ['AssignmentExpression', 'CallExpression']
+    const nodesToPreserve = []
+    parentPath.get('test').traverse({
+      enter(testChildPath) {
+        if (typesToPreserve.includes(testChildPath.node.type)) {
+          nodesToPreserve.push(testChildPath.node)
+        }
+      },
+    })
+    parentPath.insertBefore(nodesToPreserve)
+  }
   if (replacementNode && replacementNode.body) {
     parentPath.replaceWithMultiple(replacementNode.body)
   } else if (replacementNode) {

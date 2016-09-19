@@ -2,10 +2,10 @@ export {ifWithAssignment, ifWithFunctionCall}
 
 function ifWithAssignment(passIf) {
   let x
-  if (x = 'hi' && passIf) {
+  if ((x = 'hi') && passIf) {
     return x + passIf
   } else {
-    return !passIf
+    return !passIf + x
   }
 }
 
