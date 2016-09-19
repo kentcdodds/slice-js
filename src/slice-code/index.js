@@ -187,8 +187,6 @@ function replaceNodeWithNodeFromParent(path, key) {
     parentPath.replaceWithMultiple(replacementNode.body)
   } else if (replacementNode) {
     parentPath.replaceWith(replacementNode)
-  } else {
-    parentPath.remove()
   }
 }
 
