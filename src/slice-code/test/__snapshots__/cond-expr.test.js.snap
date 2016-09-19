@@ -174,7 +174,10 @@ exports[`test uncoveredConditionalExpression(true) && uncoveredConditionalExpres
 export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  return cover;
+  if (cover) {
+    return cover;
+  }
+  return !cover;
 }"
 `;
 
