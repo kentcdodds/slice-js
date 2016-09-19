@@ -1,0 +1,74 @@
+exports[`test ifWithAssignment(false) 1`] = `
+"export { ifWithAssignment };
+
+function ifWithAssignment(passIf) {
+  let x;
+  if (x = \'hi\' && passIf) {
+    return x + passIf;
+  } else {
+    return !passIf;
+  }
+}"
+`;
+
+exports[`test ifWithAssignment(true) && ifWithAssignment(false) 1`] = `
+"export { ifWithAssignment };
+
+function ifWithAssignment(passIf) {
+  let x;
+  if (x = \'hi\' && passIf) {
+    return x + passIf;
+  } else {
+    return !passIf;
+  }
+}"
+`;
+
+exports[`test ifWithAssignment(true) 1`] = `
+"export { ifWithAssignment };
+
+function ifWithAssignment(passIf) {
+  let x;
+
+  return x + passIf;
+}"
+`;
+
+exports[`test ifWithFunctionCall(false) 1`] = `
+"export { ifWithFunctionCall };
+
+function ifWithFunctionCall(passIf) {
+  let thing;
+
+  if (passIf && (a => thing = a)(\'hey\')) {
+    return thing + passIf;
+  } else {
+    return !passIf;
+  }
+}"
+`;
+
+exports[`test ifWithFunctionCall(true) && ifWithFunctionCall(false) 1`] = `
+"export { ifWithFunctionCall };
+
+function ifWithFunctionCall(passIf) {
+  let thing;
+
+  if (passIf && (a => thing = a)(\'hey\')) {
+    return thing + passIf;
+  } else {
+    return !passIf;
+  }
+}"
+`;
+
+exports[`test ifWithFunctionCall(true) 1`] = `
+"export { ifWithFunctionCall };
+
+function ifWithFunctionCall(passIf) {
+  let thing;
+
+
+  return thing + passIf;
+}"
+`;

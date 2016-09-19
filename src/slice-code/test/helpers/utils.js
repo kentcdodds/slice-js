@@ -13,11 +13,12 @@ function snapSlice(relativePath, tester) {
   return () => {
     const absolutePath = require.resolve(relativePath)
     const mod = require(absolutePath) // eslint-disable-line global-require
-    tester(mod)
+    const originalResult = tester(mod)
     const slicedCode = sliceCode(global.__coverage__[absolutePath])
     expect(slicedCode).toMatchSnapshot()
-    const is100 = slicedCoverageIs100(relativePath, slicedCode, tester)
+    const {is100, slicedResult} = slicedCoverageIs100(relativePath, slicedCode, tester)
     expect(is100).toBe(true)
+    expect(originalResult).toEqual(slicedResult)
     jest.resetModules()
     delete require.cache[absolutePath]
     delete global.__coverage__[absolutePath]
@@ -38,9 +39,7 @@ function runAllCombosTests({filename, methods}) {
       // this is the call to Jest's `test` function
       test(testTitle, snapSlice(filename, mod => {
         const method = mod[methodName]
-        comboOfArgs.forEach(args => {
-          method(...args)
-        })
+        return comboOfArgs.map(args => method(...args))
       }))
     })
   })
@@ -59,8 +58,9 @@ function slicedCoverageIs100(filename, slicedCode, tester) {
     ],
   })
   const mod = requireFromString(code, slicedFilename)
-  tester(mod)
-  return coverageIs100Percent(mod.____coverage____) // just in case :)
+  const slicedResult = tester(mod)
+  const is100 = coverageIs100Percent(mod.____coverage____) // just in case :)
+  return {slicedResult, is100}
 
   function coverageIs100Percent(coverageData) {
     const cov = coverageData[slicedFilename]
