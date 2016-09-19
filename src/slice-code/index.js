@@ -159,6 +159,9 @@ function removePathAndReferences(path) {
         specifiers.splice(specifierIndex, 1)
       }
       return
+    } else if (binding.parent.type === 'CallExpression') {
+      binding.parentPath.parentPath.remove()
+      return
     }
     binding.parentPath.remove()
   })

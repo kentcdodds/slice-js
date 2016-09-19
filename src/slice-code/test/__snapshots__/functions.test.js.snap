@@ -1,3 +1,11 @@
+exports[`test divide(1, 2) 1`] = `
+"export { divide };
+
+function divide(a, b) {
+  return a / b;
+}"
+`;
+
 exports[`test multiply(1, 2) && divide(1, 2) 1`] = `
 "export { sum, multiply, divide };
 
