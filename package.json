@@ -42,6 +42,7 @@
     "opt-cli": "^1.5.1",
     "p-s": "^3.0.1",
     "pify": "2.3.0",
+    "require-from-string": "1.2.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.2.1",
     "spawn-command": "0.0.2-1",

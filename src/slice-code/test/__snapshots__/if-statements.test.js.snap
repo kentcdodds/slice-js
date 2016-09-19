@@ -1,6 +1,6 @@
 exports[`test ifElse(false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElse };
 
 function ifElse(passIf) {
   return !passIf;
@@ -9,7 +9,7 @@ function ifElse(passIf) {
 
 exports[`test ifElse(true) && ifElse(false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElse };
 
 function ifElse(passIf) {
   if (passIf) {
@@ -22,7 +22,7 @@ function ifElse(passIf) {
 
 exports[`test ifElse(true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElse };
 
 function ifElse(passIf) {
   return passIf;
@@ -31,7 +31,7 @@ function ifElse(passIf) {
 
 exports[`test ifElseIfElse(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   return !passIf1 && !passIf2;
@@ -40,10 +40,12 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(false, true) && ifElseIfElse(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
-  if (passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else if (passIf2) {
     return passIf2;
   } else {
     return !passIf1 && !passIf2;
@@ -53,29 +55,16 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   return passIf2;
 }"
 `;
 
-exports[`test ifElseIfElse(true, false) && ifElseIfElse(false, false) 1`] = `
-"/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
-
-function ifElseIfElse(passIf1, passIf2) {
-  if (passIf1) {
-    return passIf1;
-  } else {
-    return !passIf1 && !passIf2;
-  }
-}"
-`;
-
 exports[`test ifElseIfElse(true, false) && ifElseIfElse(false, true) && ifElseIfElse(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -90,7 +79,7 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, false) && ifElseIfElse(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -103,29 +92,16 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   return passIf1;
 }"
 `;
 
-exports[`test ifElseIfElse(true, true) && ifElseIfElse(false, false) 1`] = `
-"/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
-
-function ifElseIfElse(passIf1, passIf2) {
-  if (passIf1) {
-    return passIf1;
-  } else {
-    return !passIf1 && !passIf2;
-  }
-}"
-`;
-
 exports[`test ifElseIfElse(true, true) && ifElseIfElse(false, true) && ifElseIfElse(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -140,7 +116,7 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, true) && ifElseIfElse(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -151,22 +127,9 @@ function ifElseIfElse(passIf1, passIf2) {
 }"
 `;
 
-exports[`test ifElseIfElse(true, true) && ifElseIfElse(true, false) && ifElseIfElse(false, false) 1`] = `
-"/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
-
-function ifElseIfElse(passIf1, passIf2) {
-  if (passIf1) {
-    return passIf1;
-  } else {
-    return !passIf1 && !passIf2;
-  }
-}"
-`;
-
 exports[`test ifElseIfElse(true, true) && ifElseIfElse(true, false) && ifElseIfElse(false, true) && ifElseIfElse(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -181,7 +144,7 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, true) && ifElseIfElse(true, false) && ifElseIfElse(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   if (passIf1) {
@@ -194,7 +157,7 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, true) && ifElseIfElse(true, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   return passIf1;
@@ -203,7 +166,7 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifElseIfElse(true, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifElseIfElse };
 
 function ifElseIfElse(passIf1, passIf2) {
   return passIf1;
@@ -212,16 +175,14 @@ function ifElseIfElse(passIf1, passIf2) {
 
 exports[`test ifOnly(false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifOnly };
 
-function ifOnly(passIf) {
-  return passIf;
-}"
+function ifOnly(passIf) {}"
 `;
 
 exports[`test ifOnly(true) && ifOnly(false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifOnly };
 
 function ifOnly(passIf) {
   if (passIf) {
@@ -232,7 +193,7 @@ function ifOnly(passIf) {
 
 exports[`test ifOnly(true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { ifOnly };
 
 function ifOnly(passIf) {
   if (passIf) {
@@ -243,78 +204,84 @@ function ifOnly(passIf) {
 
 exports[`test nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
-function nestedIf(passIf1, passIf2) {
-  return passIf1;
-}"
+function nestedIf(passIf1, passIf2) {}"
 `;
 
 exports[`test nestedIf(true, false) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
-    return passIf2;
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
   }
 }"
 `;
 
 exports[`test nestedIf(true, false) && nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
-    return passIf2;
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
   }
 }"
 `;
 
 exports[`test nestedIf(true, false) && nestedIf(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
-    return passIf2;
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
   }
 }"
 `;
 
 exports[`test nestedIf(true, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
-    return passIf2;
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
   }
 }"
 `;
 
 exports[`test nestedIf(true, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -328,7 +295,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -342,7 +309,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -356,7 +323,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -370,7 +337,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -384,7 +351,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(true, false) && nestedIf(false, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -398,7 +365,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) && nestedIf(true, false) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {
@@ -412,7 +379,7 @@ function nestedIf(passIf1, passIf2) {
 
 exports[`test nestedIf(true, true) 1`] = `
 "/* eslint no-constant-condition:0, consistent-return:0 */
-export { ifOnly, ifElse, ifElseIfElse, nestedIf };
+export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {
   if (passIf1) {

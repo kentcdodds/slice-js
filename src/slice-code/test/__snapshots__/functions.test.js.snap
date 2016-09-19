@@ -1,13 +1,5 @@
-exports[`test divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
-
-function divide(a, b) {
-  return a / b;
-}"
-`;
-
 exports[`test multiply(1, 2) && divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, multiply, divide };
 
 function sum(a, b) {
   return a + b;
@@ -28,7 +20,7 @@ function divide(a, b) {
 `;
 
 exports[`test multiply(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, multiply };
 
 function sum(a, b) {
   return a + b;
@@ -45,7 +37,7 @@ function multiply(a, b) {
 `;
 
 exports[`test subtract(1, 2) && divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract, divide };
 
 function sum(a, b) {
   return a + b;
@@ -86,7 +78,7 @@ function divide(a, b) {
 `;
 
 exports[`test subtract(1, 2) && multiply(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract, multiply };
 
 function sum(a, b) {
   return a + b;
@@ -107,7 +99,7 @@ function multiply(a, b) {
 `;
 
 exports[`test subtract(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract };
 
 function sum(a, b) {
   return a + b;
@@ -119,7 +111,7 @@ function subtract(a, b) {
 `;
 
 exports[`test sum(1, 2) && divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, divide };
 
 function sum(a, b) {
   return a + b;
@@ -131,7 +123,7 @@ function divide(a, b) {
 `;
 
 exports[`test sum(1, 2) && multiply(1, 2) && divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, multiply, divide };
 
 function sum(a, b) {
   return a + b;
@@ -152,7 +144,7 @@ function divide(a, b) {
 `;
 
 exports[`test sum(1, 2) && multiply(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, multiply };
 
 function sum(a, b) {
   return a + b;
@@ -169,7 +161,7 @@ function multiply(a, b) {
 `;
 
 exports[`test sum(1, 2) && subtract(1, 2) && divide(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract, divide };
 
 function sum(a, b) {
   return a + b;
@@ -210,7 +202,7 @@ function divide(a, b) {
 `;
 
 exports[`test sum(1, 2) && subtract(1, 2) && multiply(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract, multiply };
 
 function sum(a, b) {
   return a + b;
@@ -231,7 +223,7 @@ function multiply(a, b) {
 `;
 
 exports[`test sum(1, 2) && subtract(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum, subtract };
 
 function sum(a, b) {
   return a + b;
@@ -243,7 +235,7 @@ function subtract(a, b) {
 `;
 
 exports[`test sum(1, 2) 1`] = `
-"export { sum, subtract, multiply, divide };
+"export { sum };
 
 function sum(a, b) {
   return a + b;

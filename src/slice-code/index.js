@@ -37,14 +37,13 @@ function getSliceCodeTransform(filteredCoverage) {
       visitor: {
         FunctionDeclaration(path) {
           if (!isFunctionCovered(fnLocs, path.node)) {
-            path.remove()
+            removePathAndReferences(path)
           }
         },
         IfStatement(path) {
           const {branchMap} = filteredCoverage
           if (!isBranchCovered(branchMap, path.node)) {
             path.remove()
-            return
           }
           path.traverse({
             enter(childPath) {
@@ -62,6 +61,9 @@ function getSliceCodeTransform(filteredCoverage) {
           })
         },
         ConditionalExpression(path) {
+          if (path.removed) {
+            return
+          }
           const {branchMap} = filteredCoverage
           const branchCoverageData = getBranchCoverageData(branchMap, path.node)
           if (!branchCoverageData) {
@@ -124,13 +126,10 @@ function getBranchCoverageData(branches, node) {
 
 function isBranchSideCovered(branches, side, node, parentNode) {
   const branch = getBranchCoverageData(branches, parentNode)
-  return branch && branch[side].covered
+  return branch[side].covered
 }
 
 function isLocationEqual(loc1, loc2) {
-  if (!loc1 || !loc2) {
-    return false
-  }
   return isLineColumnEqual(loc1.start, loc2.start) &&
     isLineColumnEqual(loc1.end, loc2.end)
 }
@@ -141,10 +140,27 @@ function isLineColumnEqual(obj1, obj2) {
 
 function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
-  const replacementNode = parent[key] || path.node
-  if (replacementNode.body) {
+  const replacementNode = parent[key]
+  if (replacementNode && replacementNode.body) {
     parentPath.replaceWithMultiple(replacementNode.body)
-  } else {
+  } else if (replacementNode) {
     parentPath.replaceWith(replacementNode)
+  } else {
+    parentPath.remove()
   }
+}
+
+function removePathAndReferences(path) {
+  path.scope.getBinding(path.node.id.name).referencePaths.forEach(binding => {
+    if (binding.parent.type === 'ExportSpecifier') {
+      const {parentPath: {parent: {specifiers}}} = binding
+      const specifierIndex = specifiers.indexOf(binding.parent)
+      if (specifierIndex > -1) {
+        specifiers.splice(specifierIndex, 1)
+      }
+      return
+    }
+    binding.parentPath.remove()
+  })
+  path.remove()
 }
