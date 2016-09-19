@@ -1,8 +1,9 @@
-import {runAllCombosTests, snapSlice} from './helpers/utils'
+import {runAllCombosTests} from './helpers/utils'
 
+// this is here to make it easy to isolate tests to a specific case
 // fit(
 //   'testing uncoveredConditionalExpression(false)',
-//   snapSlice(require.resolve('./fixtures/cond-expr'), ({uncoveredConditionalExpression}) => {
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/cond-expr'), ({uncoveredConditionalExpression}) => {
 //     uncoveredConditionalExpression(false)
 //   })
 // )

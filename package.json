@@ -61,7 +61,15 @@
       "/node_modules/",
       "/fixtures/",
       "/helpers/"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   },
   "config": {
     "commitizen": {

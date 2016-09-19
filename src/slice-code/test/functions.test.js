@@ -5,6 +5,15 @@ import {snapSlice, runAllCombosTests} from './helpers/utils'
 const functionsFilename = require.resolve('./fixtures/functions')
 const snapFunctionsSlice = curry(snapSlice)(functionsFilename)
 
+// this is here to make it easy to isolate tests to a specific case
+// fit(
+//   'testing subtract(1, 2)',
+//   snapFunctionsSlice(({subtract}) => {
+//     subtract(1, 2)
+//   })
+// )
+
+
 const methodCombos = combs(['sum', 'subtract', 'multiply', 'divide'])
 
 methodCombos.forEach(methods => {

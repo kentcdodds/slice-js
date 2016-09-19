@@ -1,8 +1,8 @@
-import {runAllCombosTests, snapSlice} from './helpers/utils'
+import {runAllCombosTests} from './helpers/utils'
 
 // fit(
 //   'ifElse(true)',
-//   snapSlice(require.resolve('./fixtures/if-statements'), ({ifElse}) => {
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/if-statements'), ({ifElse}) => {
 //     ifElse(true)
 //   })
 // )

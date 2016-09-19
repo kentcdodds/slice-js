@@ -51,35 +51,47 @@ function getSliceCodeTransform(filteredCoverage) {
             enter(childPath) {
               const {key, node, parent, parentPath} = childPath
               const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
-              if (
-                !parentPath.removed &&
-                parentPath === path &&
-                (key === 'consequent' || key === 'alternate')
-              ) {
-                const sideIsCovered = isBranchSideCovered(branchMap, key, node, parent)
-                const otherSideExists = !!path.node[otherKey]
-                const otherSideIsCovered = isBranchSideCovered(branchMap, otherKey, node, parent)
-                if (!sideIsCovered && !otherSideExists) {
-                  if (otherSideIsCovered) {
-                    // if (foo) { /* not covered */ } (else-path doesn't exist but is covered) // result: removed
-                    // console.log('path.remove()')
-                    path.remove()
-                  } else {
-                    // if (foo) { /* not covered */ } // (else-path doesn't exist and isn't covered) // result: ... not sure :shrug:
-                    // console.log('childPath.remove()')
-                    childPath.remove()
-                  }
-                } else if (
-                  ((!sideIsCovered || !otherSideExists) && !otherSideIsCovered) ||
-                  !sideIsCovered && otherSideIsCovered
-                ) {
-                  // if (foo) { /* not covered */ } else { /* covered */ } // result: /* covered */
-                  // if (foo) { /* not covered */ } else { /* not covered */ } // result: removed
-                  // if (foo) { /* covered */ } (else-path doesn't exist and isn't covered) // result: /* covered */
-                  // if (foo) { /* covered */ } else { /* not covered */ } // result: ... not sure :shrug:
-                  // console.log('replaceNodeWithNodeFromParent(childPath, otherKey)', childPath, otherKey)
-                  replaceNodeWithNodeFromParent(childPath, otherKey)
+              if (skipPath()) {
+                return
+              }
+              const sideIsCovered = isBranchSideCovered(branchMap, key, node, parent)
+              const otherSideExists = !!path.node[otherKey]
+              const otherSideIsCovered = isBranchSideCovered(branchMap, otherKey, node, parent)
+              if (isUncoveredAndMissingElse()) {
+                handleUncoveredAndMissingElse()
+              } else if (hasUncoveredSide()) {
+                // console.log('replaceNodeWithNodeFromParent(childPath, otherKey)', childPath, otherKey)
+                replaceNodeWithNodeFromParent(childPath, otherKey)
+              }
+
+              function skipPath() {
+                return parentPath.removed || parentPath !== path || !(key === 'consequent' || key === 'alternate')
+              }
+
+              function isUncoveredAndMissingElse() {
+                return !sideIsCovered && !otherSideExists
+              }
+
+              function handleUncoveredAndMissingElse() {
+                if (otherSideIsCovered) {
+                  // if (foo) { /* not covered */ } (else-path doesn't exist but is covered) // result: removed
+                  // console.log('path.remove()')
+                  path.remove()
+                } else {
+                  // if (foo) { /* not covered */ } // (else-path doesn't exist and isn't covered) // result: ... not sure :shrug:
+                  // console.log('childPath.remove()')
+                  childPath.remove()
                 }
+              }
+
+              function hasUncoveredSide() {
+                // if (foo) { /* not covered */ } else { /* covered */ } // result: /* covered */
+                // if (foo) { /* not covered */ } else { /* not covered */ } // result: removed
+                // if (foo) { /* covered */ } (else-path doesn't exist and isn't covered) // result: /* covered */
+                // if (foo) { /* covered */ } else { /* not covered */ } // result: ... not sure :shrug:
+                return (
+                  (!sideIsCovered || !otherSideExists) && !otherSideIsCovered
+                ) || !sideIsCovered && otherSideIsCovered
               }
             },
           })
@@ -172,6 +184,7 @@ function replaceNodeWithNodeFromParent(path, key) {
   const {parentPath, parent} = path
   const replacementNode = parent[key] || path.node
   if (parentPath.type === 'IfStatement') {
+    // if there are side-effects in the IfStatement, then we need to preserve those
     const typesToPreserve = ['AssignmentExpression', 'CallExpression']
     const nodesToPreserve = []
     parentPath.get('test').traverse({
