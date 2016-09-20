@@ -1,6 +1,5 @@
 exports[`test isConsequentOrAlternate(false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternate };
+"export { isConsequentOrAlternate };
 
 function isConsequentOrAlternate(isConsequent) {
   return !isConsequent;
@@ -8,8 +7,7 @@ function isConsequentOrAlternate(isConsequent) {
 `;
 
 exports[`test isConsequentOrAlternate(true) && isConsequentOrAlternate(false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternate };
+"export { isConsequentOrAlternate };
 
 function isConsequentOrAlternate(isConsequent) {
   return isConsequent ? isConsequent : !isConsequent;
@@ -17,8 +15,7 @@ function isConsequentOrAlternate(isConsequent) {
 `;
 
 exports[`test isConsequentOrAlternate(true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternate };
+"export { isConsequentOrAlternate };
 
 function isConsequentOrAlternate(isConsequent) {
   return isConsequent;
@@ -26,8 +23,7 @@ function isConsequentOrAlternate(isConsequent) {
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
@@ -35,8 +31,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return !isConsequent && !isAlternatesConsequent;
@@ -44,8 +39,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isAlternatesConsequent;
@@ -53,8 +47,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
@@ -62,8 +55,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
@@ -71,8 +63,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent;
@@ -80,8 +71,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent;
@@ -89,8 +79,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
@@ -98,8 +87,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
@@ -107,8 +95,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent;
@@ -116,8 +103,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
@@ -125,8 +111,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
@@ -134,8 +119,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent ? isConsequent : isAlternatesConsequent;
@@ -143,8 +127,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent;
@@ -152,8 +135,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { isConsequentOrAlternatesConsequentOrAlternate };
+"export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
   return isConsequent;
@@ -161,8 +143,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test uncoveredConditionalExpression(false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { uncoveredConditionalExpression };
+"export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
   return !cover;
@@ -170,8 +151,7 @@ function uncoveredConditionalExpression(cover) {
 `;
 
 exports[`test uncoveredConditionalExpression(true) && uncoveredConditionalExpression(false) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { uncoveredConditionalExpression };
+"export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
   if (cover) {
@@ -182,8 +162,7 @@ function uncoveredConditionalExpression(cover) {
 `;
 
 exports[`test uncoveredConditionalExpression(true) 1`] = `
-"/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
-export { uncoveredConditionalExpression };
+"export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
   return cover;

@@ -21,6 +21,7 @@ function snapSlice(relativePath, tester) {
     const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
     const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
     const originalResult = tester(mod)
+    // console.log('originalResult', originalResult)
     const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
     expect(slicedCode).toMatchSnapshot()
     const {is100, slicedResult} = slicedCoverageIs100(relativePath, slicedCode, tester)
@@ -30,14 +31,14 @@ function snapSlice(relativePath, tester) {
 }
 
 function runAllCombosTests({filename, methods}) {
-  methods.forEach(({methodName, possibleArguments}) => {
+  methods.forEach(({methodName, useDefaultExport, possibleArguments}) => {
     const possibleCombinations = combs(possibleArguments)
 
     possibleCombinations.forEach(comboOfArgs => {
 
       // generate the message for the test title
       const testTitle = comboOfArgs.map(args => {
-        return `${methodName}(${args.join(', ')})`
+        return `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
       }).join(' && ')
 
       // this is the call to Jest's `test` function
@@ -46,7 +47,8 @@ function runAllCombosTests({filename, methods}) {
         test = (title, fn) => fn()
       }
       test(testTitle, snapSlice(filename, mod => {
-        const method = mod[methodName]
+        const method = useDefaultExport ? mod : mod[methodName]
+        // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
         return comboOfArgs.map(args => method(...args))
       }))
     })

@@ -1,8 +1,0 @@
-{
-  "rules": {
-    "no-cond-assign": 0,
-    "consistent-reaturn": 0,
-    "func-style": 0,
-    "no-return-assign": 0,
-  }
-}

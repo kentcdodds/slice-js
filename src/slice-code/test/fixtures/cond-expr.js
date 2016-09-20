@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
 export {isConsequentOrAlternate, isConsequentOrAlternatesConsequentOrAlternate, uncoveredConditionalExpression}
 
 function isConsequentOrAlternate(isConsequent) {

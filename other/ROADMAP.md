@@ -9,6 +9,7 @@
   - [ ] ConditionalExpressions
   - [ ] loops (while, do, for)
   - [ ] elsewhere?
+- Handle issues with istanbul ignore pragmas
 
 ## Might do
 

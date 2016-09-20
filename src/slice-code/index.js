@@ -4,18 +4,24 @@ import transformCoverage from './transform-coverage'
 
 export default sliceCode
 
-function sliceCode(code, coverageData) {
+function sliceCode(sourceCode, coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
-  const sliced = babel.transform(code, {
+  // console.log('\n\n\n\nsourceCode\n', sourceCode)
+  const sliced = babel.transform(sourceCode, {
     filename,
+    comments: false,
     babelrc: false,
     plugins: [
       getSliceCodeTransform(filteredCoverage),
     ],
   })
   // console.log('sliced', sliced.code)
+  // TODO: perf - save time parsing by just transforming the AST from the previous run
+  // This will probably significantly speed things up.
+  // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
+  // console.log('deadCodeEliminated', deadCodeEliminated)
   const {code: deadCodeEliminated} = babel.transform(sliced.code, {
     filename,
     babelrc: false,
@@ -23,10 +29,6 @@ function sliceCode(code, coverageData) {
       deadCodeElimination,
     ],
   })
-  // TODO: perf - save time parsing by just transforming the AST from the previous run
-  // This will probably significantly speed things up.
-  // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
-  // console.log('deadCodeEliminated', deadCodeEliminated)
   return deadCodeEliminated
 }
 
@@ -44,6 +46,7 @@ function getSliceCodeTransform(filteredCoverage) {
           const {branchMap} = filteredCoverage
           if (!isBranchCovered(branchMap, path.node)) {
             path.remove()
+            return
           }
           path.traverse({
             enter(childPath) {
@@ -100,8 +103,13 @@ function getSliceCodeTransform(filteredCoverage) {
           }
           const {branchMap} = filteredCoverage
           const branchCoverageData = getBranchCoverageData(branchMap, path.node)
+
           if (!branchCoverageData) {
-            path.remove()
+            if (path.parentPath.node.type.includes('Expression')) {
+              path.parentPath.remove()
+            } else {
+              path.remove()
+            }
             return
           }
           path.traverse({

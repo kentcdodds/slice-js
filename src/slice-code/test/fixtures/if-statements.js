@@ -1,4 +1,3 @@
-/* eslint no-constant-condition:0, consistent-return:0 */
 export {ifOnly, ifElse, ifElseIfElse, nestedIf}
 
 function ifOnly(passIf) {
