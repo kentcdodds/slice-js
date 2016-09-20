@@ -6,6 +6,7 @@ import combs from 'combs'
 import * as babel from 'babel-core'
 import {programVisitor as getInstrumentVisitor} from 'istanbul-lib-instrument'
 import {random} from 'lodash'
+import template from 'babel-template'
 import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
@@ -17,16 +18,14 @@ function snapSlice(relativePath, tester) {
   return () => {
     const absolutePath = require.resolve(relativePath)
     const sourceCode = fs.readFileSync(absolutePath, 'utf8')
-    const tempFilename = `./temp.${random(1, 9999999999999)}.js`
+    const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
     const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
     const originalResult = tester(mod)
-    const slicedCode = sliceCode(sourceCode, global[coverageVariable][tempFilename])
+    const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
     expect(slicedCode).toMatchSnapshot()
     const {is100, slicedResult} = slicedCoverageIs100(relativePath, slicedCode, tester)
     expect(is100).toBe(true)
     expect(originalResult).toEqual(slicedResult)
-    delete global[coverageVariable][tempFilename]
-    // delete require.cache[absolutePath]
   }
 }
 
@@ -91,7 +90,6 @@ function requireFromString(filename, code) {
   m.filename = filename
   m.paths = Module._nodeModulePaths(path.dirname(filename))
   m._compile(code, filename)
-  console.log(code)
   return m.exports
 }
 
@@ -107,6 +105,11 @@ function instrumenter({types: t}) {
         },
         exit(...args) {
           this.__dv__.exit(...args)
+          // expose coverage as part of the module
+          const newNode = template(
+            `module.exports.${coverageVariable} = global.${coverageVariable};`
+          )()
+          args[0].node.body.push(newNode)
         },
       },
     },

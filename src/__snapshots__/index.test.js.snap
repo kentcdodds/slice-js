@@ -4,35 +4,35 @@ exports[`test ./test/fixtures/cond-expr.slicer.js 1`] = `
     export { isConstantOrAlternate };
 
     function isConstantOrAlternate(a) {
-      return \'isConsequent\';
+      return 'isConsequent';
     }
 ./test/fixtures/cond-expr.js: alternate-only
     /* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
     export { isConstantOrAlternate };
 
     function isConstantOrAlternate(a) {
-      return a === \'consequent\' ? \'isConsequent\' : \'isAlternate\';
+      return a === 'consequent' ? 'isConsequent' : 'isAlternate';
     }
-./test/fixtures/cond-expr.js: alternate\'s consequent
+./test/fixtures/cond-expr.js: alternate's consequent
     /* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
     export { isConstantOrAlternate };
 
     function isConstantOrAlternate(a) {
-      return a === \'consequent\' ? \'isConsequent\' : a === \'alternate\' ? \'isAlternate\' : \`isAlternate\'s Consequent\`;
+      return a === 'consequent' ? 'isConsequent' : a === 'alternate' ? 'isAlternate' : \`isAlternate's Consequent\`;
     }
 ./test/fixtures/cond-expr.js: both consequent and alternate
     /* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
     export { isConstantOrAlternate };
 
     function isConstantOrAlternate(a) {
-      return a === \'consequent\' ? \'isConsequent\' : a === \'alternate\' ? \'isAlternate\' : \`isAlternate\'s Consequent\`;
+      return a === 'consequent' ? 'isConsequent' : a === 'alternate' ? 'isAlternate' : \`isAlternate's Consequent\`;
     }
-./test/fixtures/cond-expr.js: consequent, alternate, and alternate\'s consequent
+./test/fixtures/cond-expr.js: consequent, alternate, and alternate's consequent
     /* eslint import/prefer-default-export:0, no-nested-ternary:0, no-unneeded-ternary:0 */
     export { isConstantOrAlternate };
 
     function isConstantOrAlternate(a) {
-      return a === \'consequent\' ? \'isConsequent\' : a === \'alternate\' ? \'isAlternate\' : \`isAlternate\'s Consequent\`;
+      return a === 'consequent' ? 'isConsequent' : a === 'alternate' ? 'isAlternate' : \`isAlternate's Consequent\`;
     }
 "
 `;
@@ -41,7 +41,7 @@ exports[`test ./test/fixtures/module.slicer.js 1`] = `
 "./test/fixtures/module.js: multiply multiplies numbers together
     /*
      * this file may seem odd, but trust me, this is intended to help
-     * ensure we\'re developing a good slice, not to have a good math
+     * ensure we're developing a good slice, not to have a good math
      * module :)
      */
     export { sum, multiply };
