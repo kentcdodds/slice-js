@@ -1,15 +1,13 @@
-import fs from 'fs'
 import * as babel from 'babel-core'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import transformCoverage from './transform-coverage'
 
 export default sliceCode
 
-function sliceCode(coverageData) {
+function sliceCode(code, coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
-  const code = fs.readFileSync(filename, 'utf8')
   const sliced = babel.transform(code, {
     filename,
     babelrc: false,
