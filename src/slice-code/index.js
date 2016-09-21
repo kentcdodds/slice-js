@@ -7,7 +7,6 @@ export default sliceCode
 function sliceCode(sourceCode, coverageData) {
   const {path: filename} = coverageData
   const filteredCoverage = transformCoverage(coverageData)
-  // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   // console.log('\n\n\n\nsourceCode\n', sourceCode)
   const sliced = babel.transform(sourceCode, {
     filename,
@@ -33,13 +32,18 @@ function sliceCode(sourceCode, coverageData) {
 }
 
 function getSliceCodeTransform(filteredCoverage) {
-  const fnLocs = getFnLocs(filteredCoverage)
+  const {fnMap} = filteredCoverage
   return function sliceCodeTransform() {
     return {
       visitor: {
         FunctionDeclaration(path) {
-          if (!isFunctionCovered(fnLocs, path.node)) {
-            removePathAndReferences(path)
+          if (!isFunctionCovered(fnMap, path.node)) {
+            removePathAndReferences(path, path.node.id.name)
+          }
+        },
+        ArrowFunctionExpression(path) {
+          if (!isFunctionCovered(fnMap, path.node)) {
+            removePathAndReferences(path, path.parentPath.node.id.name)
           }
         },
         IfStatement(path) {
@@ -127,25 +131,39 @@ function getSliceCodeTransform(filteredCoverage) {
             },
           })
         },
+        LogicalExpression(path) {
+          if (path.removed) {
+            return
+          }
+          const {branchMap} = filteredCoverage
+          const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(branchMap, path.node)
+          // console.log('branchCoverageInfo', branchCoverageInfo)
+          if (!branchCoverageInfo) {
+            // if there's not branch coverage info available, that could mean that this
+            // LogicalExpression is part of another LogicalExpression, so we can skip this one
+            return
+          }
+          path.traverse({
+            enter(childPath) {
+              const location = branchCoverageInfo.locations.find(loc => isLocationEqual(loc, childPath.node.loc))
+              // if there's not a location available, that doesn't mean it's not covered in this case
+              if (location && !location.covered) {
+                replaceNodeWithNodeFromParent(childPath, childPath.key === 'left' ? 'right' : 'left')
+              }
+            },
+          })
+          return
+        },
       },
     }
   }
 }
 
-function isFunctionCovered(fnLocs, {id: {name}, loc: {start, end}}) {
-  return fnLocs[name] &&
-    fnLocs[name][start.line] &&
-    fnLocs[name][start.line].some(coveredLoc => end.line === coveredLoc.end.line)
-}
-
-function getFnLocs({fnMap}) {
-  return Object.keys(fnMap).reduce((fnLocs, key) => {
-    const {loc, name} = fnMap[key]
-    fnLocs[name] = fnLocs[name] || []
-    fnLocs[name][loc.start.line] = fnLocs[name][loc.start.line] || []
-    fnLocs[name][loc.start.line].push(loc)
-    return fnLocs
-  }, {})
+function isFunctionCovered(fnLocs, {body: {loc: srcLoc}}) {
+  const fnCov = Object.keys(fnLocs)
+    .map(key => fnLocs[key])
+    .find(({loc}) => isLocationEqual(loc, srcLoc))
+  return fnCov
 }
 
 function isBranchCovered(branches, node) {
@@ -159,6 +177,8 @@ function getBranchCoverageData(branches, node) {
     if (branch.type === 'if' && node.type !== 'IfStatement') {
       return false
     } else if (branch.type === 'cond-expr' && node.type !== 'ConditionalExpression') {
+      return false
+    } else if (branch.type === 'binary-expr' && node.type !== 'LogicalExpression') {
       return false
     }
     return isLocationEqual(branch.loc, node.loc)
@@ -174,12 +194,20 @@ function isBranchSideCovered(branches, side, node, parentNode) {
   return branch[side].covered
 }
 
+function getLogicalExpressionBranchCoverageInfo(branches, node) {
+  return Object.keys(branches)
+    .map(key => branches[key])
+    .filter(branch => branch.type === 'binary-expr')
+    .find(branch => isLocationEqual(node.loc, branch.loc))
+}
+
 function isLocationEqual(loc1, loc2) {
   if (!loc1 || !loc2) {
     return false
   }
-  return isLineColumnEqual(loc1.start, loc2.start) &&
+  const isEqual = isLineColumnEqual(loc1.start, loc2.start) &&
     isLineColumnEqual(loc1.end, loc2.end)
+  return isEqual
 }
 
 function isLineColumnEqual(obj1, obj2) {
@@ -209,20 +237,21 @@ function replaceNodeWithNodeFromParent(path, key) {
   }
 }
 
-function removePathAndReferences(path) {
-  path.scope.getBinding(path.node.id.name).referencePaths.forEach(binding => {
+function removePathAndReferences(path, name) {
+  path.scope.getBinding(name).referencePaths.forEach(binding => {
     if (binding.parent.type === 'ExportSpecifier') {
       const {parentPath: {parent: {specifiers}}} = binding
       const specifierIndex = specifiers.indexOf(binding.parent)
       if (specifierIndex > -1) {
         specifiers.splice(specifierIndex, 1)
       }
-      return
+    } else if (binding.type === 'ExportNamedDeclaration') {
+      binding.remove()
     } else if (binding.parent.type === 'CallExpression') {
       binding.parentPath.parentPath.remove()
-      return
+    } else {
+      binding.parentPath.remove()
     }
-    binding.parentPath.remove()
   })
   path.remove()
 }

@@ -1,4 +1,4 @@
-import {runAllCombosTests} from './helpers/utils'
+import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
 // fit(
 //   'ifElse(true)',
@@ -7,23 +7,18 @@ import {runAllCombosTests} from './helpers/utils'
 //   })
 // )
 
-
 runAllCombosTests({
   filename: require.resolve('./fixtures/if-statements'),
   methods: [
-    {methodName: 'ifOnly', possibleArguments: [[true], [false]]},
-    {methodName: 'ifElse', possibleArguments: [[true], [false]]},
+    {methodName: 'ifOnly', possibleArguments: comboOfBools(1)},
+    {methodName: 'ifElse', possibleArguments: comboOfBools(1)},
     {
       methodName: 'ifElseIfElse',
-      possibleArguments: [
-        [true, true], [true, false], [false, true], [false, false],
-      ],
+      possibleArguments: comboOfBools(2),
     },
     {
       methodName: 'nestedIf',
-      possibleArguments: [
-        [true, true], [true, false], [false, true], [false, false],
-      ],
+      possibleArguments: comboOfBools(2),
     },
   ],
 })

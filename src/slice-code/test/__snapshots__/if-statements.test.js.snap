@@ -1,3 +1,15 @@
+exports[`test ifElse(false) && ifElse(true) 1`] = `
+"export { ifElse };
+
+function ifElse(passIf) {
+  if (passIf) {
+    return passIf;
+  } else {
+    return !passIf;
+  }
+}"
+`;
+
 exports[`test ifElse(false) 1`] = `
 "export { ifElse };
 
@@ -26,6 +38,96 @@ function ifElse(passIf) {
 }"
 `;
 
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(false, true) && ifElseIfElse(true, false) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else if (passIf2) {
+    return passIf2;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(false, true) && ifElseIfElse(true, false) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else if (passIf2) {
+    return passIf2;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(false, true) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else if (passIf2) {
+    return passIf2;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(false, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf2) {
+    return passIf2;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(true, false) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(true, false) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, false) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return !passIf1 && !passIf2;
+  }
+}"
+`;
+
 exports[`test ifElseIfElse(false, false) 1`] = `
 "export { ifElseIfElse };
 
@@ -42,6 +144,42 @@ function ifElseIfElse(passIf1, passIf2) {
     return passIf2;
   } else {
     return !passIf1 && !passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, true) && ifElseIfElse(true, false) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, true) && ifElseIfElse(true, false) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return passIf2;
+  }
+}"
+`;
+
+exports[`test ifElseIfElse(false, true) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  } else {
+    return passIf2;
   }
 }"
 `;
@@ -89,6 +227,14 @@ function ifElseIfElse(passIf1, passIf2) {
   } else {
     return passIf2;
   }
+}"
+`;
+
+exports[`test ifElseIfElse(true, false) && ifElseIfElse(true, true) 1`] = `
+"export { ifElseIfElse };
+
+function ifElseIfElse(passIf1, passIf2) {
+  return passIf1;
 }"
 `;
 
@@ -192,6 +338,16 @@ function ifElseIfElse(passIf1, passIf2) {
 }"
 `;
 
+exports[`test ifOnly(false) && ifOnly(true) 1`] = `
+"export { ifOnly };
+
+function ifOnly(passIf) {
+  if (passIf) {
+    return passIf;
+  }
+}"
+`;
+
 exports[`test ifOnly(false) 1`] = `
 "export { ifOnly };
 
@@ -216,6 +372,78 @@ function ifOnly(passIf) {
 }"
 `;
 
+exports[`test nestedIf(false, false) && nestedIf(false, true) && nestedIf(true, false) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(false, true) && nestedIf(true, false) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(false, true) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf2;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(false, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(true, false) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(true, false) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, false) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf2;
+  }
+}"
+`;
+
 exports[`test nestedIf(false, false) 1`] = `
 "export { nestedIf };
 
@@ -226,6 +454,39 @@ exports[`test nestedIf(false, true) && nestedIf(false, false) 1`] = `
 "export { nestedIf };
 
 function nestedIf(passIf1, passIf2) {}"
+`;
+
+exports[`test nestedIf(false, true) && nestedIf(true, false) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    if (passIf2) {
+      return passIf2;
+    }
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, true) && nestedIf(true, false) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf1;
+  }
+}"
+`;
+
+exports[`test nestedIf(false, true) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf1) {
+    return passIf2;
+  }
+}"
 `;
 
 exports[`test nestedIf(false, true) 1`] = `
@@ -261,6 +522,17 @@ function nestedIf(passIf1, passIf2) {
   if (passIf1) {
     return passIf1;
   }
+}"
+`;
+
+exports[`test nestedIf(true, false) && nestedIf(true, true) 1`] = `
+"export { nestedIf };
+
+function nestedIf(passIf1, passIf2) {
+  if (passIf2) {
+    return passIf2;
+  }
+  return passIf1;
 }"
 `;
 

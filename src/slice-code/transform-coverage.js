@@ -38,9 +38,15 @@ function annotateBranches(branchMap, branchesRun) {
   const clone = _.cloneDeep(branchMap)
   _.forEach(clone, (branch, key) => {
     const run = branchesRun[key]
-    const [conLoc, altLoc] = branch.locations
-    branch.consequent = {covered: run[0] > 0, loc: conLoc}
-    branch.alternate = {covered: run[1] > 0, loc: altLoc}
+    branch.locations.forEach((location, index) => {
+      location.covered = run[index] > 0
+    })
+    // binary expressions don't have a concept of consequent or alternate
+    if (branch.type !== 'binary-expr') {
+      const [conLoc, altLoc] = branch.locations
+      branch.consequent = {covered: run[0] > 0, loc: conLoc}
+      branch.alternate = {covered: run[1] > 0, loc: altLoc}
+    }
   })
   return clone
 }

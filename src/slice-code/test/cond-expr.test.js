@@ -1,4 +1,4 @@
-import {runAllCombosTests} from './helpers/utils'
+import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
 // this is here to make it easy to isolate tests to a specific case
 // fit(
@@ -13,18 +13,15 @@ runAllCombosTests({
   methods: [
     {
       methodName: 'isConsequentOrAlternate',
-      possibleArguments: [[true], [false]],
+      possibleArguments: comboOfBools(1),
     },
     {
       methodName: 'isConsequentOrAlternatesConsequentOrAlternate',
-      possibleArguments: [
-        [true, true], [true, false],
-        [false, false], [false, true],
-      ],
+      possibleArguments: comboOfBools(2),
     },
     {
       methodName: 'uncoveredConditionalExpression',
-      possibleArguments: [[true], [false]],
+      possibleArguments: comboOfBools(1),
     },
   ],
 })

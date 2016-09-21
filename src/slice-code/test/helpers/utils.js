@@ -11,31 +11,60 @@ import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
 
-export {snapSlice, runAllCombosTests}
+export {comboOfBools, snapSlice, runAllCombosTests, snapSliceCode}
+
+function comboOfBools(n) {
+  const len = (Math.pow(2, n) - 1).toString(2).length
+  const result = []
+  for (let i = 0; i < Math.pow(2, n); i++) {
+    const val = i.toString(2)
+    const missing = len - val.length
+    result.push(
+      Array.from({length: missing}).map(() => false).concat(
+        Array.from(val).map(v => v === '1')
+      )
+    )
+  }
+  return result
+}
 
 function snapSlice(relativePath, tester) {
+  const absolutePath = require.resolve(relativePath)
+  const sourceCode = fs.readFileSync(absolutePath, 'utf8')
+  return snapSliceCode(sourceCode, tester)
+}
+
+function snapSliceCode(sourceCode, tester) {
   // the function returned here is what you'd place in a call to Jest's `test` function
   return () => {
-    const absolutePath = require.resolve(relativePath)
-    const sourceCode = fs.readFileSync(absolutePath, 'utf8')
     const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
     const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
     const originalResult = tester(mod)
     // console.log('originalResult', originalResult)
     const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
     expect(slicedCode).toMatchSnapshot()
-    const {is100, slicedResult} = slicedCoverageIs100(relativePath, slicedCode, tester)
-    expect(is100).toBe(true)
-    expect(originalResult).toEqual(slicedResult)
+    const {is100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester)
+    expect(is100).toBe(true, 'coverage should be 100%')
+    expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
   }
 }
 
 function runAllCombosTests({filename, methods}) {
-  methods.forEach(({methodName, useDefaultExport, possibleArguments}) => {
-    const possibleCombinations = combs(possibleArguments)
+  methods.forEach(({methodName, useDefaultExport, possibleArguments, explicitArgs}) => {
+    if (explicitArgs) {
+      explicitArgs.forEach(args => {
+        const title = `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
+        test(title, snapSlice(filename, mod => {
+          const method = useDefaultExport ? mod : mod[methodName]
+          return method(...args)
+        }))
+      })
+    } else {
+      const possibleCombinations = combs(possibleArguments)
+      possibleCombinations.forEach(generateTests)
+    }
 
-    possibleCombinations.forEach(comboOfArgs => {
-
+    function generateTests(comboOfArgs) {
       // generate the message for the test title
       const testTitle = comboOfArgs.map(args => {
         return `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
@@ -51,7 +80,7 @@ function runAllCombosTests({filename, methods}) {
         // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
         return comboOfArgs.map(args => method(...args))
       }))
-    })
+    }
   })
 }
 

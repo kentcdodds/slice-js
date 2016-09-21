@@ -1,4 +1,4 @@
-import {runAllCombosTests} from './helpers/utils'
+import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
 // fit(
 //   'ifWithAssignment(false)',
@@ -11,7 +11,7 @@ import {runAllCombosTests} from './helpers/utils'
 runAllCombosTests({
   filename: require.resolve('./fixtures/if-statement-side-effects'),
   methods: [
-    {methodName: 'ifWithAssignment', possibleArguments: [[true], [false]]},
-    {methodName: 'ifWithFunctionCall', possibleArguments: [[true], [false]]},
+    {methodName: 'ifWithAssignment', possibleArguments: comboOfBools(1)},
+    {methodName: 'ifWithFunctionCall', possibleArguments: comboOfBools(1)},
   ],
 })
