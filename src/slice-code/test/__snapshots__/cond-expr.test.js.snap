@@ -14,14 +14,6 @@ function isConsequentOrAlternate(isConsequent) {
 }"
 `;
 
-exports[`test isConsequentOrAlternate(true) && isConsequentOrAlternate(false) 1`] = `
-"export { isConsequentOrAlternate };
-
-function isConsequentOrAlternate(isConsequent) {
-  return isConsequent ? isConsequent : !isConsequent;
-}"
-`;
-
 exports[`test isConsequentOrAlternate(true) 1`] = `
 "export { isConsequentOrAlternate };
 
@@ -126,30 +118,6 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 }"
 `;
 
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
-`;
-
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
@@ -159,62 +127,6 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 `;
 
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
-
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
-`;
-
-exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
@@ -245,17 +157,6 @@ exports[`test uncoveredConditionalExpression(false) 1`] = `
 "export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  return !cover;
-}"
-`;
-
-exports[`test uncoveredConditionalExpression(true) && uncoveredConditionalExpression(false) 1`] = `
-"export { uncoveredConditionalExpression };
-
-function uncoveredConditionalExpression(cover) {
-  if (cover) {
-    return cover;
-  }
   return !cover;
 }"
 `;

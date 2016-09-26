@@ -11,10 +11,14 @@ function ifWithAssignment(passIf) {
 
 function ifWithFunctionCall(passIf) {
   let thing
-  const setThing = a => thing = a
-  if (passIf && setThing('hey')) {
+  const setThing = a => (thing = a, passIf)
+  if (passIf && setThing('hey') && someOtherThing(passIf)) {
     return thing + passIf
   } else {
     return !passIf
+  }
+
+  function someOtherThing(a) {
+    return a
   }
 }
