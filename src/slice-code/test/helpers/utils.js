@@ -42,6 +42,7 @@ function snapSliceCode(sourceCode, tester) {
     const originalResult = tester(mod)
     // console.log('originalResult', originalResult)
     const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
+    // console.log('slicedCode', slicedCode)
     expect(slicedCode).toMatchSnapshot()
     const {is100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester)
     expect(is100).toBe(true, 'coverage should be 100%')

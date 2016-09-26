@@ -14,8 +14,10 @@ function ifWithFunctionCall(passIf) {
   const setThing = a => (thing = a, passIf)
   if (passIf && setThing('hey') && someOtherThing(passIf)) {
     return thing + passIf
-  } else {
+  } else if (!someOtherThing(passIf) || passIf) {
     return !passIf
+  } else {
+    return passIf
   }
 
   function someOtherThing(a) {

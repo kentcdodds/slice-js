@@ -1,11 +1,13 @@
 import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
-fit(
-  'ifWithFunctionCall(true)',
-  require('./helpers/utils').snapSlice(require.resolve('./fixtures/if-statement-side-effects'), ({ifWithFunctionCall}) => {
-    ifWithFunctionCall(true)
-  })
-)
+// fit(
+//   'ifWithFunctionCall(false)',
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/if-statement-side-effects'), ({ifWithFunctionCall}) => {
+//     return [
+//       ifWithFunctionCall(false),
+//     ]
+//   })
+// )
 
 
 runAllCombosTests({

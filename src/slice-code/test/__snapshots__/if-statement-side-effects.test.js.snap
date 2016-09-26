@@ -37,7 +37,9 @@ exports[`test ifWithFunctionCall(false) && ifWithFunctionCall(true) 1`] = `
 function ifWithFunctionCall(passIf) {
   let thing;
 
-  if (passIf && (a => thing = a)('hey')) {
+  if (passIf && (a => (thing = a, passIf))('hey') && function (a) {
+    return a;
+  }(passIf)) {
     return thing + passIf;
   } else {
     return !passIf;
@@ -49,6 +51,9 @@ exports[`test ifWithFunctionCall(false) 1`] = `
 "export { ifWithFunctionCall };
 
 function ifWithFunctionCall(passIf) {
+  !function (a) {
+    return a;
+  }(passIf);
 
   return !passIf;
 }"
@@ -60,7 +65,11 @@ exports[`test ifWithFunctionCall(true) 1`] = `
 function ifWithFunctionCall(passIf) {
   let thing;
 
-  (a => thing = a)('hey');
+  passIf && (a => (thing = a, passIf))('hey');
+  (function (a) {
+    return a;
+  })(passIf);
+
   return thing + passIf;
 }"
 `;

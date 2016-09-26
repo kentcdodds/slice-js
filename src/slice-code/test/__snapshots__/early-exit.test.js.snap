@@ -1,0 +1,81 @@
+exports[`test condExpr(false) && condExpr(true) 1`] = `
+"export { condExpr };
+
+function condExpr(passIf) {
+  if (!passIf) {
+    return \'did not reach IfStatement\';
+  }
+  return \'reached CondExpr Consequent\';
+}"
+`;
+
+exports[`test condExpr(false) 1`] = `
+"export { condExpr };
+
+function condExpr(passIf) {
+  return \'did not reach IfStatement\';
+}"
+`;
+
+exports[`test condExpr(true) 1`] = `
+"export { condExpr };
+
+function condExpr(passIf) {
+  return \'reached CondExpr Consequent\';
+}"
+`;
+
+exports[`test ifStatement(false) && ifStatement(true) 1`] = `
+"export { ifStatement };
+
+function ifStatement(passIf) {
+  if (!passIf) {
+    return \'did not reach IfStatement\';
+  }
+
+  return \'reached IfStatement\';
+}"
+`;
+
+exports[`test ifStatement(false) 1`] = `
+"export { ifStatement };
+
+function ifStatement(passIf) {
+  return \'did not reach IfStatement\';
+}"
+`;
+
+exports[`test ifStatement(true) 1`] = `
+"export { ifStatement };
+
+function ifStatement(passIf) {
+  return \'reached IfStatement\';
+}"
+`;
+
+exports[`test logicalExpr(false) && logicalExpr(true) 1`] = `
+"export { logicalExpr };
+
+function logicalExpr(passIf) {
+  if (!passIf) {
+    return \'did not reach IfStatement\';
+  }
+  return passIf && \'reached LogicalExpression\';
+}"
+`;
+
+exports[`test logicalExpr(false) 1`] = `
+"export { logicalExpr };
+
+function logicalExpr(passIf) {
+  return \'did not reach IfStatement\';
+}"
+`;
+
+exports[`test logicalExpr(true) 1`] = `
+"export { logicalExpr };
+
+function logicalExpr(passIf) {
+  return passIf && \'reached LogicalExpression\';
+}"
+`;

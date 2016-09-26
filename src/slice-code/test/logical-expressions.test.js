@@ -1,10 +1,9 @@
 import {runAllCombosTests, comboOfBools} from './helpers/utils'
-// import combs from 'combs'
 
 // fit(
-//   'ifElse(true)',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/logical-expressions'), ({andOr}) => {
-//     return andOr(true, true, true)
+//   'orAndOr(false, false, true, true)',
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/logical-expressions'), ({orAndOr}) => {
+//     return [orAndOr(false, false, true, true)]
 //   })
 // )
 

@@ -34,7 +34,7 @@ function sliceCode(sourceCode, coverageData) {
 
 function getSliceCodeTransform(filteredCoverage) {
   const {fnMap} = filteredCoverage
-  return function sliceCodeTransform() {
+  return function sliceCodeTransform({types: t}) {
     return {
       visitor: {
         FunctionDeclaration(path) {
@@ -66,7 +66,7 @@ function getSliceCodeTransform(filteredCoverage) {
               if (isUncoveredAndMissingElse()) {
                 handleUncoveredAndMissingElse()
               } else if (hasUncoveredSide()) {
-                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap)
+                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap, t)
               }
 
               function skipPath() {
@@ -102,18 +102,11 @@ function getSliceCodeTransform(filteredCoverage) {
           })
         },
         ConditionalExpression(path) {
-          if (path.removed) {
-            return
-          }
           const {branchMap} = filteredCoverage
           const branchCoverageData = getBranchCoverageData(branchMap, path.node)
 
           if (!branchCoverageData) {
-            if (path.parentPath.node.type.includes('Expression')) {
-              path.parentPath.remove()
-            } else {
-              path.remove()
-            }
+            path.remove()
             return
           }
           path.traverse({
@@ -126,15 +119,12 @@ function getSliceCodeTransform(filteredCoverage) {
                 (key === 'consequent' || key === 'alternate') &&
                 !branchCoverageData[key].covered
               ) {
-                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap)
+                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap, t)
               }
             },
           })
         },
         LogicalExpression(path) {
-          if (path.removed) {
-            return
-          }
           const {branchMap} = filteredCoverage
           const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(branchMap, path.node)
           // console.log('branchCoverageInfo', branchCoverageInfo)
@@ -151,8 +141,39 @@ function getSliceCodeTransform(filteredCoverage) {
                 // we only care about direct children
                 return
               }
+              if (childPath.type === 'LogicalExpression') {
+                handleNestedLogicalExpression(childPath)
+                return
+              }
               if (!nodesToPreserve.includes(childPath.node)) {
-                replaceNodeWithNodeFromParent(childPath, childPath.key === 'left' ? 'right' : 'left', branchMap)
+                const otherSideKey = childPath.key === 'left' ? 'right' : 'left'
+                replaceNodeWithNodeFromParent(childPath, otherSideKey, branchMap, t)
+              }
+
+              function handleNestedLogicalExpression(nestedExpressionPath) {
+                const otherSideKey = nestedExpressionPath.key === 'left' ? 'right' : 'left'
+                // if the child is a LogicalExpression, then we need to replace the parent node with only the
+                // side of the expression that is covered.
+                const includesLeft = isNestedLogicalExpressionIsCovered(nodesToPreserve, nestedExpressionPath.node.left)
+                const includesRight = isNestedLogicalExpressionIsCovered(nodesToPreserve, nestedExpressionPath.node.right)
+                // console.log(includesLeft, includesRight)
+                if (!includesLeft && !includesRight) {
+                  // if neither side is covered, then take the parent (LogicalExpression) and replace it with just the other side
+                  replaceNodeWithNodeFromParent(nestedExpressionPath, otherSideKey, branchMap, t)
+                  return
+                }
+                if (includesLeft && includesRight) {
+                  // if both sides are covered, then don't replace the parent at all. This side is is needed
+                  return
+                } else if (!includesRight) { // eslint-disable-line no-negated-condition
+                  // console.log('no right', nestedExpressionPath.getSource(), nestedExpressionPath.node.right)
+                  // if the right isn't covered (and the left is), then just replace the whole LogicalExpression with the left
+                  nestedExpressionPath.replaceWith(nestedExpressionPath.node.left)
+                } else { // !includesLeft
+                  // if the left isn't covered (and the right is), then just replace the whole LogicalExpression with the right
+                  nestedExpressionPath.replaceWith(nestedExpressionPath.node.right)
+                }
+                return
               }
             },
           })
@@ -204,6 +225,15 @@ function getLogicalExpressionBranchCoverageInfo(branches, node) {
     .find(branch => isLocationEqual(node.loc, branch.loc))
 }
 
+function isNestedLogicalExpressionIsCovered(coveredNodes, node) {
+  if (node.type === 'LogicalExpression') {
+    return isNestedLogicalExpressionIsCovered(coveredNodes, node.left) ||
+      isNestedLogicalExpressionIsCovered(coveredNodes, node.right)
+  } else {
+    return coveredNodes.includes(node)
+  }
+}
+
 function isLocationEqual(loc1, loc2) {
   if (!loc1 || !loc2) {
     return false
@@ -237,40 +267,67 @@ function getLogicalExpressionNodesToPreserve(path, branchMap) {
   return nodesToPreserve
 }
 
-function replaceNodeWithNodeFromParent(path, key, branchMap) {
+function replaceNodeWithNodeFromParent(path, key, branchMap, t) {
+  // console.log('replaceNodeWithNodeFromParent', path, key)
   const {parentPath, parent} = path
   const replacementNode = parent[key] || path.node
   if (parentPath.type === 'IfStatement') {
     // if there are side-effects in the IfStatement, then we need to preserve those
-    const typesToPreserve = ['AssignmentExpression', 'CallExpression']
+    const typesToPreserve = ['AssignmentExpression', 'CallExpression', 'UnaryExpression']
+    const typesToWrap = ['CallExpression', 'UnaryExpression'] // these can't exist on their own and need to be wrapped in an ExpressionStatement
     const nodesToPreserve = []
     const testPath = parentPath.get('test')
     testPath.traverse({
       enter(testChildPath) {
+        const EXIT_EARLY = 'EXIT_EARLY'
         if (testChildPath.parentPath !== testPath) {
           // we're only concerend with direct children
           return
         }
-        if (testChildPath.parent.type === 'LogicalExpression') {
-          const logicalExpressionNodesToPreserve = getLogicalExpressionNodesToPreserve(testChildPath.parentPath, branchMap)
-          if (testChildPath.type === 'LogicalExpression') {
-            const includesLeft = logicalExpressionNodesToPreserve.includes(testChildPath.node.left)
-            const includesRight = logicalExpressionNodesToPreserve.includes(testChildPath.node.right)
-            if (includesLeft && includesRight) {
+
+        const result = handleLogicalExpression()
+        if (result === EXIT_EARLY) {
+          return
+        }
+        preserveNode()
+
+        function preserveNode() {
+          if (typesToPreserve.includes(testChildPath.node.type)) {
+            if (typesToWrap.includes(testChildPath.node.type)) {
+              nodesToPreserve.push(t.expressionStatement(testChildPath.node))
+            } else {
               nodesToPreserve.push(testChildPath.node)
-            } else if (!includesRight) {
-              nodesToPreserve.push(testChildPath.node.left)
-            } else { // !includesLeft
-              nodesToPreserve.push(testChildPath.node.right)
             }
-            return
-          } else if (!logicalExpressionNodesToPreserve.includes(testChildPath.node)) {
-            // if this part of the LogicalExpression is not covered, then we don't want to preserve it.
-            return
           }
         }
-        if (typesToPreserve.includes(testChildPath.node.type)) {
-          nodesToPreserve.push(testChildPath.node)
+
+        function handleLogicalExpression() {
+          const logicalExpressionNodesToPreserve = getLogicalExpressionNodesToPreserve(testChildPath.parentPath, branchMap)
+          if (testChildPath.parent.type === 'LogicalExpression') {
+            handleNestedLogicalExpression(logicalExpressionNodesToPreserve)
+            if (!logicalExpressionNodesToPreserve.includes(testChildPath.node)) {
+              // if this part of the LogicalExpression is not covered, then we don't want to preserve it.
+              return EXIT_EARLY
+            }
+          }
+          return null
+        }
+
+        function handleNestedLogicalExpression(coveredNodes) {
+          if (testChildPath.type !== 'LogicalExpression') {
+            return
+          }
+          const includesLeft = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.left)
+          const includesRight = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.right)
+          // need to create an expression statement because we'll be removing the if statement
+          // and this needs to be a node that can stand on its own.
+          if (includesLeft && includesRight) {
+            nodesToPreserve.push(t.expressionStatement(testChildPath.node))
+          } else if (!includesRight) { // eslint-disable-line no-negated-condition
+            nodesToPreserve.push(t.expressionStatement(testChildPath.node.left))
+          } else { // !includesLeft
+            nodesToPreserve.push(t.expressionStatement(testChildPath.node.right))
+          }
         }
       },
     })
