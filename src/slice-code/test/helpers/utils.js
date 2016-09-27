@@ -101,7 +101,8 @@ function slicedCoverageIs100(filename, slicedCode, tester) {
 }
 
 function getInstrumentedModuleFromString(filename, sourceCode) {
-  const {code} = babel.transform(sourceCode, {
+  const sourceCodeWithoutIstanbulPragma = sourceCode.replace(/istanbul/g, 'ignore-istanbul-ignore')
+  const {code} = babel.transform(sourceCodeWithoutIstanbulPragma, {
     filename,
     babelrc: false,
     compact: false,

@@ -10,8 +10,12 @@ import {runAllCombosTests} from './helpers/utils'
 runAllCombosTests({
   filename: require.resolve('match-sorter/dist/umd/match-sorter.js'),
   methods: [
-    {useDefaultExport: true, methodName: 'matchSorter', explicitArgs: [
-      [['hi', 'hey', 'hello', 'sup', 'yo'], 'y'],
-    ]},
+    {
+      useDefaultExport: true,
+      methodName: 'matchSorter',
+      explicitArgs: [
+        [['hi', 'hey', 'hello', 'sup', 'yo'], 'y'],
+      ],
+    },
   ],
 })
