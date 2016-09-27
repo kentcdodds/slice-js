@@ -1,0 +1,125 @@
+exports[`test assignmentTernary("a") && assignmentTernary("b") 1`] = `
+"export { assignmentTernary };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function assignmentTernary(letter) {
+  let string = \'init\';
+  string += letter in output.map ? output.map[letter] : letter;
+  return string;
+}"
+`;
+
+exports[`test assignmentTernary("a") 1`] = `
+"export { assignmentTernary };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function assignmentTernary(letter) {
+  let string = \'init\';
+  string += output.map[letter];
+  return string;
+}"
+`;
+
+exports[`test assignmentTernary("b") 1`] = `
+"export { assignmentTernary };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function assignmentTernary(letter) {
+  let string = \'init\';
+  string += letter;
+  return string;
+}"
+`;
+
+exports[`test diacriticsClean("Some Google") 1`] = `
+"export { diacriticsClean };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function diacriticsClean(input) {
+
+  var string = \'\';
+  var letters = input.split(\'\');
+  var index = 0;
+  var length = letters.length;
+  var letter;
+
+  for (; index < length; index++) {
+    letter = letters[index];
+    string += letter;
+  }
+
+  return string;
+}"
+`;
+
+exports[`test diacriticsClean("Some apple") && diacriticsClean("Some Google") 1`] = `
+"export { diacriticsClean };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function diacriticsClean(input) {
+
+  var string = \'\';
+  var letters = input.split(\'\');
+  var index = 0;
+  var length = letters.length;
+  var letter;
+
+  for (; index < length; index++) {
+    letter = letters[index];
+    string += letter in output.map ? output.map[letter] : letter;
+  }
+
+  return string;
+}"
+`;
+
+exports[`test diacriticsClean("Some apple") 1`] = `
+"export { diacriticsClean };
+
+const output = {
+  map: {
+    a: \'A\'
+  }
+};
+
+function diacriticsClean(input) {
+
+  var string = \'\';
+  var letters = input.split(\'\');
+  var index = 0;
+  var length = letters.length;
+  var letter;
+
+  for (; index < length; index++) {
+    letter = letters[index];
+    string += letter in output.map ? output.map[letter] : letter;
+  }
+
+  return string;
+}"
+`;
