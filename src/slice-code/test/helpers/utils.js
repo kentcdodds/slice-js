@@ -88,7 +88,8 @@ function runAllCombosTests({filename, methods}) {
 function slicedCoverageIs100(filename, slicedCode, tester) {
   const mod = getInstrumentedModuleFromString(filename, slicedCode)
   const slicedResult = tester(mod)
-  const is100 = coverageIs100Percent(mod[coverageVariable]) // just in case :)
+  // process.stdout.write('\n\nmod[coverageVariable][filename].s\n\n' + JSON.stringify(mod[coverageVariable][filename].s, null, 2))
+  const is100 = coverageIs100Percent(mod[coverageVariable])
   return {slicedResult, is100}
 
   function coverageIs100Percent(coverageData) {
@@ -112,6 +113,7 @@ function getInstrumentedModuleFromString(filename, sourceCode) {
       instrumenter,
     ],
   })
+  // process.stdout.write('\n\ninstrumentedCode\n\n' + code)
   return requireFromString(filename, code)
 }
 

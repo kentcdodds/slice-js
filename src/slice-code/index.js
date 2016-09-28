@@ -6,6 +6,7 @@ export default sliceCode
 
 function sliceCode(sourceCode, coverageData) {
   const {path: filename} = coverageData
+  // console.log('coverageData', JSON.stringify(coverageData, null, 2))
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   // console.log('\n\n\n\nsourceCode\n', sourceCode)
@@ -182,6 +183,28 @@ function getSliceCodeTransform(filteredCoverage) {
             },
           })
         },
+        TryStatement(path) {
+          const {statementMap} = filteredCoverage
+          const tryBlockPath = path.get('block')
+          const catchBlockPath = path.get('handler.body')
+          // const finallyBlockPath = path.get('finalizer')
+          const coveredTryStatements = getCoveredStatementsFromBlock(statementMap, tryBlockPath.node)
+          const coveredCatchStatements = getCoveredStatementsFromBlock(statementMap, catchBlockPath.node)
+          // const coveredFinallyStatements = getCoveredStatementsFromBlock(statementMap, finallyBlockPath.node)
+          if (!coveredCatchStatements.length) {
+            throw new Error(
+              'Uncovered catch statements are not yet supported due to ' +
+              'https://github.com/babel/babel/issues/4586'
+            )
+            // path.parentPath.insertAfter([
+            //   ...coveredTryStatements,
+            //   ...coveredFinallyStatements,
+            // ])
+            // path.remove()
+          } else if (coveredTryStatements.length < tryBlockPath.node.body) {
+            tryBlockPath.node.body = coveredTryStatements
+          }
+        },
       },
     }
   }
@@ -249,6 +272,19 @@ function isLocationEqual(loc1, loc2) {
 
 function isLineColumnEqual(obj1, obj2) {
   return obj1.line === obj2.line && obj1.column === obj2.column
+}
+
+function getCoveredStatementsFromBlock(statements, blockNode) {
+  const {loc: {start: {line: blockStartLine}, end: {line: blockEndLine}}} = blockNode
+  return Object.keys(statements).reduce((allStatements, key) => {
+    const statement = statements[key]
+    const {start: {line: startLine}, end: {line: endLine}} = statement
+    const isStatementWithinBlock = startLine > blockStartLine && endLine < blockEndLine
+    if (isStatementWithinBlock) {
+      allStatements.push(statement)
+    }
+    return allStatements
+  }, [])
 }
 
 function getLogicalExpressionNodesToPreserve(path, branchMap) {

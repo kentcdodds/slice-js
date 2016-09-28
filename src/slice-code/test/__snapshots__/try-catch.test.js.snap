@@ -1,0 +1,51 @@
+exports[`test statementsAfterThrow() 1`] = `
+"export { statementsAfterThrow };
+
+function statementsAfterThrow() {
+  const ret = {};
+  try {
+    ret.before = true;
+
+    throw new Error(\'throw error\');
+  } catch (error) {
+    ret.error = error;
+  } finally {
+    return ret;
+  }
+}"
+`;
+
+exports[`test tryCatch(false) && tryCatch(true) 1`] = `
+"export { tryCatch };
+
+function tryCatch(shouldThrow) {
+  const ret = {};
+  try {
+    if (shouldThrow) {
+      throw new Error(\'throw error\');
+    }
+    ret.noThrow = true;
+  } catch (error) {
+    ret.error = error;
+    return error;
+  } finally {
+    return ret;
+  }
+}"
+`;
+
+exports[`test tryCatch(true) 1`] = `
+"export { tryCatch };
+
+function tryCatch(shouldThrow) {
+  const ret = {};
+  try {
+    throw new Error(\'throw error\');
+  } catch (error) {
+    ret.error = error;
+    return error;
+  } finally {
+    return ret;
+  }
+}"
+`;
