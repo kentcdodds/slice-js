@@ -11,7 +11,7 @@ import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
 
-export {comboOfBools, snapSlice, runAllCombosTests, snapSliceCode}
+export {comboOfBools, snapSlice, runAllCombosTests, snapSliceCode, getSliceAndInfo}
 
 function comboOfBools(n) {
   const len = (Math.pow(2, n) - 1).toString(2).length
@@ -37,17 +37,22 @@ function snapSlice(relativePath, tester) {
 function snapSliceCode(sourceCode, tester) {
   // the function returned here is what you'd place in a call to Jest's `test` function
   return () => {
-    const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
-    const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
-    const originalResult = tester(mod)
-    // console.log('originalResult', originalResult)
-    const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
-    // console.log('slicedCode', slicedCode)
+    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = getSliceAndInfo(sourceCode, tester)
     expect(slicedCode).toMatchSnapshot()
-    const {is100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester)
-    expect(is100).toBe(true, 'coverage should be 100%')
+    expect(isSlicedCoverage100).toBe(true, 'coverage should be 100%')
     expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
   }
+}
+
+function getSliceAndInfo(sourceCode, tester) {
+  const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
+  const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
+  const originalResult = tester(mod)
+  // console.log('originalResult', originalResult)
+  const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
+  // console.log('slicedCode', slicedCode)
+  const {is100: isSlicedCoverage100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester)
+  return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult}
 }
 
 function runAllCombosTests({filename, methods}) {
