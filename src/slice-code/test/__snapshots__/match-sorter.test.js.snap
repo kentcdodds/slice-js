@@ -1,0 +1,108 @@
+exports[`test matchSorter(["hi","hey","hello","sup","yo"], "y") 1`] = `
+"\'use strict\';
+
+var _typeof = function () {
+  {
+    return typeof obj;
+  }
+}(); /**
+      * @name match-sorter
+      * @license MIT license.
+      * @copyright (c) 2016 Kent C. Dodds
+      * @author Kent C. Dodds <kent@doddsfamily.us>
+      */
+
+var _diacritic = require(\'diacritic\');
+
+var _diacritic2 = _interopRequireDefault(_diacritic);
+
+var _globalObject = require(\'global-object\');
+
+var _globalObject2 = _interopRequireDefault(_globalObject);
+
+function _interopRequireDefault(obj) {
+  return { default: obj };
+}
+
+var rankings = {
+  EQUAL: 6,
+  STARTS_WITH: 5,
+  WORD_STARTS_WITH: 4,
+  CONTAINS: 3,
+  ACRONYM: 2,
+  MATCHES: 1,
+  NO_MATCH: 0
+};
+
+matchSorter.rankings = rankings;
+
+function matchSorter(items, value) {
+  var options = {};
+  var keys = options.keys;
+  options.threshold;
+
+  var threshold = rankings.MATCHES;
+
+  var matchedItems = items.reduce(function (matches, item, index) {
+    var _getHighestRanking = getHighestRanking(item, keys, value, options);
+
+    var rank = _getHighestRanking.rank;
+    var keyIndex = _getHighestRanking.keyIndex;
+
+    if (rank >= threshold) {
+      matches.push({ item: item, rank: rank, index: index, keyIndex: keyIndex });
+    }
+    return matches;
+  }, []);
+  return matchedItems.sort(sortRankedItems).map(function (_ref) {
+    var item = _ref.item;
+    return item;
+  });
+}
+
+function getHighestRanking(item, keys, value, options) {
+  return { rank: getMatchRanking(item, value, options), keyIndex: -1 };
+}
+
+function getMatchRanking(testString, stringToRank, options) {
+  testString = prepareValueForComparison(testString, options);
+  stringToRank = prepareValueForComparison(stringToRank, options);
+
+  if (testString.indexOf(stringToRank) === 0) {
+    return rankings.STARTS_WITH;
+  }
+
+  if (testString.indexOf(stringToRank) !== -1) {
+    return rankings.CONTAINS;
+  } else {
+    return rankings.NO_MATCH;
+  }
+}
+
+function sortRankedItems(a, b) {
+  var aRank = a.rank;
+  a.index;
+  a.keyIndex;
+
+  var bRank = b.rank;
+  b.index;
+  b.keyIndex;
+
+
+  return 1;
+}
+
+function prepareValueForComparison(value, _ref3) {
+  _ref3.keepDiacritics;
+
+
+  value = \'\' + value;
+  value = _diacritic2.default.clean(value);
+
+  return value.toLowerCase();
+}
+
+matchSorter.default = matchSorter;
+module.exports = matchSorter;
+Object.defineProperty(exports, \'__esModule\', { value: true });"
+`;

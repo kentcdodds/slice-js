@@ -1,19 +1,15 @@
 import fs from 'fs'
 import indent from 'indent-string'
-import sliceCode from './slice-code'
+import {getSliceAndInfo} from './slice-code/test/helpers/utils'
 
 export default sliceTest
 
-function sliceTest(filename, name, testCb) {
-  testCb()
+function sliceTest(filename, name, tester) {
   const sourceCode = fs.readFileSync(filename, 'utf8')
-  const testCoverage = global.__coverage__[filename]
-  const slicedCode = sliceCode(sourceCode, testCoverage)
+  const {slicedCode} = getSliceAndInfo(sourceCode, tester, filename)
   console.log( // eslint-disable-line no-console
     `${relativeizePath(filename)}: ${name}\n${indent(slicedCode, 4)}`
   )
-  // reset the module so it will be reinstrumented for coverage for the next test.
-  delete require.cache[filename]
 }
 
 function relativeizePath(absolutePath) {

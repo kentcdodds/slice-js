@@ -187,20 +187,15 @@ function getSliceCodeTransform(filteredCoverage) {
           const {statementMap} = filteredCoverage
           const tryBlockPath = path.get('block')
           const catchBlockPath = path.get('handler.body')
-          // const finallyBlockPath = path.get('finalizer')
+          const finallyBlockPath = path.get('finalizer')
           const coveredTryStatements = getCoveredStatementsFromBlock(statementMap, tryBlockPath.node)
           const coveredCatchStatements = getCoveredStatementsFromBlock(statementMap, catchBlockPath.node)
-          // const coveredFinallyStatements = getCoveredStatementsFromBlock(statementMap, finallyBlockPath.node)
+          const coveredFinallyStatements = getCoveredStatementsFromBlock(statementMap, finallyBlockPath.node)
           if (!coveredCatchStatements.length) {
-            throw new Error(
-              'Uncovered catch statements are not yet supported due to ' +
-              'https://github.com/babel/babel/issues/4586'
-            )
-            // path.parentPath.insertAfter([
-            //   ...coveredTryStatements,
-            //   ...coveredFinallyStatements,
-            // ])
-            // path.remove()
+            path.replaceWithMultiple([
+              ...coveredTryStatements,
+              ...coveredFinallyStatements,
+            ])
           } else if (coveredTryStatements.length < tryBlockPath.node.body) {
             tryBlockPath.node.body = coveredTryStatements
           }
@@ -274,17 +269,23 @@ function isLineColumnEqual(obj1, obj2) {
   return obj1.line === obj2.line && obj1.column === obj2.column
 }
 
-function getCoveredStatementsFromBlock(statements, blockNode) {
-  const {loc: {start: {line: blockStartLine}, end: {line: blockEndLine}}} = blockNode
-  return Object.keys(statements).reduce((allStatements, key) => {
-    const statement = statements[key]
-    const {start: {line: startLine}, end: {line: endLine}} = statement
-    const isStatementWithinBlock = startLine > blockStartLine && endLine < blockEndLine
-    if (isStatementWithinBlock) {
+function getCoveredStatementsFromBlock(coveredStatements, blockNode) {
+  if (!blockNode) {
+    return []
+  }
+  return blockNode.body.reduce((allStatements, statement) => {
+    if (isStatementCovered(coveredStatements, statement)) {
       allStatements.push(statement)
     }
     return allStatements
   }, [])
+}
+
+function isStatementCovered(coveredStatements, statement) {
+  return Object.keys(coveredStatements).find(s => {
+    const coveredLoc = coveredStatements[s]
+    return isLocationEqual(coveredLoc, statement.loc)
+  })
 }
 
 function getLogicalExpressionNodesToPreserve(path, branchMap) {

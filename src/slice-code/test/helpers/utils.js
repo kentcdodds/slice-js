@@ -31,27 +31,27 @@ function comboOfBools(n) {
 function snapSlice(relativePath, tester) {
   const absolutePath = require.resolve(relativePath)
   const sourceCode = fs.readFileSync(absolutePath, 'utf8')
-  return snapSliceCode(sourceCode, tester)
+  return snapSliceCode(sourceCode, tester, absolutePath)
 }
 
-function snapSliceCode(sourceCode, tester) {
+function snapSliceCode(sourceCode, tester, actualFilepath) {
   // the function returned here is what you'd place in a call to Jest's `test` function
   return () => {
-    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = getSliceAndInfo(sourceCode, tester)
+    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = getSliceAndInfo(sourceCode, tester, actualFilepath)
     expect(slicedCode).toMatchSnapshot()
     expect(isSlicedCoverage100).toBe(true, 'coverage should be 100%')
     expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
   }
 }
 
-function getSliceAndInfo(sourceCode, tester) {
+function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
-  const mod = getInstrumentedModuleFromString(tempFilename, sourceCode)
+  const mod = getInstrumentedModuleFromString(tempFilename, sourceCode, actualFilepath)
   const originalResult = tester(mod)
   // console.log('originalResult', originalResult)
   const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
   // console.log('slicedCode', slicedCode)
-  const {is100: isSlicedCoverage100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester)
+  const {is100: isSlicedCoverage100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester, actualFilepath)
   return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult}
 }
 
@@ -90,8 +90,8 @@ function runAllCombosTests({filename, methods}) {
   })
 }
 
-function slicedCoverageIs100(filename, slicedCode, tester) {
-  const mod = getInstrumentedModuleFromString(filename, slicedCode)
+function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
+  const mod = getInstrumentedModuleFromString(filename, slicedCode, actualFilepath)
   const slicedResult = tester(mod)
   // process.stdout.write('\n\nmod[coverageVariable][filename].s\n\n' + JSON.stringify(mod[coverageVariable][filename].s, null, 2))
   const is100 = coverageIs100Percent(mod[coverageVariable])
@@ -106,7 +106,7 @@ function slicedCoverageIs100(filename, slicedCode, tester) {
   }
 }
 
-function getInstrumentedModuleFromString(filename, sourceCode) {
+function getInstrumentedModuleFromString(filename, sourceCode, actualFilepath) {
   const sourceCodeWithoutIstanbulPragma = sourceCode.replace(/istanbul/g, 'ignore-istanbul-ignore')
   const {code} = babel.transform(sourceCodeWithoutIstanbulPragma, {
     filename,
@@ -119,16 +119,16 @@ function getInstrumentedModuleFromString(filename, sourceCode) {
     ],
   })
   // process.stdout.write('\n\ninstrumentedCode\n\n' + code)
-  return requireFromString(filename, code)
+  return requireFromString(filename, code, actualFilepath)
 }
 
 /*
  * copied and modified from require-from-string
  */
-function requireFromString(filename, code) {
+function requireFromString(filename, code, actualFilepath) {
   const m = new Module(filename, module.parent)
   m.filename = filename
-  m.paths = Module._nodeModulePaths(path.dirname(filename))
+  m.paths = Module._nodeModulePaths(path.dirname(actualFilepath || filename))
   m._compile(code, filename)
   return m.exports
 }

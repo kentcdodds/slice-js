@@ -8,7 +8,7 @@ import {runAllCombosTests} from './helpers/utils'
 // )
 
 runAllCombosTests({
-  filename: require.resolve('match-sorter/dist/umd/match-sorter.js'),
+  filename: require.resolve('match-sorter'),
   methods: [
     {
       useDefaultExport: true,
