@@ -11,7 +11,7 @@ import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
 
-export {comboOfBools, snapSlice, runAllCombosTests, snapSliceCode, getSliceAndInfo}
+export {comboOfBools, comboOfItems, snapSlice, runAllCombosTests, snapSliceCode, getSliceAndInfo}
 
 function comboOfBools(n) {
   const len = (Math.pow(2, n) - 1).toString(2).length
@@ -26,6 +26,32 @@ function comboOfBools(n) {
     )
   }
   return result
+}
+
+/**
+ * @param  {Array} items the items to get combinations for
+ * @return {Array} an array of arrays of the possible combination of those items
+ */
+function comboOfItems(items) {
+  if (items.length < 2) {
+    return [items]
+  }
+  const combos = []
+  items.forEach((item, index) => {
+    const firstHalf = items.slice(0, index)
+    const secondHalf = items.slice(index + 1)
+    const remainingCombos = comboOfItems([
+      ...firstHalf,
+      ...secondHalf,
+    ])
+    remainingCombos.forEach(combo => {
+      combos.push([
+        item,
+        ...combo,
+      ])
+    })
+  })
+  return combos
 }
 
 function snapSlice(relativePath, tester) {

@@ -1,0 +1,208 @@
+exports[`test indentString("hello world") && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", , "@") 1`] = `
+"\'use strict\';
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = 1;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", 2) 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = \' \';
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world") 1`] = `
+"\'use strict\';
+
+module.exports = (str, count, indent) => {
+	indent = \' \';
+	count = 1;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", , "@") 1`] = `
+"\'use strict\';
+
+module.exports = (str, count, indent) => {
+	count = 1;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+	count = count === undefined ? 1 : count;
+
+	indent = count > 1 ? repeating(count, indent) : indent;
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = indent === undefined ? \' \' : indent;
+
+
+	indent = repeating(count, indent);
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", 2) 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+	indent = \' \';
+
+
+	indent = repeating(count, indent);
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;
+
+exports[`test indentString("hello world", 4, "@") 1`] = `
+"\'use strict\';
+
+const repeating = require(\'repeating\');
+
+module.exports = (str, count, indent) => {
+
+	indent = repeating(count, indent);
+
+	return str.replace(/^(?!\\s*$)/mg, indent);
+};"
+`;

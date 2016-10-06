@@ -1,0 +1,656 @@
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const { index: bIndex } = b;
+  const { index } = c;
+  return bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const { index: bIndex } = b;
+  const { index } = c;
+  return bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+  const { index } = c;
+  return aIndex > bIndex ? \'aIndex\' : bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const { index: bIndex } = b;
+  const { index } = c;
+  return bIndex > index ? \'bIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'c.index\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":0}, {"index":2}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":0}, {"index":2}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  const aIndex = a.index;
+  const { index: bIndex } = b;
+
+  return aIndex > bIndex ? \'aIndex\' : \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":1}, {"index":2}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'bIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":2}, {"index":0}, {"index":1}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;
+
+exports[`test unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
+"export { unusedAssignment };
+
+function unusedAssignment(a, b, c) {
+  return \'aIndex\';
+}"
+`;

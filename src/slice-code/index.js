@@ -1,5 +1,6 @@
 import * as babel from 'babel-core'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
+import customDeadCodeElimination from './babel-plugin-custom-dead-code-elimination'
 import transformCoverage from './transform-coverage'
 
 export default sliceCode
@@ -28,6 +29,7 @@ function sliceCode(sourceCode, coverageData) {
     babelrc: false,
     plugins: [
       deadCodeElimination,
+      customDeadCodeElimination,
     ],
   })
   return deadCodeEliminated

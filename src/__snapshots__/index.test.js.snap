@@ -41,24 +41,18 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
 "./node_modules/match-sorter/dist/cjs/index.js: basic use
     \'use strict\';
 
-    var _typeof = function () {
-      {
-        return typeof obj;
-      }
-    }(); /**
-          * @name match-sorter
-          * @license MIT license.
-          * @copyright (c) 2016 Kent C. Dodds
-          * @author Kent C. Dodds <kent@doddsfamily.us>
-          */
+    /**
+     * @name match-sorter
+     * @license MIT license.
+     * @copyright (c) 2016 Kent C. Dodds
+     * @author Kent C. Dodds <kent@doddsfamily.us>
+     */
 
     var _diacritic = require(\'diacritic\');
 
     var _diacritic2 = _interopRequireDefault(_diacritic);
 
     var _globalObject = require(\'global-object\');
-
-    var _globalObject2 = _interopRequireDefault(_globalObject);
 
     function _interopRequireDefault(obj) {
       return { default: obj };
@@ -79,7 +73,6 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
     function matchSorter(items, value) {
       var options = {};
       var keys = options.keys;
-      options.threshold;
 
       var threshold = rankings.MATCHES;
 
@@ -120,20 +113,14 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
 
     function sortRankedItems(a, b) {
       var aRank = a.rank;
-      a.index;
-      a.keyIndex;
 
       var bRank = b.rank;
-      b.index;
-      b.keyIndex;
 
 
       return -1;
     }
 
     function prepareValueForComparison(value, _ref3) {
-      _ref3.keepDiacritics;
-
 
       value = \'\' + value;
       value = _diacritic2.default.clean(value);
