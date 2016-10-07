@@ -112,10 +112,6 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
     }
 
     function sortRankedItems(a, b) {
-      var aRank = a.rank;
-
-      var bRank = b.rank;
-
 
       return -1;
     }

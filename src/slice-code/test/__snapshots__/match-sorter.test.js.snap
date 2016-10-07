@@ -73,10 +73,6 @@ function getMatchRanking(testString, stringToRank, options) {
 }
 
 function sortRankedItems(a, b) {
-  var aRank = a.rank;
-
-  var bRank = b.rank;
-
 
   return 1;
 }
