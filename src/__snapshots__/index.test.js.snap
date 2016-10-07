@@ -74,6 +74,7 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
       var options = {};
       var keys = options.keys;
 
+
       var threshold = rankings.MATCHES;
 
       var matchedItems = items.reduce(function (matches, item, index) {
@@ -106,7 +107,6 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
       }
 
       testString.indexOf(stringToRank);
-
 
       return rankings.NO_MATCH;
     }

@@ -42,6 +42,12 @@ function customDeadCodeElimination({types: t}) {
                 objPath.parentPath.remove()
               }
             },
+            ArrayPattern(arrPath) {
+              if (!arrPath.node.elements.length) {
+                // `var [] = foo` // don't ask me why...
+                arrPath.parentPath.remove()
+              }
+            },
           })
         },
       },

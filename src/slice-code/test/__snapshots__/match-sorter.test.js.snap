@@ -34,6 +34,7 @@ function matchSorter(items, value) {
   var options = {};
   var keys = options.keys;
 
+
   var threshold = rankings.MATCHES;
 
   var matchedItems = items.reduce(function (matches, item, index) {

@@ -29,10 +29,17 @@ function sliceCode(sourceCode, coverageData) {
     babelrc: false,
     plugins: [
       deadCodeElimination,
+    ],
+  })
+  const {code: customDeadCodeElimiated} = babel.transform(deadCodeEliminated, {
+    filename,
+    babelrc: false,
+    plugins: [
       customDeadCodeElimination,
     ],
   })
-  return deadCodeEliminated
+  // console.log('customDeadCodeElimiated', customDeadCodeElimiated)
+  return customDeadCodeElimiated
 }
 
 function getSliceCodeTransform(filteredCoverage) {
