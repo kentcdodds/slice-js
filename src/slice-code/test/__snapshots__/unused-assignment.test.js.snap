@@ -187,6 +187,39 @@ function dependencies(foo, bar) {
 }"
 `;
 
+exports[`test sortRankedItems({"rank":1}, {"rank":1}) && sortRankedItems({"rank":2}, {"rank":1}) 1`] = `
+"export { sortRankedItems };
+
+function sortRankedItems(a, b) {
+  var { rank: aRank } = a;
+  var bRank = b.rank;
+
+  if (aRank === bRank) {
+    return \'same\';
+  } else {
+    return \'not same\';
+  }
+}"
+`;
+
+exports[`test sortRankedItems({"rank":1}, {"rank":1}) 1`] = `
+"export { sortRankedItems };
+
+function sortRankedItems(a, b) {
+
+  return \'same\';
+}"
+`;
+
+exports[`test sortRankedItems({"rank":2}, {"rank":1}) 1`] = `
+"export { sortRankedItems };
+
+function sortRankedItems(a, b) {
+
+  return \'not same\';
+}"
+`;
+
 exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
 "export { unusedAssignment };
 

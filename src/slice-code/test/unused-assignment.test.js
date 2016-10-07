@@ -23,12 +23,12 @@ runAllCombosTests({
       methodName: 'dependencies',
       possibleArguments: boolsInArrays,
     },
-    // {
-    //   methodName: 'sortRankedItems',
-    //   possibleArguments: [
-    //     [{rank: 1}, {rank: 1}],
-    //     [{rank: 2}, {rank: 1}],
-    //   ],
-    // },
+    {
+      methodName: 'sortRankedItems',
+      possibleArguments: [
+        [{rank: 1}, {rank: 1}],
+        [{rank: 2}, {rank: 1}],
+      ],
+    },
   ],
 })
