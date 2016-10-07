@@ -39,7 +39,7 @@ exports[`test ./test/fixtures/cond-expr.slicer.js 1`] = `
 
 exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
 "./node_modules/match-sorter/dist/cjs/index.js: basic use
-    \'use strict\';
+    'use strict';
 
     /**
      * @name match-sorter
@@ -48,11 +48,11 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
      * @author Kent C. Dodds <kent@doddsfamily.us>
      */
 
-    var _diacritic = require(\'diacritic\');
+    var _diacritic = require('diacritic');
 
     var _diacritic2 = _interopRequireDefault(_diacritic);
 
-    var _globalObject = require(\'global-object\');
+    var _globalObject = require('global-object');
 
     function _interopRequireDefault(obj) {
       return { default: obj };
@@ -112,17 +112,13 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
     }
 
     function sortRankedItems(a, b) {
-      var aRank = a.rank;
-
-      var bRank = b.rank;
-
 
       return -1;
     }
 
     function prepareValueForComparison(value, _ref3) {
 
-      value = \'\' + value;
+      value = '' + value;
       value = _diacritic2.default.clean(value);
 
       return value.toLowerCase();
@@ -130,11 +126,31 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
 
     matchSorter.default = matchSorter;
     module.exports = matchSorter;
-    Object.defineProperty(exports, \'__esModule\', { value: true });
+    Object.defineProperty(exports, '__esModule', { value: true });
 "
 `;
 
 exports[`test ./test/fixtures/module.slicer.js 1`] = `
+"./test/fixtures/module.js: multiply multiplies numbers together
+
+    export { sum, multiply };
+
+    function sum(a, b) {
+      return a + b;
+    }
+
+    function multiply(a, b) {
+      let product, i;
+      product = 0;
+      for (i = 0; i < b; i++) {
+        product = sum(product, a);
+      }
+      return product;
+    }
+"
+`;
+
+exports[`test ./test/fixtures/module.slicer.js 2`] = `
 "./test/fixtures/module.js: multiply multiplies numbers together
 
     export { sum, multiply };

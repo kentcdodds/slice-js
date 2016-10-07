@@ -1,14 +1,15 @@
-import {runAllCombosTests, comboOfItems} from './helpers/utils'
+import {runAllCombosTests, comboOfItems, comboOfBools} from './helpers/utils'
 
 // test.only(
-//   'unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":1}, {"index":0}, {"index":2})',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/unused-assignment'), ({unusedAssignment}) => {
+//   'sortRankedItems',
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/unused-assignment'), ({sortRankedItems}) => {
 //     return [
-//       unusedAssignment({index: 0}, {index: 1}, {index: 2}),
-//       unusedAssignment({index: 1}, {index: 0}, {index: 2}),
+//       sortRankedItems({rank: 2, index: 4, keyIndex: 6}, {rank: 3, index: 2, keyIndex: 7}),
 //     ]
 //   })
 // )
+
+const boolsInArrays = comboOfBools(2).map(([first, second]) => [[first], [second]])
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/unused-assignment'),
@@ -16,6 +17,10 @@ runAllCombosTests({
     {
       methodName: 'unusedAssignment',
       possibleArguments: comboOfItems([{index: 0}, {index: 1}, {index: 2}]),
+    },
+    {
+      methodName: 'dependencies',
+      possibleArguments: boolsInArrays,
     },
   ],
 })

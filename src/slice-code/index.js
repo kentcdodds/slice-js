@@ -32,6 +32,7 @@ function sliceCode(sourceCode, coverageData) {
       customDeadCodeElimination,
     ],
   })
+  // console.log('deadCodeEliminated', deadCodeEliminated)
   return deadCodeEliminated
 }
 

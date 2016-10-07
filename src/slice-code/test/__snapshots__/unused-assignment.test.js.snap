@@ -1,3 +1,75 @@
+exports[`test dependencies([false], [false]) && dependencies([true], [true]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'same\';
+}"
+`;
+
+exports[`test dependencies([false], [false]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'same\';
+}"
+`;
+
+exports[`test dependencies([false], [true]) && dependencies([true], [false]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'different\';
+}"
+`;
+
+exports[`test dependencies([false], [true]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'different\';
+}"
+`;
+
+exports[`test dependencies([true], [false]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'different\';
+}"
+`;
+
+exports[`test dependencies([true], [true]) 1`] = `
+"export { dependencies };
+
+function dependencies(foo, bar) {
+  const [] = foo;
+  const [] = bar;
+
+
+  return \'same\';
+}"
+`;
+
 exports[`test unusedAssignment({"index":0}, {"index":1}, {"index":2}) && unusedAssignment({"index":0}, {"index":2}, {"index":1}) && unusedAssignment({"index":1}, {"index":0}, {"index":2}) && unusedAssignment({"index":1}, {"index":2}, {"index":0}) && unusedAssignment({"index":2}, {"index":0}, {"index":1}) && unusedAssignment({"index":2}, {"index":1}, {"index":0}) 1`] = `
 "export { unusedAssignment };
 
