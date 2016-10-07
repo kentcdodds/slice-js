@@ -133,11 +133,17 @@ function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
 }
 
 function getInstrumentedModuleFromString(filename, sourceCode, actualFilepath) {
-  const sourceCodeWithoutIstanbulPragma = sourceCode.replace(/istanbul/g, 'ignore-istanbul-ignore')
+  // for the original source, we don't want to ignore anything
+  // but there are some cases where we have to create empty functions that aren't covered
+  // to ensure that the resulting code functions properly. So we add an obnoxiously long comment
+  // and replace it here.
+  const sourceCodeWithoutIstanbulPragma = sourceCode
+    .replace(/istanbul/g, 'ignore-istanbul-ignore')
+    .replace(/slice-js-coverage-ignore/g, 'istanbul')
   const {code} = babel.transform(sourceCodeWithoutIstanbulPragma, {
     filename,
     babelrc: false,
-    compact: false,
+    // compact: false,
     only: filename,
     presets: ['node6', 'stage-2'],
     plugins: [

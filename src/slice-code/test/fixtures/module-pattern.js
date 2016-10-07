@@ -11,5 +11,15 @@ export default (() => {
     return 'function assignment'
   }
 
+  mod.mokeypatchFn = function() {
+    return '🐒'
+  }
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒'
+
+  mod.monkeypatchArrow = () => {
+    return '🐵'
+  }
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵'
+
   return mod
 })()

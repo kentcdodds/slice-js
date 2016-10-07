@@ -41,13 +41,6 @@ exports[`test ./test/fixtures/match-sorter.slicer.js 1`] = `
 "./node_modules/match-sorter/dist/cjs/index.js: basic use
     \'use strict\';
 
-    /**
-     * @name match-sorter
-     * @license MIT license.
-     * @copyright (c) 2016 Kent C. Dodds
-     * @author Kent C. Dodds <kent@doddsfamily.us>
-     */
-
     var _diacritic = require(\'diacritic\');
 
     var _diacritic2 = _interopRequireDefault(_diacritic);

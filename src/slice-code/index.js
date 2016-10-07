@@ -1,3 +1,4 @@
+/* eslint max-lines:[2, 1000] */ // I know it's nuts, but it's a lot easier to develop with ASTExplorer.net this way...
 import * as babel from 'babel-core'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import customDeadCodeElimination from './babel-plugin-custom-dead-code-elimination'
@@ -11,19 +12,18 @@ function sliceCode(sourceCode, coverageData) {
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('filteredCoverage', JSON.stringify(filteredCoverage, null, 2))
   // console.log('\n\n\n\nsourceCode\n', sourceCode)
-  const sliced = babel.transform(sourceCode, {
+  const {code: sliced} = babel.transform(sourceCode, {
     filename,
-    comments: false,
     babelrc: false,
     plugins: [
       getSliceCodeTransform(filteredCoverage),
     ],
   })
-  // console.log('sliced', sliced.code)
+  // console.log('sliced', sliced)
   // TODO: perf - save time parsing by just transforming the AST from the previous run
   // This will probably significantly speed things up.
   // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
-  const {code: deadCodeEliminated} = babel.transform(sliced.code, {
+  const {code: deadCodeEliminated} = babel.transform(sliced, {
     filename,
     babelrc: false,
     plugins: [
@@ -48,6 +48,13 @@ function getSliceCodeTransform(filteredCoverage) {
   return function sliceCodeTransform({types: t}) {
     return {
       visitor: {
+        Program(path) {
+          path.traverse({
+            enter(childPath) {
+              t.removeComments(childPath.node)
+            },
+          })
+        },
         FunctionDeclaration: functionVisitor,
         FunctionExpression: functionVisitor,
         ArrowFunctionExpression: arrowFunctionVisitor,
@@ -207,6 +214,12 @@ function getSliceCodeTransform(filteredCoverage) {
 
     function arrowFunctionVisitor(path) {
       if (!isFunctionCovered(fnMap, path.node)) {
+        if (isFunctionReferenced(path)) {
+          // if the function is referenced, then the best we can do is clear the body
+          path.addComment('leading', `slice-js-coverage-ignore ignore next`)
+          path.node.body.body = []
+          return
+        }
         if (t.isAssignmentExpression(path.parentPath)) {
           path.parentPath.remove()
         } else {
@@ -217,11 +230,70 @@ function getSliceCodeTransform(filteredCoverage) {
 
     function functionVisitor(path) {
       if (!isFunctionCovered(fnMap, path.node)) {
+        if (isFunctionReferenced(path)) {
+          // if the function is referenced, then the best we can do is clear the body
+          path.addComment('leading', `slice-js-coverage-ignore ignore next`)
+          path.node.body.body = []
+          return
+        }
         if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
           path.parentPath.remove()
         } else {
           removePathAndReferences(path, path.node.id.name, removedPaths)
         }
+      }
+    }
+
+    function isFunctionReferenced(path) {
+      if (!t.isAssignmentExpression(path.parentPath)) {
+        return false
+      }
+      const expressionStatement = path.parentPath.findParent(t.isExpressionStatement)
+      const referenceChain = buildReferenceChain(expressionStatement.get('expression.left'))
+      const start = expressionStatement.get('expression.left.object')
+      const binding = path.scope.getBinding(start.node.name)
+      if (!binding) {
+        return false
+      }
+      // return whether at least one of these references is referencing the function
+      return binding.referencePaths.some(refPath => {
+        const expStatement = refPath.findParent(t.isExpressionStatement)
+        if (!expStatement || !expStatement.node) {
+          return false
+        }
+        const memberExpression = expStatement.get('expression.left')
+        if (!t.isMemberExpression(memberExpression)) {
+          return false
+        }
+        const refChain = buildReferenceChain(memberExpression)
+        // refChain: [foo, bar, baz], referenceChain: [foo, bar] :+1:
+        if (refChain < referenceChain.length) {
+          return false
+        }
+        // return false if the referenceChain has anything the refChain does not
+        // this means the refChain can be longer
+        return !refChain.every((ref, i) => {
+          return !referenceChain[i] || // if we've run out of referenceChain elements, then we're good
+            ref.node === referenceChain[i].node || // if we're referencing the same node, this isn't enough to keep it around
+            ref.node.name !== referenceChain[i].node.name // if it's a different name, then it's not a reference
+        })
+      })
+
+      function buildReferenceChain(memberExpression) {
+        let iterations = 0
+        let property = memberExpression.get('property')
+        let object = memberExpression.get('object')
+        const chain = [property]
+        while (t.isMemberExpression(object)) {
+          property = object.get('property')
+          object = object.get('object')
+          chain.push(property)
+          iterations++
+          if (iterations > 10) {
+            throw new Error('slice-js avoiding infinite loop in buildReferenceChain')
+          }
+        }
+        return chain.reverse()
       }
     }
   }
@@ -233,6 +305,7 @@ function isFunctionCovered(fnLocs, {body: {loc: srcLoc}}) {
     .find(({loc}) => isLocationEqual(loc, srcLoc))
   return fnCov
 }
+
 
 function isBranchCovered(branches, node) {
   const branchCoverageData = getBranchCoverageData(branches, node)
