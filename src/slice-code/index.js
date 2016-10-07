@@ -23,7 +23,6 @@ function sliceCode(sourceCode, coverageData) {
   // TODO: perf - save time parsing by just transforming the AST from the previous run
   // This will probably significantly speed things up.
   // Unfortunately, when I tried the first time, I couldn't get it working :shrug:
-  // console.log('deadCodeEliminated', deadCodeEliminated)
   const {code: deadCodeEliminated} = babel.transform(sliced.code, {
     filename,
     babelrc: false,
@@ -31,6 +30,7 @@ function sliceCode(sourceCode, coverageData) {
       deadCodeElimination,
     ],
   })
+  // console.log('deadCodeEliminated', deadCodeEliminated)
   const {code: customDeadCodeElimiated} = babel.transform(deadCodeEliminated, {
     filename,
     babelrc: false,
@@ -48,16 +48,9 @@ function getSliceCodeTransform(filteredCoverage) {
   return function sliceCodeTransform({types: t}) {
     return {
       visitor: {
-        FunctionDeclaration(path) {
-          if (!isFunctionCovered(fnMap, path.node)) {
-            removePathAndReferences(path, path.node.id.name, removedPaths)
-          }
-        },
-        ArrowFunctionExpression(path) {
-          if (!isFunctionCovered(fnMap, path.node)) {
-            removePathAndReferences(path, path.parentPath.node.id.name, removedPaths)
-          }
-        },
+        FunctionDeclaration: functionVisitor,
+        FunctionExpression: functionVisitor,
+        ArrowFunctionExpression: arrowFunctionVisitor,
         IfStatement(path) {
           const {branchMap} = filteredCoverage
           if (!isBranchCovered(branchMap, path.node)) {
@@ -210,6 +203,26 @@ function getSliceCodeTransform(filteredCoverage) {
           }
         },
       },
+    }
+
+    function arrowFunctionVisitor(path) {
+      if (!isFunctionCovered(fnMap, path.node)) {
+        if (t.isAssignmentExpression(path.parentPath)) {
+          path.parentPath.remove()
+        } else {
+          removePathAndReferences(path, path.parentPath.node.id.name, removedPaths)
+        }
+      }
+    }
+
+    function functionVisitor(path) {
+      if (!isFunctionCovered(fnMap, path.node)) {
+        if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
+          path.parentPath.remove()
+        } else {
+          removePathAndReferences(path, path.node.id.name, removedPaths)
+        }
+      }
     }
   }
 }

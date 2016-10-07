@@ -1,0 +1,121 @@
+exports[`test ({ default: mod }) => [mod.baz(false)] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'buzz\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.baz(false)] 2`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'buzz\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.baz(true)] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'baz\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foo(), mod.baz(false)] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.foo = () => \'foo\';
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'buzz\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foo(), mod.baz(true)] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.foo = () => \'foo\';
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'baz\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foo()] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.foo = () => \'foo\';
+
+  mod.bar = \'bar\';
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foobar(), mod.baz(false)] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.bar = \'bar\';
+
+  mod.baz = returnBaz => \'buzz\';
+
+  mod.foobar = function () {
+    return \'function assignment\';
+  };
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foobar(), mod.foo()] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.foo = () => \'foo\';
+
+  mod.bar = \'bar\';
+
+  mod.foobar = function () {
+    return \'function assignment\';
+  };
+
+  return mod;
+})();"
+`;
+
+exports[`test ({ default: mod }) => [mod.foobar()] 1`] = `
+"export default (() => {
+  const mod = {};
+
+  mod.bar = \'bar\';
+
+  mod.foobar = function () {
+    return \'function assignment\';
+  };
+
+  return mod;
+})();"
+`;
