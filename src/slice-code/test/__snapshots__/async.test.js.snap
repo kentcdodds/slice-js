@@ -1,0 +1,79 @@
+exports[`test callback(false) && callback(true) 1`] = `
+"export { promise, callback };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    if (pass) {
+      resolve(\'pass\');
+    } else {
+      reject(\'!pass\');
+    }
+  });
+}
+
+function callback(pass, cb) {
+  promise(pass).then(cb, cb);
+}"
+`;
+
+exports[`test callback(false) 1`] = `
+"export { promise, callback };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    reject(\'!pass\');
+  });
+}
+
+function callback(pass, cb) {
+  promise(pass).then(cb, cb);
+}"
+`;
+
+exports[`test callback(true) 1`] = `
+"export { promise, callback };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    resolve(\'pass\');
+  });
+}
+
+function callback(pass, cb) {
+  promise(pass).then(cb, cb);
+}"
+`;
+
+exports[`test promise(false) && promise(true) 1`] = `
+"export { promise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    if (pass) {
+      resolve(\'pass\');
+    } else {
+      reject(\'!pass\');
+    }
+  });
+}"
+`;
+
+exports[`test promise(false) 1`] = `
+"export { promise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    reject(\'!pass\');
+  });
+}"
+`;
+
+exports[`test promise(true) 1`] = `
+"export { promise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    resolve(\'pass\');
+  });
+}"
+`;

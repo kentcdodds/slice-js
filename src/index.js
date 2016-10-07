@@ -4,9 +4,9 @@ import {getSliceAndInfo} from './slice-code/test/helpers/utils'
 
 export default sliceTest
 
-function sliceTest(filename, name, tester) {
+async function sliceTest(filename, name, tester) {
   const sourceCode = fs.readFileSync(filename, 'utf8')
-  const {slicedCode} = getSliceAndInfo(sourceCode, tester, filename)
+  const {slicedCode} = await getSliceAndInfo(sourceCode, tester, filename)
   console.log( // eslint-disable-line no-console
     `${relativeizePath(filename)}: ${name}\n${indent(slicedCode, 4)}`
   )

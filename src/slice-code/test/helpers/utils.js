@@ -62,18 +62,18 @@ function snapSlice(relativePath, tester) {
 
 function snapSliceCode(sourceCode, tester, actualFilepath) {
   // the function returned here is what you'd place in a call to Jest's `test` function
-  return () => {
-    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = getSliceAndInfo(sourceCode, tester, actualFilepath)
+  return async () => {
+    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = await getSliceAndInfo(sourceCode, tester, actualFilepath)
     expect(slicedCode).toMatchSnapshot()
     expect(isSlicedCoverage100).toBe(true, 'coverage should be 100%')
     expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
   }
 }
 
-function getSliceAndInfo(sourceCode, tester, actualFilepath) {
+async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
   const mod = getInstrumentedModuleFromString(tempFilename, sourceCode, actualFilepath)
-  const originalResult = tester(mod)
+  const originalResult = await Promise.resolve(tester(mod))
   // console.log('originalResult', originalResult)
   const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
   // console.log('slicedCode', slicedCode)
