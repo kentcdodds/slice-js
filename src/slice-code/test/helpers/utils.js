@@ -73,11 +73,11 @@ function snapSliceCode(sourceCode, tester, actualFilepath) {
 async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
   const mod = getInstrumentedModuleFromString(tempFilename, sourceCode, actualFilepath)
-  const originalResult = await Promise.resolve(tester(mod))
+  const originalResult = await tester(mod)
   // console.log('originalResult', originalResult)
   const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
   // console.log('slicedCode', slicedCode)
-  const {is100: isSlicedCoverage100, slicedResult} = slicedCoverageIs100(tempFilename, slicedCode, tester, actualFilepath)
+  const {is100: isSlicedCoverage100, slicedResult} = await slicedCoverageIs100(tempFilename, slicedCode, tester, actualFilepath)
   return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult}
 }
 
@@ -116,9 +116,9 @@ function runAllCombosTests({filename, methods}) {
   })
 }
 
-function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
+async function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
   const mod = getInstrumentedModuleFromString(filename, slicedCode, actualFilepath)
-  const slicedResult = tester(mod)
+  const slicedResult = await tester(mod)
   // process.stdout.write('\n\nmod[coverageVariable][filename].s\n\n' + JSON.stringify(mod[coverageVariable][filename].s, null, 2))
   const is100 = coverageIs100Percent(mod[coverageVariable])
   return {slicedResult, is100}

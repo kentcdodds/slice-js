@@ -209,6 +209,33 @@ function getSliceCodeTransform(filteredCoverage) {
             tryBlockPath.node.body = coveredTryStatements
           }
         },
+        SwitchStatement(path) {
+          // note: SwitchStatements will always be covered.
+          // the only time it isn't is if it's in a function/IfStatement/etc.
+          // that isn't covered, which would be removed. So we don't need to
+          // worry about checking whether the switch is covered.
+          const {branchMap} = filteredCoverage
+          const coverageInfo = getBranchCoverageData(branchMap, path.node)
+          path.get('cases').forEach(casePath => {
+            if (!isCaseCovered(casePath.node)) {
+              casePath.remove()
+            }
+          })
+          const remainingCases = path.get('cases')
+          if (remainingCases.length === 1) {
+            const nodesToPreserve = remainingCases[0].node.consequent.filter(node => {
+              return !t.isBreakStatement(node)
+            })
+            path.replaceWithMultiple(nodesToPreserve)
+          }
+
+          function isCaseCovered(caseNode) {
+            const caseLocation = coverageInfo.locations.find(location => {
+              return isLocationEqual(location, caseNode.loc)
+            })
+            return !!caseLocation && caseLocation.covered
+          }
+        },
       },
     }
 
@@ -313,13 +340,15 @@ function isBranchCovered(branches, node) {
 }
 
 function getBranchCoverageData(branches, node) {
+  const typeMap = {
+    if: 'IfStatement',
+    'cond-expr': 'ConditionalExpression',
+    'binary-expr': 'LogicalExpression',
+    switch: 'SwitchStatement',
+  }
   const index = Object.keys(branches).find(key => {
     const branch = branches[key]
-    if (branch.type === 'if' && node.type !== 'IfStatement') {
-      return false
-    } else if (branch.type === 'cond-expr' && node.type !== 'ConditionalExpression') {
-      return false
-    } else if (branch.type === 'binary-expr' && node.type !== 'LogicalExpression') {
+    if (typeMap[branch.type] !== node.type) {
       return false
     }
     return isLocationEqual(branch.loc, node.loc)
