@@ -1,9 +1,9 @@
 import {runAllCombosTests} from './helpers/utils'
 
 // test.only(
-//   'switchWithFallThrough("purple")',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/switch-statement'), ({switchWithFallThrough}) => {
-//     return [switchWithFallThrough('purple')]
+//   'switchWithSideEffects({"name":"harry"})',
+//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/switch-statement'), ({switchWithSideEffects}) => {
+//     return [switchWithSideEffects({name: 'harry'})]
 //   })
 // )
 
@@ -21,6 +21,12 @@ runAllCombosTests({
       methodName: 'switchWithDefault',
       possibleArguments: [
         ['twix'], ['snickers'],
+      ],
+    },
+    {
+      methodName: 'switchWithSideEffects',
+      possibleArguments: [
+        [{name: 'harry'}], [{name: 'ron'}],
       ],
     },
   ],

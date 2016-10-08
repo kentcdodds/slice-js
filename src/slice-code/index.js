@@ -226,6 +226,9 @@ function getSliceCodeTransform(filteredCoverage) {
             const nodesToPreserve = remainingCases[0].node.consequent.filter(node => {
               return !t.isBreakStatement(node)
             })
+            if (!t.isIdentifier(path.node.discriminant)) {
+              path.insertBefore(path.node.discriminant)
+            }
             path.replaceWithMultiple(nodesToPreserve)
           }
 

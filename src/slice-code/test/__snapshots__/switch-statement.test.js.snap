@@ -1177,3 +1177,45 @@ function switchWithFallThrough(color) {
   return ret;
 }"
 `;
+
+exports[`test switchWithSideEffects({"name":"harry"}) && switchWithSideEffects({"name":"ron"}) 1`] = `
+"export { switchWithSideEffects };
+
+function switchWithSideEffects(character) {
+  switch (sideEffect(character)) {
+    case \'harry\':
+      return [\'main\', character];
+    default:
+      return [\'supporting\', character];
+  }
+
+  function sideEffect(obj) {
+    obj.touched = true;
+    return obj.name;
+  }
+}"
+`;
+
+exports[`test switchWithSideEffects({"name":"harry"}) 1`] = `
+"export { switchWithSideEffects };
+
+function switchWithSideEffects(character) {
+  (function (obj) {
+    obj.touched = true;
+    return obj.name;
+  })(character);
+  return [\'main\', character];
+}"
+`;
+
+exports[`test switchWithSideEffects({"name":"ron"}) 1`] = `
+"export { switchWithSideEffects };
+
+function switchWithSideEffects(character) {
+  (function (obj) {
+    obj.touched = true;
+    return obj.name;
+  })(character);
+  return [\'supporting\', character];
+}"
+`;

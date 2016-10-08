@@ -1,4 +1,4 @@
-export {switchWithFallThrough, switchWithDefault}
+export {switchWithFallThrough, switchWithDefault, switchWithSideEffects}
 
 function switchWithFallThrough(color) {
   let ret = null
@@ -22,5 +22,19 @@ function switchWithDefault(candy) {
       return `case ${candy}`
     default:
       return 'default, no candy :-('
+  }
+}
+
+function switchWithSideEffects(character) {
+  switch(sideEffect(character)) {
+    case 'harry':
+      return ['main', character]
+    default:
+      return ['supporting', character]
+  }
+
+  function sideEffect(obj) {
+    obj.touched = true
+    return obj.name
   }
 }
