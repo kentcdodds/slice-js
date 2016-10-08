@@ -1,4 +1,4 @@
-export {switchWithFallThrough}
+export {switchWithFallThrough, switchWithDefault}
 
 function switchWithFallThrough(color) {
   let ret = null
@@ -14,4 +14,13 @@ function switchWithFallThrough(color) {
       ret = `2nd ${color}`
   }
   return ret
+}
+
+function switchWithDefault(candy) {
+  switch(candy) {
+    case 'twix':
+      return `case ${candy}`
+    default:
+      return 'default, no candy :-('
+  }
 }

@@ -1,3 +1,32 @@
+exports[`test switchWithDefault("snickers") 1`] = `
+"export { switchWithDefault };
+
+function switchWithDefault(candy) {
+  return \'default, no candy :-(\';
+}"
+`;
+
+exports[`test switchWithDefault("twix") && switchWithDefault("snickers") 1`] = `
+"export { switchWithDefault };
+
+function switchWithDefault(candy) {
+  switch (candy) {
+    case \'twix\':
+      return \`case ${ candy }\`;
+    default:
+      return \'default, no candy :-(\';
+  }
+}"
+`;
+
+exports[`test switchWithDefault("twix") 1`] = `
+"export { switchWithDefault };
+
+function switchWithDefault(candy) {
+  return \`case ${ candy }\`;
+}"
+`;
+
 exports[`test switchWithFallThrough("blue") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
 "export { switchWithFallThrough };
 

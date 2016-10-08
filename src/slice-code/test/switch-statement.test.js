@@ -17,5 +17,11 @@ runAllCombosTests({
         ['yellow'], ['orange'], ['red'],
       ],
     },
+    {
+      methodName: 'switchWithDefault',
+      possibleArguments: [
+        ['twix'], ['snickers'],
+      ],
+    },
   ],
 })
