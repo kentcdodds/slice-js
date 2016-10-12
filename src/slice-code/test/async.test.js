@@ -11,7 +11,7 @@ runAllCombosTests({
   filename: require.resolve('./fixtures/async'),
   methods: [
     {
-      methodName: 'promise',
+      methodName: 'callPromise',
       possibleArguments: comboOfBools(1),
     },
     {

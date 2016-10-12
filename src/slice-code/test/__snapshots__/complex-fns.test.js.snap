@@ -1,0 +1,71 @@
+exports[`test get("Han") 1`] = `
+"export { unusedReturnAssign, get };
+
+function unusedReturnAssign() {
+  const foo = {};
+  function bar(msg) {
+    return function () {
+      return \`bar: ${ msg }\`;
+    };
+  }
+  foo.getLuke = bar(\'luke\');
+  foo.getLuke.characterName = \'luke\';
+
+  foo.getHan = bar(\'han\');
+  foo.getHan.characterName = \'han\';
+
+  return foo;
+}
+
+function get(name) {
+  return unusedReturnAssign()[\`get${ name }\`]();
+}"
+`;
+
+exports[`test get("Luke") && get("Han") 1`] = `
+"export { unusedReturnAssign, get };
+
+function unusedReturnAssign() {
+  const foo = {};
+  function bar(msg) {
+    return function () {
+      return \`bar: ${ msg }\`;
+    };
+  }
+  foo.getLuke = bar(\'luke\');
+  foo.getLuke.characterName = \'luke\';
+
+  foo.getHan = bar(\'han\');
+  foo.getHan.characterName = \'han\';
+
+  return foo;
+}
+
+function get(name) {
+  return unusedReturnAssign()[\`get${ name }\`]();
+}"
+`;
+
+exports[`test get("Luke") 1`] = `
+"export { unusedReturnAssign, get };
+
+function unusedReturnAssign() {
+  const foo = {};
+  function bar(msg) {
+    return function () {
+      return \`bar: ${ msg }\`;
+    };
+  }
+  foo.getLuke = bar(\'luke\');
+  foo.getLuke.characterName = \'luke\';
+
+  foo.getHan = bar(\'han\');
+  foo.getHan.characterName = \'han\';
+
+  return foo;
+}
+
+function get(name) {
+  return unusedReturnAssign()[\`get${ name }\`]();
+}"
+`;

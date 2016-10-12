@@ -1,4 +1,4 @@
-export {promise, callback}
+export {callPromise, callback}
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
@@ -11,5 +11,10 @@ function promise(pass) {
 }
 
 function callback(pass, cb) {
-  promise(pass).then(cb, cb) // I know, I'm cheating :P
+  return callPromise(pass).then(cb, cb) // I know, I'm cheating :P
+}
+
+function callPromise(pass) {
+  // do this so we don't get Unhandled promise rejections in the console
+  return promise(pass).catch(rejection => rejection)
 }

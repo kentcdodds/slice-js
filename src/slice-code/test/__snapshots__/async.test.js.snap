@@ -1,5 +1,51 @@
+exports[`test callPromise(false) && callPromise(true) 1`] = `
+"export { callPromise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    if (pass) {
+      resolve(\'pass\');
+    } else {
+      reject(\'!pass\');
+    }
+  });
+}
+
+function callPromise(pass) {
+  return promise(pass).catch(rejection => rejection);
+}"
+`;
+
+exports[`test callPromise(false) 1`] = `
+"export { callPromise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    reject(\'!pass\');
+  });
+}
+
+function callPromise(pass) {
+  return promise(pass).catch(rejection => rejection);
+}"
+`;
+
+exports[`test callPromise(true) 1`] = `
+"export { callPromise };
+
+function promise(pass) {
+  return new Promise((resolve, reject) => {
+    resolve(\'pass\');
+  });
+}
+
+function callPromise(pass) {
+  return promise(pass).catch();
+}"
+`;
+
 exports[`test callback(false) && callback(true) 1`] = `
-"export { promise, callback };
+"export { callPromise, callback };
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
@@ -12,12 +58,16 @@ function promise(pass) {
 }
 
 function callback(pass, cb) {
-  promise(pass).then(cb, cb);
+  return callPromise(pass).then(cb, cb);
+}
+
+function callPromise(pass) {
+  return promise(pass).catch(rejection => rejection);
 }"
 `;
 
 exports[`test callback(false) 1`] = `
-"export { promise, callback };
+"export { callPromise, callback };
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
@@ -26,12 +76,16 @@ function promise(pass) {
 }
 
 function callback(pass, cb) {
-  promise(pass).then(cb, cb);
+  return callPromise(pass).then(cb, cb);
+}
+
+function callPromise(pass) {
+  return promise(pass).catch(rejection => rejection);
 }"
 `;
 
 exports[`test callback(true) 1`] = `
-"export { promise, callback };
+"export { callPromise, callback };
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
@@ -40,40 +94,10 @@ function promise(pass) {
 }
 
 function callback(pass, cb) {
-  promise(pass).then(cb, cb);
-}"
-`;
+  return callPromise(pass).then(cb, cb);
+}
 
-exports[`test promise(false) && promise(true) 1`] = `
-"export { promise };
-
-function promise(pass) {
-  return new Promise((resolve, reject) => {
-    if (pass) {
-      resolve(\'pass\');
-    } else {
-      reject(\'!pass\');
-    }
-  });
-}"
-`;
-
-exports[`test promise(false) 1`] = `
-"export { promise };
-
-function promise(pass) {
-  return new Promise((resolve, reject) => {
-    reject(\'!pass\');
-  });
-}"
-`;
-
-exports[`test promise(true) 1`] = `
-"export { promise };
-
-function promise(pass) {
-  return new Promise((resolve, reject) => {
-    resolve(\'pass\');
-  });
+function callPromise(pass) {
+  return promise(pass).catch();
 }"
 `;

@@ -1,4 +1,6 @@
 /* eslint max-lines:[2, 1000] */ // I know it's nuts, but it's a lot easier to develop with ASTExplorer.net this way...
+// for development, fork this: https://astexplorer.net/#/bk7MWWZZOR
+// and log and copy/paste filteredCoverage and the plugin source
 import * as babel from 'babel-core'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import customDeadCodeElimination from './babel-plugin-custom-dead-code-elimination'
@@ -252,90 +254,133 @@ function getSliceCodeTransform(filteredCoverage) {
         }
         if (t.isAssignmentExpression(path.parentPath)) {
           path.parentPath.remove()
-        } else {
+        } else if (path.parentPath.node.id) {
           removePathAndReferences(path, path.parentPath.node.id.name, removedPaths)
+        } else {
+          path.remove()
         }
       }
     }
 
     function functionVisitor(path) {
-      if (!isFunctionCovered(fnMap, path.node)) {
-        if (isFunctionReferenced(path)) {
-          // if the function is referenced, then the best we can do is clear the body
-          path.addComment('leading', `slice-js-coverage-ignore ignore next`)
-          path.node.body.body = []
-          return
-        }
-        if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
-          path.parentPath.remove()
-        } else {
-          removePathAndReferences(path, path.node.id.name, removedPaths)
-        }
+      /* eslint complexity:[2,6] */
+      if (isFunctionCovered(fnMap, path.node)) {
+        return
+      }
+      if (shouldPreserveFunctionBody(path)) {
+        // if it's detected that we should preserve the function body, then
+        // we shouldn't do anything with the function except ignore coverage on it
+        path.addComment('leading', `slice-js-coverage-ignore ignore next`)
+      } else if (isFunctionReferenced(path)) {
+        path.addComment('leading', `slice-js-coverage-ignore ignore next`)
+        // if the function is referenced, then the best we can do is clear the body
+        path.node.body.body = []
+      } else if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
+        path.parentPath.remove()
+      } else {
+        removePathAndReferences(path, path.node.id.name, removedPaths)
+      }
+    }
+
+    function shouldPreserveFunctionBody(path) {
+      const statementPath = path.getStatementParent()
+      if (t.isReturnStatement(statementPath)) {
+        // coveres `foo` in: function bar() { return function foo() {} }
+        const functionParent = statementPath.getFunctionParent()
+        return isFunctionCovered(fnMap, functionParent.node)
+      } else {
+        // TODO: cover more edge cases
+        return isFunctionCovered(fnMap, path.node)
       }
     }
 
     function isFunctionReferenced(path) {
-      if (!t.isAssignmentExpression(path.parentPath)) {
+      if (t.isFunctionDeclaration(path)) {
+        return isFunctionDeclarationReferenced()
+      } else if (t.isAssignmentExpression(path.parentPath)) {
+        return isFunctionExpressionReferenced()
+      } else {
         return false
       }
-      const expressionStatement = path.parentPath.findParent(t.isExpressionStatement)
-      const referenceChain = buildReferenceChain(expressionStatement.get('expression.left'))
-      const start = expressionStatement.get('expression.left.object')
-      const binding = path.scope.getBinding(start.node.name)
-      if (!binding) {
-        return false
-      }
-      // return whether at least one of these references is referencing the function
-      return binding.referencePaths.some(refPath => {
-        const expStatement = refPath.findParent(t.isExpressionStatement)
-        if (!expStatement || !expStatement.node) {
-          return false
-        }
-        const memberExpression = expStatement.get('expression.left')
-        if (!t.isMemberExpression(memberExpression)) {
-          return false
-        }
-        const refChain = buildReferenceChain(memberExpression)
-        // refChain: [foo, bar, baz], referenceChain: [foo, bar] :+1:
-        if (refChain < referenceChain.length) {
-          return false
-        }
-        // return false if the referenceChain has anything the refChain does not
-        // this means the refChain can be longer
-        return !refChain.every((ref, i) => {
-          return !referenceChain[i] || // if we've run out of referenceChain elements, then we're good
-            ref.node === referenceChain[i].node || // if we're referencing the same node, this isn't enough to keep it around
-            ref.node.name !== referenceChain[i].node.name // if it's a different name, then it's not a reference
-        })
-      })
 
-      function buildReferenceChain(memberExpression) {
-        let iterations = 0
-        let property = memberExpression.get('property')
-        let object = memberExpression.get('object')
-        const chain = [property]
-        while (t.isMemberExpression(object)) {
-          property = object.get('property')
-          object = object.get('object')
-          chain.push(property)
-          iterations++
-          if (iterations > 10) {
-            throw new Error('slice-js avoiding infinite loop in buildReferenceChain')
-          }
+      function isFunctionExpressionReferenced() {
+        // from here on out, we're looking for something like this:
+        // foo.bar.baz = () => {}
+        // // then later
+        // foo.bar.baz.buzz = 'referencing baz'
+        const expressionStatement = path.parentPath.findParent(t.isExpressionStatement)
+        const referenceChain = buildReferenceChain(expressionStatement.get('expression.left'))
+        const start = expressionStatement.get('expression.left.object')
+        const binding = path.scope.getBinding(start.node.name)
+        if (!binding) {
+          return false
         }
-        return chain.reverse()
+        // return whether at least one of these references is referencing the function
+        return binding.referencePaths.some(refPath => {
+          const expStatement = refPath.findParent(t.isExpressionStatement)
+          if (!expStatement || !expStatement.node) {
+            return false
+          }
+          const memberExpression = expStatement.get('expression.left')
+          if (!t.isMemberExpression(memberExpression)) {
+            return false
+          }
+          const refChain = buildReferenceChain(memberExpression)
+          // refChain: [foo, bar, baz], referenceChain: [foo, bar] :+1:
+          if (refChain < referenceChain.length) {
+            return false
+          }
+          // return false if the referenceChain has anything the refChain does not
+          // this means the refChain can be longer
+          return !refChain.every((ref, i) => {
+            return !referenceChain[i] || // if we've run out of referenceChain elements, then we're good
+              ref.node === referenceChain[i].node || // if we're referencing the same node, this isn't enough to keep it around
+              ref.node.name !== referenceChain[i].node.name // if it's a different name, then it's not a reference
+          })
+        })
+
+        function buildReferenceChain(memberExpression) {
+          let iterations = 0
+          let property = memberExpression.get('property')
+          let object = memberExpression.get('object')
+          const chain = [property]
+          while (t.isMemberExpression(object)) {
+            property = object.get('property')
+            object = object.get('object')
+            chain.push(property)
+            iterations++
+            if (iterations > 10) {
+              throw new Error('slice-js avoiding infinite loop in buildReferenceChain')
+            }
+          }
+          return chain.reverse()
+        }
+      }
+
+      function isFunctionDeclarationReferenced() {
+        const {name} = path.get('id').node
+        path.scope.getBinding(name).referencePaths.every(refPath => (
+          refPath.find(parent => (
+            // we don't care about references to exports
+            !t.isExportDefaultDeclaration(parent) &&
+            !t.isExportSpecifier(parent)
+          ))
+        ))
       }
     }
   }
 }
 
-function isFunctionCovered(fnLocs, {body: {loc: srcLoc}}) {
+function getFunctionCoverageData(fnLocs, {body: {loc: srcLoc}}) {
   const fnCov = Object.keys(fnLocs)
-    .map(key => fnLocs[key])
-    .find(({loc}) => isLocationEqual(loc, srcLoc))
+  .map(key => fnLocs[key])
+  .find(({loc}) => isLocationEqual(loc, srcLoc))
   return fnCov
 }
 
+function isFunctionCovered(fnLocs, node) {
+  return !!getFunctionCoverageData(fnLocs, node)
+}
 
 function isBranchCovered(branches, node) {
   const branchCoverageData = getBranchCoverageData(branches, node)
