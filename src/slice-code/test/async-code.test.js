@@ -8,7 +8,7 @@ import {runAllCombosTests, comboOfBools} from './helpers/utils'
 // )
 
 runAllCombosTests({
-  filename: require.resolve('./fixtures/async'),
+  filename: require.resolve('./fixtures/async-code'),
   methods: [
     {
       methodName: 'callPromise',
