@@ -108,7 +108,7 @@ function runAllCombosTests({filename, methods}) {
         test = (title, fn) => fn()
       }
       test(testTitle, snapSlice(filename, mod => {
-        const method = useDefaultExport ? mod : mod[methodName]
+        const method = useDefaultExport ? (mod.default || mod) : mod[methodName]
         // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
         return comboOfArgs.map(args => method(...args))
       }))
