@@ -15,8 +15,9 @@ runAllCombosTests({
       useDefaultExport: true,
       methodName: 'clone',
       possibleArguments: [
-        [{name: 'Luke'}],
+        ['hello'],
         [null],
+        [{name: 'Luke'}],
         [{friends: [{name: 'Rebecca'}]}],
         [{title: 'How to Train Your Dragon', releaseDate: new Date(2010, 2, 26)}],
       ],
