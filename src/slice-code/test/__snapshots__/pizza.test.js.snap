@@ -1,0 +1,23 @@
+exports[`test makePizza({"type":"cheese","size":"Large"}) 1`] = `
+"export { makePizza };
+
+const getCrust = (size, crustType) => \`${ size }: ${ crustType || \'Hand tossed pizza\' }\`;
+
+function makePizza(order) {
+  const pizza = {
+    type: order.type,
+    crust: getCrust(order.size, order.crustType),
+    crustEdge: order.crustEdge || \'Garlic Buttery Blend\',
+    sauce: undefined,
+    cheese: undefined,
+    meats: undefined,
+    veggies: undefined
+  };
+
+  return preparePizza(pizza);
+}
+
+function preparePizza(pizza) {
+  return pizza;
+}"
+`;

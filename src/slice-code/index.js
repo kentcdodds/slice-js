@@ -45,7 +45,7 @@ function sliceCode(sourceCode, coverageData) {
 }
 
 function getSliceCodeTransform(filteredCoverage) {
-  const {fnMap} = filteredCoverage
+  const {fnMap, branchMap} = filteredCoverage
   const removedPaths = new Set()
   return function sliceCodeTransform({types: t}) {
     return {
@@ -61,7 +61,6 @@ function getSliceCodeTransform(filteredCoverage) {
         FunctionExpression: functionVisitor,
         ArrowFunctionExpression: arrowFunctionVisitor,
         IfStatement(path) {
-          const {branchMap} = filteredCoverage
           if (!isBranchCovered(branchMap, path.node)) {
             // console.log('2922')
             removedPaths.add(path)
@@ -81,7 +80,7 @@ function getSliceCodeTransform(filteredCoverage) {
               if (isUncoveredAndMissingElse()) {
                 handleUncoveredAndMissingElse()
               } else if (hasUncoveredSide()) {
-                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap, t)
+                replaceNodeWithNodeFromParent(childPath, otherKey)
               }
 
               function skipPath() {
@@ -117,7 +116,6 @@ function getSliceCodeTransform(filteredCoverage) {
           })
         },
         ConditionalExpression(path) {
-          const {branchMap} = filteredCoverage
           const branchCoverageData = getBranchCoverageData(branchMap, path.node)
 
           if (!branchCoverageData) {
@@ -136,13 +134,12 @@ function getSliceCodeTransform(filteredCoverage) {
                 !branchCoverageData[key].covered
               ) {
                 // console.log('2995')
-                replaceNodeWithNodeFromParent(childPath, otherKey, branchMap, t)
+                replaceNodeWithNodeFromParent(childPath, otherKey)
               }
             },
           })
         },
         LogicalExpression(path) {
-          const {branchMap} = filteredCoverage
           const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(branchMap, path.node)
           if (!branchCoverageInfo) {
             // if there's not branch coverage info available, that could mean that this
@@ -163,7 +160,7 @@ function getSliceCodeTransform(filteredCoverage) {
               }
               if (!nodesToPreserve.includes(childPath.node)) {
                 const otherSideKey = childPath.key === 'left' ? 'right' : 'left'
-                replaceNodeWithNodeFromParent(childPath, otherSideKey, branchMap, t)
+                replaceNodeWithNodeFromParent(childPath, otherSideKey)
               }
 
               function handleNestedLogicalExpression(nestedExpressionPath) {
@@ -174,7 +171,7 @@ function getSliceCodeTransform(filteredCoverage) {
                 const includesRight = isNestedLogicalExpressionIsCovered(nodesToPreserve, nestedExpressionPath.node.right)
                 if (!includesLeft && !includesRight) {
                   // if neither side is covered, then take the parent (LogicalExpression) and replace it with just the other side
-                  replaceNodeWithNodeFromParent(nestedExpressionPath, otherSideKey, branchMap, t)
+                  replaceNodeWithNodeFromParent(nestedExpressionPath, otherSideKey)
                   return
                 }
                 if (includesLeft && includesRight) {
@@ -216,7 +213,6 @@ function getSliceCodeTransform(filteredCoverage) {
           // the only time it isn't is if it's in a function/IfStatement/etc.
           // that isn't covered, which would be removed. So we don't need to
           // worry about checking whether the switch is covered.
-          const {branchMap} = filteredCoverage
           const coverageInfo = getBranchCoverageData(branchMap, path.node)
           path.get('cases').forEach(casePath => {
             if (!isCaseCovered(casePath.node)) {
@@ -255,7 +251,7 @@ function getSliceCodeTransform(filteredCoverage) {
         if (t.isAssignmentExpression(path.parentPath)) {
           path.parentPath.remove()
         } else if (path.parentPath.node.id) {
-          removePathAndReferences(path, path.parentPath.node.id.name, removedPaths)
+          removePathAndReferences(path, path.parentPath.node.id.name)
         } else {
           path.remove()
         }
@@ -278,7 +274,7 @@ function getSliceCodeTransform(filteredCoverage) {
       } else if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
         path.parentPath.remove()
       } else {
-        removePathAndReferences(path, path.node.id.name, removedPaths)
+        removePathAndReferences(path, path.node.id.name)
       }
     }
 
@@ -368,13 +364,164 @@ function getSliceCodeTransform(filteredCoverage) {
         ))
       }
     }
+
+    function replaceNodeWithNodeFromParent(path, key) {
+      // console.log('replaceNodeWithNodeFromParent', path, key)
+      const {parentPath, parent} = path
+      const replacementNode = parent[key] || path.node
+      if (parentPath.type === 'IfStatement') {
+        // if there are side-effects in the IfStatement, then we need to preserve those
+        const typesToPreserve = ['AssignmentExpression', 'CallExpression', 'UnaryExpression']
+        const typesToWrap = ['CallExpression', 'UnaryExpression'] // these can't exist on their own and need to be wrapped in an ExpressionStatement
+        const nodesToPreserve = []
+        const testPath = parentPath.get('test')
+        testPath.traverse({
+          enter(testChildPath) {
+            const EXIT_EARLY = 'EXIT_EARLY'
+            if (testChildPath.parentPath !== testPath) {
+              // we're only concerned with direct children
+              return
+            }
+
+            const result = handleLogicalExpression()
+            if (result === EXIT_EARLY) {
+              return
+            }
+            preserveNode()
+
+            function preserveNode() {
+              if (typesToPreserve.includes(testChildPath.node.type)) {
+                if (typesToWrap.includes(testChildPath.node.type)) {
+                  nodesToPreserve.push(t.expressionStatement(testChildPath.node))
+                } else {
+                  nodesToPreserve.push(testChildPath.node)
+                }
+              }
+            }
+
+            function handleLogicalExpression() {
+              const logicalExpressionNodesToPreserve = getLogicalExpressionNodesToPreserve(testChildPath.parentPath, branchMap)
+              if (testChildPath.parent.type === 'LogicalExpression') {
+                handleNestedLogicalExpression(logicalExpressionNodesToPreserve)
+                if (!logicalExpressionNodesToPreserve.includes(testChildPath.node)) {
+                  // if this part of the LogicalExpression is not covered, then we don't want to preserve it.
+                  return EXIT_EARLY
+                }
+              }
+              return null
+            }
+
+            function handleNestedLogicalExpression(coveredNodes) {
+              if (testChildPath.type !== 'LogicalExpression') {
+                return
+              }
+              const includesLeft = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.left)
+              const includesRight = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.right)
+              // need to create an expression statement because we'll be removing the if statement
+              // and this needs to be a node that can stand on its own.
+              if (includesLeft && includesRight) {
+                nodesToPreserve.push(t.expressionStatement(testChildPath.node))
+              } else if (!includesRight) { // eslint-disable-line no-negated-condition
+                nodesToPreserve.push(t.expressionStatement(testChildPath.node.left))
+              } else { // !includesLeft
+                nodesToPreserve.push(t.expressionStatement(testChildPath.node.right))
+              }
+            }
+          },
+        })
+        parentPath.insertBefore(nodesToPreserve)
+      }
+      if (replacementNode && replacementNode.body) {
+        // console.log('3213')
+        parentPath.replaceWithMultiple(replacementNode.body)
+      } else if (replacementNode) {
+        // console.log('3216')
+        parentPath.replaceWith(replacementNode)
+      }
+    }
+
+    function removePathAndReferences(path, name) {
+      path.scope.getBinding(name).referencePaths.forEach(binding => {
+        // console.log('removing binding', binding)
+        if (binding.parent.type === 'ExportSpecifier') {
+          removeExportSpecifierBinding(binding)
+        } else if (binding.type === 'ExportNamedDeclaration') {
+          // console.log('3227')
+          binding.remove()
+        } else if (binding.parent.type === 'CallExpression') {
+          // console.log('3230')
+          removeCallExpressionBinding(binding)
+        } else {
+          /* istanbul ignore next we have no coverage of this else... and that's the problem :) */
+          console.error('path', path) // eslint-disable-line no-console
+          /* istanbul ignore next */
+          console.error('binding', binding) // eslint-disable-line no-console
+          /* istanbul ignore next */
+          throw new Error(
+            'Attempting to remove a type of binding for a path that has not yet be implemented. ' +
+            'Please investigate how to safely remove this binding.'
+          )
+        }
+      })
+      if (path.parentPath.type === 'VariableDeclarator') {
+        // console.log('3244')
+        path.parentPath.remove()
+      } else {
+        // console.log('path remove', path)
+        // console.log('3248')
+        path.remove()
+      }
+
+      function removeExportSpecifierBinding(binding) {
+        const {parentPath: {parent: {specifiers}}} = binding
+        const specifierIndex = specifiers.indexOf(binding.parent)
+        // no need to check whether index is -1. It's definitely in there.
+        specifiers.splice(specifierIndex, 1)
+      }
+
+      function removeCallExpressionBinding(binding) {
+        // console.log('removeCallExpressionBinding(binding)', binding)
+        // console.log(binding.scope.getBinding(binding.node.name).referencePaths)
+        const {parentPath: callPath} = binding
+        const {parentPath: usePath} = callPath
+        const removedNode = binding.findParent(parentPath => removedPaths.has(parentPath))
+        if (removedNode) {
+          // no need to remove any children
+          return
+        }
+        if (usePath.type === 'LogicalExpression') {
+          const otherSideOfLogicalExpressionKey = callPath.key === 'left' ? 'right' : 'left'
+          // console.log('3266')
+          usePath.replaceWith(usePath.node[otherSideOfLogicalExpressionKey])
+        } else if (usePath.type === 'ConditionalExpression') {
+          removeConditionalExpressionSide(callPath)
+        } else {
+          // console.log('3269', usePath.getSource(), usePath)
+          usePath.remove()
+        }
+      }
+
+      function removeConditionalExpressionSide(condPath) {
+        const {key} = condPath
+        const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
+        if (
+          !condPath.removed &&
+          condPath.parentPath === path &&
+          (key === 'consequent' || key === 'alternate')
+        ) {
+          // console.log('3266')
+          replaceNodeWithNodeFromParent(condPath, otherKey)
+        }
+      }
+    }
   }
+
 }
 
 function getFunctionCoverageData(fnLocs, {body: {loc: srcLoc}}) {
   const fnCov = Object.keys(fnLocs)
-  .map(key => fnLocs[key])
-  .find(({loc}) => isLocationEqual(loc, srcLoc))
+    .map(key => fnLocs[key])
+    .find(({loc}) => isLocationEqual(loc, srcLoc))
   return fnCov
 }
 
@@ -480,137 +627,3 @@ function getLogicalExpressionNodesToPreserve(path, branchMap) {
   return nodesToPreserve
 }
 
-function replaceNodeWithNodeFromParent(path, key, branchMap, t) {
-  // console.log('replaceNodeWithNodeFromParent', path, key)
-  const {parentPath, parent} = path
-  const replacementNode = parent[key] || path.node
-  if (parentPath.type === 'IfStatement') {
-    // if there are side-effects in the IfStatement, then we need to preserve those
-    const typesToPreserve = ['AssignmentExpression', 'CallExpression', 'UnaryExpression']
-    const typesToWrap = ['CallExpression', 'UnaryExpression'] // these can't exist on their own and need to be wrapped in an ExpressionStatement
-    const nodesToPreserve = []
-    const testPath = parentPath.get('test')
-    testPath.traverse({
-      enter(testChildPath) {
-        const EXIT_EARLY = 'EXIT_EARLY'
-        if (testChildPath.parentPath !== testPath) {
-          // we're only concerend with direct children
-          return
-        }
-
-        const result = handleLogicalExpression()
-        if (result === EXIT_EARLY) {
-          return
-        }
-        preserveNode()
-
-        function preserveNode() {
-          if (typesToPreserve.includes(testChildPath.node.type)) {
-            if (typesToWrap.includes(testChildPath.node.type)) {
-              nodesToPreserve.push(t.expressionStatement(testChildPath.node))
-            } else {
-              nodesToPreserve.push(testChildPath.node)
-            }
-          }
-        }
-
-        function handleLogicalExpression() {
-          const logicalExpressionNodesToPreserve = getLogicalExpressionNodesToPreserve(testChildPath.parentPath, branchMap)
-          if (testChildPath.parent.type === 'LogicalExpression') {
-            handleNestedLogicalExpression(logicalExpressionNodesToPreserve)
-            if (!logicalExpressionNodesToPreserve.includes(testChildPath.node)) {
-              // if this part of the LogicalExpression is not covered, then we don't want to preserve it.
-              return EXIT_EARLY
-            }
-          }
-          return null
-        }
-
-        function handleNestedLogicalExpression(coveredNodes) {
-          if (testChildPath.type !== 'LogicalExpression') {
-            return
-          }
-          const includesLeft = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.left)
-          const includesRight = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.right)
-          // need to create an expression statement because we'll be removing the if statement
-          // and this needs to be a node that can stand on its own.
-          if (includesLeft && includesRight) {
-            nodesToPreserve.push(t.expressionStatement(testChildPath.node))
-          } else if (!includesRight) { // eslint-disable-line no-negated-condition
-            nodesToPreserve.push(t.expressionStatement(testChildPath.node.left))
-          } else { // !includesLeft
-            nodesToPreserve.push(t.expressionStatement(testChildPath.node.right))
-          }
-        }
-      },
-    })
-    parentPath.insertBefore(nodesToPreserve)
-  }
-  if (replacementNode && replacementNode.body) {
-    // console.log('3213')
-    parentPath.replaceWithMultiple(replacementNode.body)
-  } else if (replacementNode) {
-    // console.log('3216')
-    parentPath.replaceWith(replacementNode)
-  }
-}
-
-function removePathAndReferences(path, name, removedPaths) {
-  path.scope.getBinding(name).referencePaths.forEach(binding => {
-    // console.log('removing binding', binding)
-    if (binding.parent.type === 'ExportSpecifier') {
-      removeExportSpecifierBinding(binding)
-    } else if (binding.type === 'ExportNamedDeclaration') {
-      // console.log('3227')
-      binding.remove()
-    } else if (binding.parent.type === 'CallExpression') {
-      // console.log('3230')
-      removeCallExpressionBinding(binding, removedPaths)
-    } else {
-      /* istanbul ignore next we have no coverage of this else... and that's the problem :) */
-      console.error('path', path) // eslint-disable-line no-console
-      /* istanbul ignore next */
-      console.error('binding', binding) // eslint-disable-line no-console
-      /* istanbul ignore next */
-      throw new Error(
-        'Attempting to remove a type of binding for a path that has not yet be implemented. ' +
-        'Please investigate how to safely remove this binding.'
-      )
-    }
-  })
-  if (path.parentPath.type === 'VariableDeclarator') {
-    // console.log('3244')
-    path.parentPath.remove()
-  } else {
-    // console.log('path remove', path)
-    // console.log('3248')
-    path.remove()
-  }
-
-  function removeExportSpecifierBinding(binding) {
-    const {parentPath: {parent: {specifiers}}} = binding
-    const specifierIndex = specifiers.indexOf(binding.parent)
-    // no need to check whether index is -1. It's definitely in there.
-    specifiers.splice(specifierIndex, 1)
-  }
-
-  function removeCallExpressionBinding(binding, removedNodes) {
-    // console.log('removeCallExpressionBinding(binding)', binding)
-    // console.log(binding.scope.getBinding(binding.node.name).referencePaths)
-    const {parentPath: callPath} = binding
-    const {parentPath: usePath} = callPath
-    const removedNode = binding.findParent(parentPath => removedNodes.has(parentPath))
-    if (removedNode) {
-      // no need to remove any children
-      return
-    }
-    if (usePath.type === 'LogicalExpression') {
-      const otherSideOfLogicalExpressionKey = callPath.key === 'left' ? 'right' : 'left'
-      // console.log('3266')
-      usePath.replaceWith(usePath.node[otherSideOfLogicalExpressionKey])
-    } else {
-      // console.log('3269', usePath.getSource(), usePath)
-      usePath.remove()
-    }
-  }
-}

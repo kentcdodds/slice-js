@@ -2,8 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>SliceJS</title>
     <link href="node_modules/codemirror/lib/codemirror.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: monospace;
+      }
+      .CodeMirror {
+        border: 1px solid #ddd;
+        min-height: 400px;
+      }
+      .short .CodeMirror {
+        max-height: 260px;
+        min-height: initial;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
