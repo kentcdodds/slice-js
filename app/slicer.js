@@ -1,7 +1,9 @@
 /* eslint no-invalid-this:0 */
 import fs from 'fs'
 import {isEqual} from 'lodash'
-import React, {Component} from 'react'
+import {copy} from 'copy-paste'
+import open from 'open'
+import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import Codemirror from 'react-codemirror'
 import 'codemirror/mode/javascript/javascript'
@@ -50,12 +52,13 @@ class App extends Component {
     if (!success) {
       return
     }
-    const {originalResult, slicedCode, slicedResult, isSlicedCoverage100} = sliceInfo
+    const {originalResult, slicedCode, slicedResult, isSlicedCoverage100, filteredCoverage} = sliceInfo
     this.setState({
       slicedCode,
       originalResult,
       slicedResult,
       isSlicedCoverage100,
+      filteredCoverage,
     })
   }
 
@@ -72,7 +75,15 @@ class App extends Component {
   }
 
   render() {
-    const {originalResult, slicedCode, slicedResult, isSlicedCoverage100, codeToSlice, moduleUsage} = this.state
+    const {
+      originalResult,
+      slicedCode,
+      slicedResult,
+      isSlicedCoverage100,
+      codeToSlice,
+      filteredCoverage,
+      moduleUsage,
+    } = this.state
     const sameResult = isEqual(originalResult, slicedResult)
     const codemirrorOptions = {
       lineNumbers: true,
@@ -141,11 +152,45 @@ class App extends Component {
               <pre>{JSON.stringify(slicedResult, null, 2)}</pre>
             </div>
           )}
-
+          <ASTExplorerCode filteredCoverage={filteredCoverage} />
         </div>
       </div>
     )
   }
+}
+
+function ASTExplorerCode({filteredCoverage}) {
+  return (
+    <div>
+      Generate plugin for <a href="https://astexplorer.net">astexplorer.net</a>.
+      <button onClick={handleClick}>Copy</button>
+    </div>
+  )
+
+  function handleClick() {
+    const getSlicedTransformModuleString = fs.readFileSync('../src/slice-code/get-sliced-code-transform.js', 'utf-8')
+    const textToCopy = `
+const filteredCoverage = ${JSON.stringify(filteredCoverage)}
+
+${
+  getSlicedTransformModuleString
+    .replace(
+      'export default getSliceCodeTransform',
+      'export default getSliceCodeTransform(filteredCoverage)'
+    ).replace(
+      /\/\* eslint.*\n/,
+      ''
+    )
+}
+    `.trim()
+    copy(textToCopy, () => {
+      open('https://astexplorer.net/#/xgyyTvszgs')
+    })
+  }
+}
+
+ASTExplorerCode.propTypes = {
+  filteredCoverage: PropTypes.string.isRequired,
 }
 
 const root = document.getElementById('root')

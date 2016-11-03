@@ -7,6 +7,7 @@ import * as babel from 'babel-core'
 import {programVisitor as getInstrumentVisitor} from 'istanbul-lib-instrument'
 import {random} from 'lodash'
 import template from 'babel-template'
+import transformCoverage from '../../transform-coverage'
 import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
@@ -75,10 +76,12 @@ async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const mod = getInstrumentedModuleFromString(tempFilename, sourceCode, actualFilepath)
   const originalResult = await tester(mod)
   // console.log('originalResult', originalResult)
-  const slicedCode = sliceCode(sourceCode, mod[coverageVariable][tempFilename])
+  const coverageData = mod[coverageVariable][tempFilename]
+  const slicedCode = sliceCode(sourceCode, coverageData)
+  const filteredCoverage = transformCoverage(coverageData)
   // console.log('slicedCode', slicedCode)
   const {is100: isSlicedCoverage100, slicedResult} = await slicedCoverageIs100(tempFilename, slicedCode, tester, actualFilepath)
-  return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult}
+  return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult, filteredCoverage}
 }
 
 function runAllCombosTests({filename, methods}) {
