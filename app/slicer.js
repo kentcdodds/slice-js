@@ -24,14 +24,17 @@ function({makePizza}) {
 `.trim()
 
 class App extends Component {
-  state = {slicedCode: '', moduleUsage: usageSample, codeToSlice: sampleCode}
+  state = {slicedCode: '', moduleUsage: usageSample, codeToSlice: sampleCode, autoRun: true}
 
   componentDidMount() {
     this.updateSlice()
   }
 
-  updateSlice = async () => {
-    const {codeToSlice, moduleUsage} = this.state
+  updateSlice = async force => {
+    const {codeToSlice, moduleUsage, autoRun} = this.state
+    if (!autoRun && !force) {
+      return
+    }
     const usageFn = getUsageFunction(moduleUsage)
     if (!usageFn) {
       return
@@ -65,6 +68,11 @@ class App extends Component {
   onCodeSliceChange = value => {
     this.setState({
       codeToSlice: value,
+      slicedCode: '',
+      originalResult: undefined,
+      slicedResult: undefined,
+      isSlicedCoverage100: true,
+      filteredCoverage: null,
     }, this.updateSlice)
   }
 
@@ -83,6 +91,7 @@ class App extends Component {
       codeToSlice,
       filteredCoverage,
       moduleUsage,
+      autoRun,
     } = this.state
     const sameResult = isEqual(originalResult, slicedResult)
     const codemirrorOptions = {
@@ -119,6 +128,16 @@ class App extends Component {
         <div style={slicedStyles}>
           <strong>Slice</strong>
           <br />
+          <label>
+            Autorun
+            <input
+              checked={autoRun}
+              type="checkbox"
+              onChange={() => this.setState({autoRun: !autoRun})}
+            />
+            <button onClick={() => this.updateSlice(true)}>Run</button>
+          </label>
+          <br />
           <Codemirror
             value={slicedCode}
             onChange={this.onModuleUsageChange}
@@ -152,7 +171,7 @@ class App extends Component {
               <pre>{JSON.stringify(slicedResult, null, 2)}</pre>
             </div>
           )}
-          <ASTExplorerCode filteredCoverage={filteredCoverage} />
+          {slicedCode ? <ASTExplorerCode filteredCoverage={filteredCoverage} /> : null}
         </div>
       </div>
     )
@@ -190,7 +209,7 @@ ${
 }
 
 ASTExplorerCode.propTypes = {
-  filteredCoverage: PropTypes.string.isRequired,
+  filteredCoverage: PropTypes.object.isRequired,
 }
 
 const root = document.getElementById('root')
