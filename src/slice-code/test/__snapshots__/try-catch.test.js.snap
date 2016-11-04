@@ -6,7 +6,7 @@ function statementsAfterThrow() {
   try {
     ret.before = true;
 
-    throw new Error('throw error');
+    throw new Error(\'throw error\');
   } catch (error) {
     ret.error = error;
   } finally {
@@ -22,7 +22,7 @@ function tryCatch(shouldThrow) {
   const ret = {};
   try {
     if (shouldThrow) {
-      throw new Error('throw error');
+      throw new Error(\'throw error\');
     }
     ret.noThrow = true;
   } catch (error) {
@@ -37,7 +37,7 @@ function tryCatch(shouldThrow) {
 exports[`test tryCatch(false) 1`] = `
 "export { tryCatch };
 
-function tryCatch(shouldThrow) {
+function tryCatch() {
   const ret = {};
 
   ret.noThrow = true;
@@ -49,10 +49,10 @@ function tryCatch(shouldThrow) {
 exports[`test tryCatch(true) 1`] = `
 "export { tryCatch };
 
-function tryCatch(shouldThrow) {
+function tryCatch() {
   const ret = {};
   try {
-    throw new Error('throw error');
+    throw new Error(\'throw error\');
   } catch (error) {
     ret.error = error;
     return error;

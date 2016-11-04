@@ -4,7 +4,7 @@ exports[`test ({ default: mod }) => [mod.baz(false)] 1`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'buzz\';
+  mod.baz = () => \'buzz\';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
   mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
@@ -22,7 +22,7 @@ exports[`test ({ default: mod }) => [mod.baz(false)] 2`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'buzz\';
+  mod.baz = () => \'buzz\';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
   mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
@@ -40,7 +40,7 @@ exports[`test ({ default: mod }) => [mod.baz(true)] 1`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'baz\';
+  mod.baz = () => \'baz\';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
   mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
@@ -60,7 +60,7 @@ exports[`test ({ default: mod }) => [mod.foo(), mod.baz(false)] 1`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'buzz\';
+  mod.baz = () => \'buzz\';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
   mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
@@ -80,7 +80,7 @@ exports[`test ({ default: mod }) => [mod.foo(), mod.baz(true)] 1`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'baz\';
+  mod.baz = () => \'baz\';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
   mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
@@ -116,7 +116,7 @@ exports[`test ({ default: mod }) => [mod.foobar(), mod.baz(false)] 1`] = `
 
   mod.bar = \'bar\';
 
-  mod.baz = returnBaz => \'buzz\';
+  mod.baz = () => \'buzz\';
 
   mod.foobar = function () {
     return \'function assignment\';

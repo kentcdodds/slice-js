@@ -10,7 +10,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -41,7 +41,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -68,7 +68,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -99,7 +99,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -197,7 +197,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -231,7 +231,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -261,7 +261,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -295,7 +295,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -423,7 +423,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -454,7 +454,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -481,7 +481,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -512,7 +512,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -610,7 +610,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -644,7 +644,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -674,7 +674,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
@@ -708,7 +708,7 @@ function clone(item) {
   if (!(type !== \"object\" && type !== \"function\")) {
     if (string === \'[object Array]\') {
       result = [];
-      item.forEach((child, index, array) => {
+      item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {

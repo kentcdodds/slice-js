@@ -12,7 +12,7 @@ function condExpr(passIf) {
 exports[`test condExpr(false) 1`] = `
 "export { condExpr };
 
-function condExpr(passIf) {
+function condExpr() {
   return \'did not reach IfStatement\';
 }"
 `;
@@ -20,7 +20,7 @@ function condExpr(passIf) {
 exports[`test condExpr(true) 1`] = `
 "export { condExpr };
 
-function condExpr(passIf) {
+function condExpr() {
   return \'reached CondExpr Consequent\';
 }"
 `;
@@ -40,7 +40,7 @@ function ifStatement(passIf) {
 exports[`test ifStatement(false) 1`] = `
 "export { ifStatement };
 
-function ifStatement(passIf) {
+function ifStatement() {
   return \'did not reach IfStatement\';
 }"
 `;
@@ -48,7 +48,7 @@ function ifStatement(passIf) {
 exports[`test ifStatement(true) 1`] = `
 "export { ifStatement };
 
-function ifStatement(passIf) {
+function ifStatement() {
   return \'reached IfStatement\';
 }"
 `;

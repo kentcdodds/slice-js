@@ -121,7 +121,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
+function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
   return isConsequent;
 }"
 `;
@@ -129,7 +129,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
+function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
   return isConsequent;
 }"
 `;
@@ -137,7 +137,7 @@ function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternate
 exports[`test isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
+function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
   return isConsequent;
 }"
 `;

@@ -12,6 +12,7 @@ function _interopRequireDefault(obj) {
 }
 
 var rankings = {
+  CASE_SENSITIVE_EQUAL: 7,
   EQUAL: 6,
   STARTS_WITH: 5,
   WORD_STARTS_WITH: 4,
@@ -55,6 +56,9 @@ function getMatchRanking(testString, stringToRank, options) {
   testString = prepareValueForComparison(testString, options);
   stringToRank = prepareValueForComparison(stringToRank, options);
 
+  testString = testString.toLowerCase();
+  stringToRank = stringToRank.toLowerCase();
+
   if (testString.indexOf(stringToRank) === 0) {
     return rankings.STARTS_WITH;
   }
@@ -76,7 +80,7 @@ function prepareValueForComparison(value, _ref3) {
   value = \'\' + value;
   value = _diacritic2.default.clean(value);
 
-  return value.toLowerCase();
+  return value;
 }
 
 matchSorter.default = matchSorter;

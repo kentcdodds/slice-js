@@ -1,7 +1,7 @@
 exports[`test switchWithDefault("snickers") 1`] = `
 "export { switchWithDefault };
 
-function switchWithDefault(candy) {
+function switchWithDefault() {
   return \'default, no candy :-(\';
 }"
 `;
