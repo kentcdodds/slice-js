@@ -1,0 +1,39 @@
+exports[`/Users/kdodds/Developer/slice-js/integration/node_modules/redux/lib/createStore.js`] = `
+"\'use strict\';
+
+exports.__esModule = true;
+exports.ActionTypes = undefined;
+exports[\'default\'] = createStore;
+
+var _isPlainObject = require(\'lodash/isPlainObject\');
+
+var _symbolObservable = require(\'symbol-observable\');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { \'default\': obj };
+}
+
+var ActionTypes = exports.ActionTypes = {
+  INIT: \'@@redux/INIT\'
+};
+
+function createStore(reducer, preloadedState) {
+  var currentState = preloadedState;
+  var currentListeners = [];
+  var nextListeners = currentListeners;
+
+  (function (action) {
+
+    try {
+      currentState = reducer(currentState, action);
+    } finally {}
+
+    var listeners = currentListeners = nextListeners;
+    for (var i = 0; i < listeners.length; i++) {
+      listeners[i]();
+    }
+
+    return action;
+  })({ type: ActionTypes.INIT });
+}"
+`;

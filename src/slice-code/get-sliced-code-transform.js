@@ -1,4 +1,6 @@
 /* eslint max-lines:[2, 1000] */ // I know it's nuts, but it's a lot easier to develop with ASTExplorer.net this way...
+// for development, fork this: https://astexplorer.net/#/bk7MWWZZOR
+// and log and copy/paste filteredCoverage and the plugin source
 export default getSliceCodeTransform
 
 function getSliceCodeTransform(filteredCoverage) {
@@ -88,7 +90,7 @@ function getSliceCodeTransform(filteredCoverage) {
                 !childPath.removed &&
                 childPath.parentPath === path &&
                 (key === 'consequent' || key === 'alternate') &&
-                !branchCoverageData[key].covered
+                (!branchCoverageData[key] || !branchCoverageData[key].covered)
               ) {
                 // console.log('2995')
                 replaceNodeWithNodeFromParent(childPath, otherKey)
@@ -151,12 +153,12 @@ function getSliceCodeTransform(filteredCoverage) {
         TryStatement(path) {
           const {statementMap} = filteredCoverage
           const tryBlockPath = path.get('block')
-          const catchBlockPath = path.get('handler.body')
+          const catchBlockPath = safeGet(path, 'handler.body')
           const finallyBlockPath = path.get('finalizer')
           const coveredTryStatements = getCoveredStatementsFromBlock(statementMap, tryBlockPath.node)
-          const coveredCatchStatements = getCoveredStatementsFromBlock(statementMap, catchBlockPath.node)
+          const coveredCatchStatements = catchBlockPath ? getCoveredStatementsFromBlock(statementMap, catchBlockPath.node) : null
           const coveredFinallyStatements = getCoveredStatementsFromBlock(statementMap, finallyBlockPath.node)
-          if (!coveredCatchStatements.length) {
+          if (coveredCatchStatements && !coveredCatchStatements.length) {
             path.replaceWithMultiple([
               ...coveredTryStatements,
               ...coveredFinallyStatements,
@@ -399,15 +401,32 @@ function getSliceCodeTransform(filteredCoverage) {
 
     function removePathAndReferences(path, name) {
       path.scope.getBinding(name).referencePaths.forEach(binding => {
+        /* eslint complexity:0 */ // TODO clean this up
         // console.log('removing binding', binding)
-        if (binding.parent.type === 'ExportSpecifier') {
+        if (t.isExportSpecifier(binding.parent)) {
           removeExportSpecifierBinding(binding)
-        } else if (binding.type === 'ExportNamedDeclaration') {
+        } else if (t.isExportNamedDeclaration(binding)) {
           // console.log('3227')
           binding.remove()
-        } else if (binding.parent.type === 'CallExpression') {
+        } else if (t.isCallExpression(binding.parent)) {
           // console.log('3230')
           removeCallExpressionBinding(binding)
+        } else if (t.isMemberExpression(binding.parent)) {
+          // console.log('I am here')
+          // TODO, get more test cases because I'm sure we'll need to actually do something here...
+        } else if (t.isAssignmentExpression(binding.parent)) {
+          const expressionStatement = binding.findParent(t.isExpressionStatement)
+          const sequenceExpression = binding.findParent(t.isSequenceExpression)
+          if (expressionStatement) {
+            expressionStatement.remove()
+          } else if (sequenceExpression) {
+            sequenceExpression.remove()
+          }
+        } else if (t.isObjectProperty(binding.parent)) {
+          const {node: objectExpression} = binding.parentPath.parentPath
+          const {properties} = objectExpression
+          // console.log('3233')
+          properties.splice(properties.indexOf(binding.parent), 1)
         } else {
           /* istanbul ignore next we have no coverage of this else... and that's the problem :) */
           console.error('path', path) // eslint-disable-line no-console
@@ -420,6 +439,7 @@ function getSliceCodeTransform(filteredCoverage) {
           )
         }
       })
+      // console.log('3240')
       if (path.parentPath.type === 'VariableDeclarator') {
         // console.log('3244')
         path.parentPath.remove()
@@ -510,7 +530,7 @@ function getBranchCoverageData(branches, node) {
 
 function isBranchSideCovered(branches, side, node, parentNode) {
   const branch = getBranchCoverageData(branches, parentNode)
-  if (!branch) {
+  if (!branch || !branch[side]) {
     return false
   }
   return branch[side].covered
@@ -582,4 +602,12 @@ function getLogicalExpressionNodesToPreserve(path, branchMap) {
     },
   })
   return nodesToPreserve
+}
+
+function safeGet(path, getPath) {
+  try {
+    return path.get(getPath)
+  } catch (e) {
+    return null
+  }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "slice-js-integration",
+  "version": "1.0.0",
+  "description": "A place for a bunch of tests for slice-js",
+  "main": "index.js",
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run cover && npm run process-coverage",
+    "cover": "jest --coverage",
+    "process-coverage": "babel-node ./scripts/process-coverage.js",
+    "watch:process-coverage": "nodemon --watch ./scripts/ --watch ./__tests__/ --watch ../src --exec \"npm run process-coverage\""
+  },
+  "dependencies": {
+    "jest-snapshot": "^17.0.3",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-jest": "^17.0.2",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "jest-cli": "^17.0.3",
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,13 @@
+exports[`/Users/kdodds/Developer/slice-js/integration/node_modules/redux/lib/combineReducers.js`] = `
+"\'use strict\';
+
+exports.__esModule = true;
+
+var _isPlainObject = require(\'lodash/isPlainObject\');
+
+var _warning = require(\'./utils/warning\');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { \'default\': obj };
+}"
+`;
