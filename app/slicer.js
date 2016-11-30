@@ -6,7 +6,7 @@ import open from 'open'
 import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import Codemirror from 'react-codemirror'
-import 'codemirror/mode/javascript/javascript'
+import 'codemirror/mode/javascript/javascript' // eslint-disable-line import/no-unassigned-import
 
 import {getSliceAndInfo} from '../src/slice-code/test/helpers/utils'
 
@@ -195,10 +195,10 @@ ${
   getSlicedTransformModuleString
     .replace(
       'export default getSliceCodeTransform',
-      'export default getSliceCodeTransform(filteredCoverage)'
+      'export default getSliceCodeTransform(filteredCoverage)',
     ).replace(
       /\/\* eslint.*\n/,
-      ''
+      '',
     )
 }
     `.trim()

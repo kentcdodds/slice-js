@@ -22,8 +22,8 @@ function comboOfBools(n) {
     const missing = len - val.length
     result.push(
       Array.from({length: missing}).map(() => false).concat(
-        Array.from(val).map(v => v === '1')
-      )
+        Array.from(val).map(v => v === '1'),
+      ),
     )
   }
   return result
@@ -182,7 +182,7 @@ function instrumenter({types: t}) {
           this.__dv__.exit(...args)
           // expose coverage as part of the module
           const newNode = template(
-            `module.exports.${coverageVariable} = global.${coverageVariable};`
+            `module.exports.${coverageVariable} = global.${coverageVariable};`,
           )()
           args[0].node.body.push(newNode)
         },

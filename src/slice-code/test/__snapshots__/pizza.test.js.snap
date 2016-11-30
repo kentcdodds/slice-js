@@ -1,7 +1,7 @@
 exports[`test makePizza({"type":"cheese","size":"Large"}) 1`] = `
 "export { makePizza };
 
-const getCrust = (size, crustType) => \`${ size }: ${ crustType || \'Hand tossed pizza\' }\`;
+const getCrust = (size, crustType) => \`\${ size }: \${ crustType || \'Hand tossed pizza\' }\`;
 
 function makePizza(order) {
   const pizza = {

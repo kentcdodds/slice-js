@@ -23,7 +23,7 @@ methodCombos.forEach(methods => {
       methods.forEach(method => {
         module[method](1, 2)
       })
-    })
+    }),
   )
 })
 

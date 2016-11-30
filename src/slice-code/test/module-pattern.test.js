@@ -15,6 +15,6 @@ const tests = [
 tests.forEach(tester => {
   test(
     tester.toString(),
-    snapSlice(require.resolve('./fixtures/module-pattern'), tester)
+    snapSlice(require.resolve('./fixtures/module-pattern'), tester),
   )
 })

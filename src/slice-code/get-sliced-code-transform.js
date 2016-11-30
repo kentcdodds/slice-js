@@ -133,7 +133,7 @@ function getSliceCodeTransform(filteredCoverage) {
                 }
                 if (includesLeft && includesRight) {
                   // if both sides are covered, then don't replace the parent at all. This side is is needed
-                  return
+                  return // eslint-disable-line no-useless-return
                 } else if (!includesRight) { // eslint-disable-line no-negated-condition
                   // if the right isn't covered (and the left is), then just replace the whole LogicalExpression with the left
                   // console.log('3045')
@@ -143,7 +143,7 @@ function getSliceCodeTransform(filteredCoverage) {
                   // console.log('3049')
                   nestedExpressionPath.replaceWith(nestedExpressionPath.node.right)
                 }
-                return
+                return // eslint-disable-line no-useless-return
               }
             },
           })
@@ -416,7 +416,7 @@ function getSliceCodeTransform(filteredCoverage) {
           /* istanbul ignore next */
           throw new Error(
             'Attempting to remove a type of binding for a path that has not yet be implemented. ' +
-            'Please investigate how to safely remove this binding.'
+            'Please investigate how to safely remove this binding.',
           )
         }
       })
