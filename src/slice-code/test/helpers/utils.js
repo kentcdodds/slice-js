@@ -154,17 +154,17 @@ function getInstrumentedModuleFromString(filename, sourceCode, actualFilepath) {
     ],
   })
   // process.stdout.write('\n\ninstrumentedCode\n\n' + code)
-  return requireFromString(filename, code, actualFilepath)
+  return requireFromString(code, actualFilepath || filename)
 }
 
 /*
  * copied and modified from require-from-string
  */
-function requireFromString(filename, code, actualFilepath) {
-  const m = new Module(filename, module.parent)
-  m.filename = filename
-  m.paths = Module._nodeModulePaths(path.dirname(actualFilepath || filename))
-  m._compile(code, filename)
+function requireFromString(code, filepath) {
+  const m = new Module(filepath, module.parent)
+  m.filename = filepath
+  m.paths = Module._nodeModulePaths(path.dirname(filepath))
+  m._compile(code, filepath)
   return m.exports
 }
 

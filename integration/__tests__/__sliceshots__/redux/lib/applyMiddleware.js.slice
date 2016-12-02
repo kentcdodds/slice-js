@@ -1,0 +1,11 @@
+exports[`/Users/kdodds/Developer/slice-js/integration/node_modules/redux/lib/applyMiddleware.js`] = `
+"\'use strict\';
+
+exports.__esModule = true;
+
+var _compose = require(\'./compose\');
+
+function _interopRequireDefault(obj) {
+  return obj;
+}"
+`;

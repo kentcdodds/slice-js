@@ -171,14 +171,14 @@ class App extends Component {
               <pre>{JSON.stringify(slicedResult, null, 2)}</pre>
             </div>
           )}
-          {slicedCode ? <ASTExplorerCode filteredCoverage={filteredCoverage} /> : null}
+          <ASTExplorerCode filteredCoverage={filteredCoverage} />
         </div>
       </div>
     )
   }
 }
 
-function ASTExplorerCode({filteredCoverage}) {
+function ASTExplorerCode({filteredCoverage = {}}) {
   return (
     <div>
       Generate plugin for <a href="https://astexplorer.net">astexplorer.net</a>.
@@ -209,7 +209,7 @@ ${
 }
 
 ASTExplorerCode.propTypes = {
-  filteredCoverage: PropTypes.object.isRequired,
+  filteredCoverage: PropTypes.object,
 }
 
 const root = document.getElementById('root')

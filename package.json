@@ -60,12 +60,12 @@
     ]
   },
   "jest": {
-    "cacheDirectory": "./node_modules/.cache",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/fixtures/",
-      "/helpers/"
+      "/helpers/",
+      "/integration/"
     ],
     "coverageThreshold": {
       "global": {
