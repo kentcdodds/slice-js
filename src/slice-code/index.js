@@ -1,4 +1,5 @@
 import * as babel from 'babel-core'
+import prettierEslint from 'prettier-eslint'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import customDeadCodeElimination
   from './babel-plugin-custom-dead-code-elimination'
@@ -55,5 +56,13 @@ function sliceCodeFromFilteredCoverage(sourceCode, filteredCoverage) {
     plugins: [customDeadCodeElimination],
   })
   // console.log('customDeadCodeElimiated', customDeadCodeElimiated)
-  return customDeadCodeElimiated
+  try {
+    const formattedCode = prettierEslint({
+      text: customDeadCodeElimiated,
+      filePath: filename,
+    })
+    return formattedCode
+  } catch (error) {
+    return customDeadCodeElimiated
+  }
 }

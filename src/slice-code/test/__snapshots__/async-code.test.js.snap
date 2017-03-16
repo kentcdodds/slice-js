@@ -1,105 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`callPromise(false) && callPromise(true) 1`] = `
-"export { callPromise };
+"export {callPromise}
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
     if (pass) {
-      resolve('pass');
+      resolve('pass')
     } else {
-      reject('!pass');
+      reject('!pass')
     }
-  });
+  })
 }
 
 function callPromise(pass) {
-  return promise(pass).catch(rejection => rejection);
-}"
+  return promise(pass).catch(rejection => rejection)
+}
+"
 `;
 
 exports[`callPromise(false) 1`] = `
-"export { callPromise };
+"export {callPromise}
 
 function promise() {
   return new Promise((resolve, reject) => {
-    reject('!pass');
-  });
+    reject('!pass')
+  })
 }
 
 function callPromise(pass) {
-  return promise(pass).catch(rejection => rejection);
-}"
+  return promise(pass).catch(rejection => rejection)
+}
+"
 `;
 
 exports[`callPromise(true) 1`] = `
-"export { callPromise };
+"export {callPromise}
 
 function promise() {
   return new Promise(resolve => {
-    resolve('pass');
-  });
+    resolve('pass')
+  })
 }
 
 function callPromise(pass) {
-  return promise(pass).catch();
-}"
+  return promise(pass).catch()
+}
+"
 `;
 
 exports[`callback(false) && callback(true) 1`] = `
-"export { callPromise, callback };
+"export {callPromise, callback}
 
 function promise(pass) {
   return new Promise((resolve, reject) => {
     if (pass) {
-      resolve('pass');
+      resolve('pass')
     } else {
-      reject('!pass');
+      reject('!pass')
     }
-  });
+  })
 }
 
 function callback(pass, cb) {
-  return callPromise(pass).then(cb, cb);
+  return callPromise(pass).then(cb, cb)
 }
 
 function callPromise(pass) {
-  return promise(pass).catch(rejection => rejection);
-}"
+  return promise(pass).catch(rejection => rejection)
+}
+"
 `;
 
 exports[`callback(false) 1`] = `
-"export { callPromise, callback };
+"export {callPromise, callback}
 
 function promise() {
   return new Promise((resolve, reject) => {
-    reject('!pass');
-  });
+    reject('!pass')
+  })
 }
 
 function callback(pass, cb) {
-  return callPromise(pass).then(cb, cb);
+  return callPromise(pass).then(cb, cb)
 }
 
 function callPromise(pass) {
-  return promise(pass).catch(rejection => rejection);
-}"
+  return promise(pass).catch(rejection => rejection)
+}
+"
 `;
 
 exports[`callback(true) 1`] = `
-"export { callPromise, callback };
+"export {callPromise, callback}
 
 function promise() {
   return new Promise(resolve => {
-    resolve('pass');
-  });
+    resolve('pass')
+  })
 }
 
 function callback(pass, cb) {
-  return callPromise(pass).then(cb, cb);
+  return callPromise(pass).then(cb, cb)
 }
 
 function callPromise(pass) {
-  return promise(pass).catch();
-}"
+  return promise(pass).catch()
+}
+"
 `;

@@ -32,6 +32,12 @@ class App extends Component {
     this.updateSlice()
   }
 
+  handleCodeMirrorKeyPress = event => {
+    if (event.which === 13 && (event.metaKey || event.ctrlKey)) {
+      this.updateSlice(true)
+    }
+  }
+
   updateSlice = async force => {
     const {codeToSlice, moduleUsage, autoRun} = this.state
     if (!autoRun && !force) {
@@ -126,7 +132,10 @@ class App extends Component {
               options={codemirrorOptions}
             />
           </div>
-          <div style={{width: '50%', paddingLeft: 10}}>
+          <div
+            style={{width: '50%', paddingLeft: 10}}
+            onKeyPress={this.handleCodeMirrorKeyPress}
+          >
             <strong>Usage</strong>
             <br />
             <Codemirror

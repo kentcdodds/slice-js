@@ -1,115 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`assignmentTernary("a") && assignmentTernary("b") 1`] = `
-"export { assignmentTernary };
+"export {assignmentTernary}
 
 const output = {
   map: {
-    a: 'A'
-  }
-};
+    a: 'A',
+  },
+}
 
 function assignmentTernary(letter) {
-  let string = 'init';
-  string += letter in output.map ? output.map[letter] : letter;
-  return string;
-}"
+  let string = 'init'
+  string += letter in output.map ? output.map[letter] : letter
+  return string
+}
+"
 `;
 
 exports[`assignmentTernary("a") 1`] = `
-"export { assignmentTernary };
+"export {assignmentTernary}
 
 const output = {
   map: {
-    a: 'A'
-  }
-};
+    a: 'A',
+  },
+}
 
 function assignmentTernary(letter) {
-  let string = 'init';
-  string += output.map[letter];
-  return string;
-}"
+  let string = 'init'
+  string += output.map[letter]
+  return string
+}
+"
 `;
 
 exports[`assignmentTernary("b") 1`] = `
-"export { assignmentTernary };
+"export {assignmentTernary}
 
 function assignmentTernary(letter) {
-  let string = 'init';
-  string += letter;
-  return string;
-}"
+  let string = 'init'
+  string += letter
+  return string
+}
+"
 `;
 
 exports[`diacriticsClean("Some Google") 1`] = `
-"export { diacriticsClean };
+"export {diacriticsClean}
 
 function diacriticsClean(input) {
-
-  var string = '';
-  var letters = input.split('');
-  var index = 0;
-  var length = letters.length;
-  var letter;
+  var string = ''
+  var letters = input.split('')
+  var index = 0
+  var length = letters.length
+  var letter
 
   for (; index < length; index++) {
-    letter = letters[index];
-    string += letter;
+    letter = letters[index]
+    string += letter
   }
 
-  return string;
-}"
+  return string
+}
+"
 `;
 
 exports[`diacriticsClean("Some apple") && diacriticsClean("Some Google") 1`] = `
-"export { diacriticsClean };
+"export {diacriticsClean}
 
 const output = {
   map: {
-    a: 'A'
-  }
-};
+    a: 'A',
+  },
+}
 
 function diacriticsClean(input) {
-
-  var string = '';
-  var letters = input.split('');
-  var index = 0;
-  var length = letters.length;
-  var letter;
+  var string = ''
+  var letters = input.split('')
+  var index = 0
+  var length = letters.length
+  var letter
 
   for (; index < length; index++) {
-    letter = letters[index];
-    string += letter in output.map ? output.map[letter] : letter;
+    letter = letters[index]
+    string += letter in output.map ? output.map[letter] : letter
   }
 
-  return string;
-}"
+  return string
+}
+"
 `;
 
 exports[`diacriticsClean("Some apple") 1`] = `
-"export { diacriticsClean };
+"export {diacriticsClean}
 
 const output = {
   map: {
-    a: 'A'
-  }
-};
+    a: 'A',
+  },
+}
 
 function diacriticsClean(input) {
-
-  var string = '';
-  var letters = input.split('');
-  var index = 0;
-  var length = letters.length;
-  var letter;
+  var string = ''
+  var letters = input.split('')
+  var index = 0
+  var length = letters.length
+  var letter
 
   for (; index < length; index++) {
-    letter = letters[index];
-    string += letter in output.map ? output.map[letter] : letter;
+    letter = letters[index]
+    string += letter in output.map ? output.map[letter] : letter
   }
 
-  return string;
-}"
+  return string
+}
+"
 `;

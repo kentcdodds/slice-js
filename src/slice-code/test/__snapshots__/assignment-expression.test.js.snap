@@ -1,37 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`divideEqual(15, 5) 1`] = `
-"export { divideEqual };
+"export {divideEqual}
 
 function divideEqual(thingOne, thingTwo) {
-  thingOne /= thingTwo;
-  return thingOne;
-}"
+  thingOne /= thingTwo
+  return thingOne
+}
+"
 `;
 
 exports[`minusEqual(15, 5) 1`] = `
-"export { minusEqual };
+"export {minusEqual}
 
 function minusEqual(thingOne, thingTwo) {
-  thingOne -= thingTwo;
-  return thingOne;
-}"
+  thingOne -= thingTwo
+  return thingOne
+}
+"
 `;
 
 exports[`multiplyEqual(15, 5) 1`] = `
-"export { multiplyEqual };
+"export {multiplyEqual}
 
 function multiplyEqual(thingOne, thingTwo) {
-  thingOne *= thingTwo;
-  return thingOne;
-}"
+  thingOne *= thingTwo
+  return thingOne
+}
+"
 `;
 
 exports[`plusEqual(15, 5) 1`] = `
-"export { plusEqual };
+"export {plusEqual}
 
 function plusEqual(thingOne, thingTwo) {
-  thingOne += thingTwo;
-  return thingOne;
-}"
+  thingOne += thingTwo
+  return thingOne
+}
+"
 `;

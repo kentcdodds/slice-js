@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`makePizza({"type":"cheese","size":"Large"}) 1`] = `
-"export { makePizza };
+"export {makePizza}
 
-const getCrust = (size, crustType) => \`\${size}: \${crustType || 'Hand tossed pizza'}\`;
+const getCrust = (size, crustType) =>
+  \`\${size}: \${crustType || 'Hand tossed pizza'}\`
 
 function makePizza(order) {
   const pizza = {
@@ -13,13 +14,14 @@ function makePizza(order) {
     sauce: undefined,
     cheese: undefined,
     meats: undefined,
-    veggies: undefined
-  };
+    veggies: undefined,
+  }
 
-  return preparePizza(pizza);
+  return preparePizza(pizza)
 }
 
 function preparePizza(pizza) {
-  return pizza;
-}"
+  return pizza
+}
+"
 `;

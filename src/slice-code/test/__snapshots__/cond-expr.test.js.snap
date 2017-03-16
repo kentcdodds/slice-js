@@ -1,172 +1,243 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`isConsequentOrAlternate(false) && isConsequentOrAlternate(true) 1`] = `
-"export { isConsequentOrAlternate };
+"export {isConsequentOrAlternate}
 
 function isConsequentOrAlternate(isConsequent) {
-  return isConsequent ? isConsequent : !isConsequent;
-}"
+  return isConsequent ? isConsequent : !isConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternate(false) 1`] = `
-"export { isConsequentOrAlternate };
+"export {isConsequentOrAlternate}
 
 function isConsequentOrAlternate(isConsequent) {
-  return !isConsequent;
-}"
+  return !isConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternate(true) 1`] = `
-"export { isConsequentOrAlternate };
+"export {isConsequentOrAlternate}
 
 function isConsequentOrAlternate(isConsequent) {
-  return isConsequent;
-}"
+  return isConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ?
+    isConsequent :
+    isAlternatesConsequent ?
+        isAlternatesConsequent :
+        !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ?
+    isConsequent :
+    isAlternatesConsequent ?
+        isAlternatesConsequent :
+        !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ?
+    isConsequent :
+    isAlternatesConsequent ?
+        isAlternatesConsequent :
+        !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isAlternatesConsequent ?
+    isAlternatesConsequent :
+    !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return !isConsequent && !isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return !isConsequent && !isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, true) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isConsequent ? isConsequent : isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(false, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
-function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isAlternatesConsequent;
-}"
+function isConsequentOrAlternatesConsequentOrAlternate(
+  isConsequent,
+  isAlternatesConsequent,
+) {
+  return isAlternatesConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(true, false) && isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
-  return isConsequent;
-}"
+  return isConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(true, false) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
-  return isConsequent;
-}"
+  return isConsequent
+}
+"
 `;
 
 exports[`isConsequentOrAlternatesConsequentOrAlternate(true, true) 1`] = `
-"export { isConsequentOrAlternatesConsequentOrAlternate };
+"export {isConsequentOrAlternatesConsequentOrAlternate}
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent) {
-  return isConsequent;
-}"
+  return isConsequent
+}
+"
 `;
 
 exports[`uncoveredConditionalExpression(false) && uncoveredConditionalExpression(true) 1`] = `
-"export { uncoveredConditionalExpression };
+"export {uncoveredConditionalExpression}
 
 function uncoveredConditionalExpression(cover) {
   if (cover) {
-    return cover;
+    return cover
   }
-  return !cover;
-}"
+  return !cover
+}
+"
 `;
 
 exports[`uncoveredConditionalExpression(false) 1`] = `
-"export { uncoveredConditionalExpression };
+"export {uncoveredConditionalExpression}
 
 function uncoveredConditionalExpression(cover) {
-  return !cover;
-}"
+  return !cover
+}
+"
 `;
 
 exports[`uncoveredConditionalExpression(true) 1`] = `
-"export { uncoveredConditionalExpression };
+"export {uncoveredConditionalExpression}
 
 function uncoveredConditionalExpression(cover) {
-  return cover;
-}"
+  return cover
+}
+"
 `;

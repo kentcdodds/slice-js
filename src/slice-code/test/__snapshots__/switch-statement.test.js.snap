@@ -1,1223 +1,1292 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`switchWithDefault("snickers") 1`] = `
-"export { switchWithDefault };
+"export {switchWithDefault}
 
 function switchWithDefault() {
-  return 'default, no candy :-(';
-}"
+  return 'default, no candy :-('
+}
+"
 `;
 
 exports[`switchWithDefault("twix") && switchWithDefault("snickers") 1`] = `
-"export { switchWithDefault };
+"export {switchWithDefault}
 
 function switchWithDefault(candy) {
   switch (candy) {
     case 'twix':
-      return \`case \${candy}\`;
+      return \`case \${candy}\`
     default:
-      return 'default, no candy :-(';
+      return 'default, no candy :-('
   }
-}"
+}
+"
 `;
 
 exports[`switchWithDefault("twix") 1`] = `
-"export { switchWithDefault };
+"export {switchWithDefault}
 
 function switchWithDefault(candy) {
-  return \`case \${candy}\`;
-}"
+  return \`case \${candy}\`
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("purple") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("blue") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("purple") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("blue") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("purple") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("green") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'green':
     case 'blue':
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
 
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") && switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'purple':
-      ret = \`1st \${color}\`;
-      break;
+      ret = \`1st \${color}\`
+      break
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("purple") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
 
-  ret = \`1st \${color}\`;
+  ret = \`1st \${color}\`
 
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
 
-  ret = \`2nd \${color}\`;
+  ret = \`2nd \${color}\`
 
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("yellow") && switchWithFallThrough("orange") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("yellow") && switchWithFallThrough("orange") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("yellow") && switchWithFallThrough("red") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithFallThrough("yellow") 1`] = `
-"export { switchWithFallThrough };
+"export {switchWithFallThrough}
 
 function switchWithFallThrough(color) {
-  let ret = null;
+  let ret = null
   switch (color) {
     case 'yellow':
     case 'orange':
     case 'red':
-      ret = \`2nd \${color}\`;
+      ret = \`2nd \${color}\`
   }
-  return ret;
-}"
+  return ret
+}
+"
 `;
 
 exports[`switchWithSideEffects({"name":"harry"}) && switchWithSideEffects({"name":"ron"}) 1`] = `
-"export { switchWithSideEffects };
+"export {switchWithSideEffects}
 
 function switchWithSideEffects(character) {
   switch (sideEffect(character)) {
     case 'harry':
-      return ['main', character];
+      return ['main', character]
     default:
-      return ['supporting', character];
+      return ['supporting', character]
   }
 
   function sideEffect(obj) {
-    obj.touched = true;
-    return obj.name;
+    obj.touched = true
+    return obj.name
   }
-}"
+}
+"
 `;
 
 exports[`switchWithSideEffects({"name":"harry"}) 1`] = `
-"export { switchWithSideEffects };
+"export {switchWithSideEffects}
 
 function switchWithSideEffects(character) {
-  (function (obj) {
-    obj.touched = true;
-    return obj.name;
-  })(character);
-  return ['main', character];
-}"
+  (function(obj) {
+    obj.touched = true
+    return obj.name
+  })(character)
+  return ['main', character]
+}
+"
 `;
 
 exports[`switchWithSideEffects({"name":"ron"}) 1`] = `
-"export { switchWithSideEffects };
+"export {switchWithSideEffects}
 
 function switchWithSideEffects(character) {
-  (function (obj) {
-    obj.touched = true;
-    return obj.name;
-  })(character);
-  return ['supporting', character];
-}"
+  (function(obj) {
+    obj.touched = true
+    return obj.name
+  })(character)
+  return ['supporting', character]
+}
+"
 `;

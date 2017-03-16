@@ -1,83 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`condExpr(false) && condExpr(true) 1`] = `
-"export { condExpr };
+"export {condExpr}
 
 function condExpr(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
-  return 'reached CondExpr Consequent';
-}"
+  return 'reached CondExpr Consequent'
+}
+"
 `;
 
 exports[`condExpr(false) 1`] = `
-"export { condExpr };
+"export {condExpr}
 
 function condExpr() {
-  return 'did not reach IfStatement';
-}"
+  return 'did not reach IfStatement'
+}
+"
 `;
 
 exports[`condExpr(true) 1`] = `
-"export { condExpr };
+"export {condExpr}
 
 function condExpr() {
-  return 'reached CondExpr Consequent';
-}"
+  return 'reached CondExpr Consequent'
+}
+"
 `;
 
 exports[`ifStatement(false) && ifStatement(true) 1`] = `
-"export { ifStatement };
+"export {ifStatement}
 
 function ifStatement(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
 
-  return 'reached IfStatement';
-}"
+  return 'reached IfStatement'
+}
+"
 `;
 
 exports[`ifStatement(false) 1`] = `
-"export { ifStatement };
+"export {ifStatement}
 
 function ifStatement() {
-  return 'did not reach IfStatement';
-}"
+  return 'did not reach IfStatement'
+}
+"
 `;
 
 exports[`ifStatement(true) 1`] = `
-"export { ifStatement };
+"export {ifStatement}
 
 function ifStatement() {
-  return 'reached IfStatement';
-}"
+  return 'reached IfStatement'
+}
+"
 `;
 
 exports[`logicalExpr(false) && logicalExpr(true) 1`] = `
-"export { logicalExpr };
+"export {logicalExpr}
 
 function logicalExpr(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
-  return passIf && 'reached LogicalExpression';
-}"
+  return passIf && 'reached LogicalExpression'
+}
+"
 `;
 
 exports[`logicalExpr(false) 1`] = `
-"export { logicalExpr };
+"export {logicalExpr}
 
 function logicalExpr(passIf) {
-  return 'did not reach IfStatement';
-}"
+  return 'did not reach IfStatement'
+}
+"
 `;
 
 exports[`logicalExpr(true) 1`] = `
-"export { logicalExpr };
+"export {logicalExpr}
 
 function logicalExpr(passIf) {
-  return passIf && 'reached LogicalExpression';
-}"
+  return passIf && 'reached LogicalExpression'
+}
+"
 `;

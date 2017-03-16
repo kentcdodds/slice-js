@@ -1,811 +1,826 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"name":"Luke"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  Object.prototype.toString.call(item);
+  const type = typeof item
+  Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
-    result = {};
+  if (!(type !== 'object' && type !== 'function')) {
+    result = {}
     for (const i in item) {
-      result[i] = clone(item[i]);
+      result[i] = clone(item[i])
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  Object.prototype.toString.call(item);
+  const type = typeof item
+  Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
-    result = {};
+  if (!(type !== 'object' && type !== 'function')) {
+    result = {}
     for (const i in item) {
-      result[i] = clone(item[i]);
+      result[i] = clone(item[i])
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone("hello") && clone(null) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
 
-  Object.prototype.toString.call(item);
+  Object.prototype.toString.call(item)
 
-  return item;
-}"
+  return item
+}
+"
 `;
 
 exports[`clone("hello") 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  Object.prototype.toString.call(item);
+  Object.prototype.toString.call(item)
 
-  return item;
-}"
+  return item
+}
+"
 `;
 
 exports[`clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"name":"Luke"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  Object.prototype.toString.call(item);
+  const type = typeof item
+  Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
-    result = {};
+  if (!(type !== 'object' && type !== 'function')) {
+    result = {}
     for (const i in item) {
-      result[i] = clone(item[i]);
+      result[i] = clone(item[i])
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
+    } else if (string === '[object Date]') {
+      result = new Date(item)
     } else {
-      if (string === '[object Date]') {
-        result = new Date(item);
-      } else {
-        result = {};
-        for (const i in item) {
-          result[i] = clone(item[i]);
-        }
+      result = {}
+      for (const i in item) {
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Array]') {
-      result = [];
+      result = []
       item.forEach((child, index) => {
-        result[index] = clone(child);
-      });
+        result[index] = clone(child)
+      })
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"name":"Luke"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  Object.prototype.toString.call(item);
+  const type = typeof item
+  Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
-    result = {};
+  if (!(type !== 'object' && type !== 'function')) {
+    result = {}
     for (const i in item) {
-      result[i] = clone(item[i]);
+      result[i] = clone(item[i])
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
   if (!item) {
-    return item;
+    return item
   }
-  const type = typeof item;
-  const string = Object.prototype.toString.call(item);
+  const type = typeof item
+  const string = Object.prototype.toString.call(item)
 
-  let result = item;
+  let result = item
 
-  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+  if (!(type !== 'object' && type !== 'function')) {
     if (string === '[object Date]') {
-      result = new Date(item);
+      result = new Date(item)
     } else {
-      result = {};
+      result = {}
       for (const i in item) {
-        result[i] = clone(item[i]);
+        result[i] = clone(item[i])
       }
     }
   }
 
-  return result;
-}"
+  return result
+}
+"
 `;
 
 exports[`clone(null) 1`] = `
-"export default clone;
+"export default clone
 
 function clone(item) {
-  return item;
-}"
+  return item
+}
+"
 `;

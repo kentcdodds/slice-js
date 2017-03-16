@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matchSorter(["hi","hey","hello","sup","yo"], "y") 1`] = `
-"'use strict';
+"
 
-var _diacritic = require('diacritic');
+var _diacritic = require('diacritic')
 
-var _diacritic2 = _interopRequireDefault(_diacritic);
+var _diacritic2 = _interopRequireDefault(_diacritic)
 
-var _globalObject = require('global-object');
+var _globalObject = require('global-object')
 
 function _interopRequireDefault(obj) {
-  return { default: obj };
+  return {default: obj}
 }
 
 var rankings = {
@@ -21,68 +21,75 @@ var rankings = {
   CONTAINS: 3,
   ACRONYM: 2,
   MATCHES: 1,
-  NO_MATCH: 0
-};
+  NO_MATCH: 0,
+}
 
-matchSorter.rankings = rankings;
+matchSorter.rankings = rankings
 
 function matchSorter(items, value) {
-  var options = {};
+  var options = {}
   var keys = options.keys,
-      threshold = rankings.MATCHES;
+    threshold = rankings.MATCHES
 
-  var matchedItems = items.reduce(function (matches, item, index) {
-    var _getHighestRanking = getHighestRanking(item, keys, value, options),
+  var matchedItems = items.reduce(
+    (matches, item, index) => {
+      var _getHighestRanking = getHighestRanking(item, keys, value, options),
         rank = _getHighestRanking.rank,
-        keyIndex = _getHighestRanking.keyIndex;
+        keyIndex = _getHighestRanking.keyIndex
 
-    if (rank >= threshold) {
-      matches.push({ item: item, rank: rank, index: index, keyIndex: keyIndex });
-    }
-    return matches;
-  }, []);
-  return matchedItems.sort(sortRankedItems).map(function (_ref) {
-    var item = _ref.item;
-    return item;
-  });
+      if (rank >= threshold) {
+        matches.push({
+          item,
+          rank,
+          index,
+          keyIndex,
+        })
+      }
+      return matches
+    },
+    [],
+  )
+  return matchedItems.sort(sortRankedItems).map(_ref => {
+    var item = _ref.item
+    return item
+  })
 }
 
 function getHighestRanking(item, keys, value, options) {
-  return { rank: getMatchRanking(item, value, options), keyIndex: -1 };
+  return {rank: getMatchRanking(item, value, options), keyIndex: -1}
 }
 
 function getMatchRanking(testString, stringToRank, options) {
-  testString = prepareValueForComparison(testString, options);
-  stringToRank = prepareValueForComparison(stringToRank, options);
+  testString = prepareValueForComparison(testString, options)
+  stringToRank = prepareValueForComparison(stringToRank, options)
 
-  testString = testString.toLowerCase();
-  stringToRank = stringToRank.toLowerCase();
+  testString = testString.toLowerCase()
+  stringToRank = stringToRank.toLowerCase()
 
   if (testString.indexOf(stringToRank) === 0) {
-    return rankings.STARTS_WITH;
+    return rankings.STARTS_WITH
   }
 
   if (testString.indexOf(stringToRank) !== -1) {
-    return rankings.CONTAINS;
+    return rankings.CONTAINS
   } else {
-    return rankings.NO_MATCH;
+    return rankings.NO_MATCH
   }
 }
 
 function sortRankedItems(a, b) {
-
-  return 1;
+  return 1
 }
 
 function prepareValueForComparison(value, _ref4) {
+  value = \`\${value}\`
+  value = _diacritic2.default.clean(value)
 
-  value = '' + value;
-  value = _diacritic2.default.clean(value);
-
-  return value;
+  return value
 }
 
-matchSorter.default = matchSorter;
-module.exports = matchSorter;
-Object.defineProperty(exports, '__esModule', { value: true });"
+matchSorter.default = matchSorter
+module.exports = matchSorter
+Object.defineProperty(exports, '__esModule', {value: true})
+"
 `;

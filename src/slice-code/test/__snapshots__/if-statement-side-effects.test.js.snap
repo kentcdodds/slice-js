@@ -1,77 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ifWithAssignment(false) && ifWithAssignment(true) 1`] = `
-"export { ifWithAssignment };
+"export {ifWithAssignment}
 
 function ifWithAssignment(passIf) {
-  let x;
+  let x
   if ((x = 'hi') && passIf) {
-    return x + passIf;
+    return x + passIf
   } else {
-    return !passIf + x;
+    return !passIf + x
   }
-}"
+}
+"
 `;
 
 exports[`ifWithAssignment(false) 1`] = `
-"export { ifWithAssignment };
+"export {ifWithAssignment}
 
 function ifWithAssignment(passIf) {
-  let x = 'hi';
+  let x = 'hi'
 
-  return !passIf + x;
-}"
+  return !passIf + x
+}
+"
 `;
 
 exports[`ifWithAssignment(true) 1`] = `
-"export { ifWithAssignment };
+"export {ifWithAssignment}
 
 function ifWithAssignment(passIf) {
-  let x = 'hi';
+  let x = 'hi'
 
-  return x + passIf;
-}"
+  return x + passIf
+}
+"
 `;
 
 exports[`ifWithFunctionCall(false) && ifWithFunctionCall(true) 1`] = `
-"export { ifWithFunctionCall };
+"export {ifWithFunctionCall}
 
 function ifWithFunctionCall(passIf) {
-  let thing;
+  let thing
 
-  if (passIf && (a => (thing = a, passIf))('hey') && function (a) {
-    return a;
-  }(passIf)) {
-    return thing + passIf;
+  if (
+    passIf &&
+    (a => ((thing = a), passIf))('hey') &&
+    (function(a) {
+      return a
+    })(passIf)
+  ) {
+    return thing + passIf
   } else {
-    return !passIf;
+    return !passIf
   }
-}"
+}
+"
 `;
 
 exports[`ifWithFunctionCall(false) 1`] = `
-"export { ifWithFunctionCall };
+"export {ifWithFunctionCall}
 
 function ifWithFunctionCall(passIf) {
-  !function (a) {
-    return a;
-  }(passIf);
+  !(function(a) {
+    return a
+  })(passIf)
 
-  return !passIf;
-}"
+  return !passIf
+}
+"
 `;
 
 exports[`ifWithFunctionCall(true) 1`] = `
-"export { ifWithFunctionCall };
+"export {ifWithFunctionCall}
 
 function ifWithFunctionCall(passIf) {
-  let thing;
+  let thing
 
-  passIf && (a => (thing = a, passIf))('hey');
-  (function (a) {
-    return a;
-  })(passIf);
+  passIf && (a => ((thing = a), passIf))('hey');
+  (function(a) {
+    return a
+  })(passIf)
 
-  return thing + passIf;
-}"
+  return thing + passIf
+}
+"
 `;
