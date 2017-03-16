@@ -1,4 +1,6 @@
-/* eslint max-lines:[2, 1000] */ // I know it's nuts, but it's a lot easier to develop with ASTExplorer.net this way...
+// I know it's nuts, but it's a lot easier
+// to develop with ASTExplorer.net this way...
+/* eslint max-lines:[2, 1000] max-len:0 */
 /* eslint no-negated-condition:0 */
 // for development, fork this: https://astexplorer.net/#/bk7MWWZZOR
 // and log and copy/paste filteredCoverage and the plugin source
@@ -30,13 +32,25 @@ function getSliceCodeTransform(filteredCoverage) {
           path.traverse({
             enter(childPath) {
               const {key, node, parent, parentPath} = childPath
-              const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
+              const otherKey = key === 'consequent' ?
+                'alternate' :
+                'consequent'
               if (skipPath()) {
                 return
               }
-              const sideIsCovered = isBranchSideCovered(branchMap, key, node, parent)
+              const sideIsCovered = isBranchSideCovered(
+                branchMap,
+                key,
+                node,
+                parent,
+              )
               const otherSideExists = !!path.node[otherKey]
-              const otherSideIsCovered = isBranchSideCovered(branchMap, otherKey, node, parent)
+              const otherSideIsCovered = isBranchSideCovered(
+                branchMap,
+                otherKey,
+                node,
+                parent,
+              )
               if (isUncoveredAndMissingElse()) {
                 handleUncoveredAndMissingElse()
               } else if (hasUncoveredSide()) {
@@ -44,7 +58,9 @@ function getSliceCodeTransform(filteredCoverage) {
               }
 
               function skipPath() {
-                return parentPath.removed || parentPath !== path || !(key === 'consequent' || key === 'alternate')
+                return parentPath.removed ||
+                  parentPath !== path ||
+                  !(key === 'consequent' || key === 'alternate')
               }
 
               function isUncoveredAndMissingElse() {
@@ -70,14 +86,18 @@ function getSliceCodeTransform(filteredCoverage) {
                 // if (foo) { /* not covered */ } else { /* not covered */ } // result: removed
                 // if (foo) { /* covered */ } (else-path doesn't exist and isn't covered) // result: /* covered */
                 // if (foo) { /* covered */ } else { /* not covered */ } // result: ... not sure :shrug:
-                return ((!sideIsCovered || !otherSideExists) && !otherSideIsCovered) ||
+                return ((!sideIsCovered || !otherSideExists) &&
+                  !otherSideIsCovered) ||
                   (!sideIsCovered && otherSideIsCovered)
               }
             },
           })
         },
         ConditionalExpression(path) {
-          const branchCoverageData = getBranchCoverageData(branchMap, path.node)
+          const branchCoverageData = getBranchCoverageData(
+            branchMap,
+            path.node,
+          )
 
           if (!branchCoverageData) {
             // console.log('2981')
@@ -87,7 +107,9 @@ function getSliceCodeTransform(filteredCoverage) {
           path.traverse({
             enter(childPath) {
               const {key} = childPath
-              const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
+              const otherKey = key === 'consequent' ?
+                'alternate' :
+                'consequent'
               if (
                 !childPath.removed &&
                 childPath.parentPath === path &&
@@ -101,13 +123,19 @@ function getSliceCodeTransform(filteredCoverage) {
           })
         },
         LogicalExpression(path) {
-          const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(branchMap, path.node)
+          const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(
+            branchMap,
+            path.node,
+          )
           if (!branchCoverageInfo) {
             // if there's not branch coverage info available, that could mean that this
             // LogicalExpression is part of another LogicalExpression, so we can skip this one
             return
           }
-          const nodesToPreserve = getLogicalExpressionNodesToPreserve(path, branchMap)
+          const nodesToPreserve = getLogicalExpressionNodesToPreserve(
+            path,
+            branchMap,
+          )
           // console.log(nodesToPreserve)
           path.traverse({
             enter(childPath) {
@@ -120,12 +148,16 @@ function getSliceCodeTransform(filteredCoverage) {
                 return
               }
               if (!nodesToPreserve.includes(childPath.node)) {
-                const otherSideKey = childPath.key === 'left' ? 'right' : 'left'
+                const otherSideKey = childPath.key === 'left' ?
+                  'right' :
+                  'left'
                 replaceNodeWithNodeFromParent(childPath, otherSideKey)
               }
 
               function handleNestedLogicalExpression(nestedExpressionPath) {
-                const otherSideKey = nestedExpressionPath.key === 'left' ? 'right' : 'left'
+                const otherSideKey = nestedExpressionPath.key === 'left' ?
+                  'right' :
+                  'left'
                 // if the child is a LogicalExpression, then we need to replace the parent node with only the
                 // side of the expression that is covered.
                 const includesLeft = isNestedLogicalExpressionIsCovered(
@@ -139,7 +171,10 @@ function getSliceCodeTransform(filteredCoverage) {
                 if (!includesLeft && !includesRight) {
                   // if neither side is covered, then take the parent
                   // (LogicalExpression) and replace it with just the other side
-                  replaceNodeWithNodeFromParent(nestedExpressionPath, otherSideKey)
+                  replaceNodeWithNodeFromParent(
+                    nestedExpressionPath,
+                    otherSideKey,
+                  )
                   return
                 }
                 if (includesLeft && includesRight) {
@@ -149,13 +184,17 @@ function getSliceCodeTransform(filteredCoverage) {
                   // if the right isn't covered (and the left is),
                   // then just replace the whole LogicalExpression with the left
                   // console.log('3045')
-                  nestedExpressionPath.replaceWith(nestedExpressionPath.node.left)
+                  nestedExpressionPath.replaceWith(
+                    nestedExpressionPath.node.left,
+                  )
                 } else {
                   // !includesLeft
                   // if the left isn't covered (and the right is),
                   // then just replace the whole LogicalExpression with the right
                   // console.log('3049')
-                  nestedExpressionPath.replaceWith(nestedExpressionPath.node.right)
+                  nestedExpressionPath.replaceWith(
+                    nestedExpressionPath.node.right,
+                  )
                 }
                 return // eslint-disable-line no-useless-return
               }
@@ -167,13 +206,22 @@ function getSliceCodeTransform(filteredCoverage) {
           const tryBlockPath = path.get('block')
           const catchBlockPath = safeGet(path, 'handler.body')
           const finallyBlockPath = path.get('finalizer')
-          const coveredTryStatements = getCoveredStatementsFromBlock(statementMap, tryBlockPath.node)
+          const coveredTryStatements = getCoveredStatementsFromBlock(
+            statementMap,
+            tryBlockPath.node,
+          )
           const coveredCatchStatements = catchBlockPath ?
             getCoveredStatementsFromBlock(statementMap, catchBlockPath.node) :
             null
-          const coveredFinallyStatements = getCoveredStatementsFromBlock(statementMap, finallyBlockPath.node)
+          const coveredFinallyStatements = getCoveredStatementsFromBlock(
+            statementMap,
+            finallyBlockPath.node,
+          )
           if (coveredCatchStatements && !coveredCatchStatements.length) {
-            path.replaceWithMultiple([...coveredTryStatements, ...coveredFinallyStatements])
+            path.replaceWithMultiple([
+              ...coveredTryStatements,
+              ...coveredFinallyStatements,
+            ])
           } else if (coveredTryStatements.length < tryBlockPath.node.body) {
             tryBlockPath.node.body = coveredTryStatements
           }
@@ -191,7 +239,9 @@ function getSliceCodeTransform(filteredCoverage) {
           })
           const remainingCases = path.get('cases')
           if (remainingCases.length === 1) {
-            const nodesToPreserve = remainingCases[0].node.consequent.filter(node => {
+            const nodesToPreserve = remainingCases[
+              0
+            ].node.consequent.filter(node => {
               return !t.isBreakStatement(node)
             })
             if (!t.isIdentifier(path.node.discriminant)) {
@@ -241,7 +291,10 @@ function getSliceCodeTransform(filteredCoverage) {
         path.addComment('leading', `slice-js-coverage-ignore ignore next`)
         // if the function is referenced, then the best we can do is clear the body
         path.node.body.body = []
-      } else if (t.isAssignmentExpression(path.parentPath) || t.isFunctionExpression(path)) {
+      } else if (
+        t.isAssignmentExpression(path.parentPath) ||
+        t.isFunctionExpression(path)
+      ) {
         path.parentPath.remove()
       } else {
         removePathAndReferences(path, path.node.id.name)
@@ -274,8 +327,12 @@ function getSliceCodeTransform(filteredCoverage) {
         // foo.bar.baz = () => {}
         // // then later
         // foo.bar.baz.buzz = 'referencing baz'
-        const expressionStatement = path.parentPath.findParent(t.isExpressionStatement)
-        const referenceChain = buildReferenceChain(expressionStatement.get('expression.left'))
+        const expressionStatement = path.parentPath.findParent(
+          t.isExpressionStatement,
+        )
+        const referenceChain = buildReferenceChain(
+          expressionStatement.get('expression.left'),
+        )
         const start = expressionStatement.get('expression.left.object')
         const binding = path.scope.getBinding(start.node.name)
         if (!binding) {
@@ -320,7 +377,9 @@ function getSliceCodeTransform(filteredCoverage) {
             chain.push(property)
             iterations++
             if (iterations > 10) {
-              throw new Error('slice-js avoiding infinite loop in buildReferenceChain')
+              throw new Error(
+                'slice-js avoiding infinite loop in buildReferenceChain',
+              )
             }
           }
           return chain.reverse()
@@ -331,7 +390,9 @@ function getSliceCodeTransform(filteredCoverage) {
         const {name} = path.get('id').node
         path.scope.getBinding(name).referencePaths.every(refPath =>
           refPath.find(
-            parent => !t.isExportDefaultDeclaration(parent) && !t.isExportSpecifier(parent),
+            parent =>
+              !t.isExportDefaultDeclaration(parent) &&
+              !t.isExportSpecifier(parent),
             // we don't care about references to exports
           ))
       }
@@ -343,7 +404,11 @@ function getSliceCodeTransform(filteredCoverage) {
       const replacementNode = parent[key] || path.node
       if (parentPath.type === 'IfStatement') {
         // if there are side-effects in the IfStatement, then we need to preserve those
-        const typesToPreserve = ['AssignmentExpression', 'CallExpression', 'UnaryExpression']
+        const typesToPreserve = [
+          'AssignmentExpression',
+          'CallExpression',
+          'UnaryExpression',
+        ]
         // these can't exist on their own and need to be wrapped in an ExpressionStatement
         const typesToWrap = ['CallExpression', 'UnaryExpression']
         const nodesToPreserve = []
@@ -365,7 +430,9 @@ function getSliceCodeTransform(filteredCoverage) {
             function preserveNode() {
               if (typesToPreserve.includes(testChildPath.node.type)) {
                 if (typesToWrap.includes(testChildPath.node.type)) {
-                  nodesToPreserve.push(t.expressionStatement(testChildPath.node))
+                  nodesToPreserve.push(
+                    t.expressionStatement(testChildPath.node),
+                  )
                 } else {
                   nodesToPreserve.push(testChildPath.node)
                 }
@@ -379,7 +446,9 @@ function getSliceCodeTransform(filteredCoverage) {
               )
               if (testChildPath.parent.type === 'LogicalExpression') {
                 handleNestedLogicalExpression(logicalExpressionNodesToPreserve)
-                if (!logicalExpressionNodesToPreserve.includes(testChildPath.node)) {
+                if (
+                  !logicalExpressionNodesToPreserve.includes(testChildPath.node)
+                ) {
                   // if this part of the LogicalExpression is not covered, then we don't want to preserve it.
                   return EXIT_EARLY
                 }
@@ -391,17 +460,27 @@ function getSliceCodeTransform(filteredCoverage) {
               if (testChildPath.type !== 'LogicalExpression') {
                 return
               }
-              const includesLeft = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.left)
-              const includesRight = isNestedLogicalExpressionIsCovered(coveredNodes, testChildPath.node.right)
+              const includesLeft = isNestedLogicalExpressionIsCovered(
+                coveredNodes,
+                testChildPath.node.left,
+              )
+              const includesRight = isNestedLogicalExpressionIsCovered(
+                coveredNodes,
+                testChildPath.node.right,
+              )
               // need to create an expression statement because we'll be removing the if statement
               // and this needs to be a node that can stand on its own.
               if (includesLeft && includesRight) {
                 nodesToPreserve.push(t.expressionStatement(testChildPath.node))
               } else if (!includesRight) {
-                nodesToPreserve.push(t.expressionStatement(testChildPath.node.left))
+                nodesToPreserve.push(
+                  t.expressionStatement(testChildPath.node.left),
+                )
               } else {
                 // !includesLeft
-                nodesToPreserve.push(t.expressionStatement(testChildPath.node.right))
+                nodesToPreserve.push(
+                  t.expressionStatement(testChildPath.node.right),
+                )
               }
             }
           },
@@ -433,7 +512,9 @@ function getSliceCodeTransform(filteredCoverage) {
           // console.log('I am here')
           // TODO, get more test cases because I'm sure we'll need to actually do something here...
         } else if (t.isAssignmentExpression(binding.parent)) {
-          const expressionStatement = binding.findParent(t.isExpressionStatement)
+          const expressionStatement = binding.findParent(
+            t.isExpressionStatement,
+          )
           const sequenceExpression = binding.findParent(t.isSequenceExpression)
           if (expressionStatement) {
             expressionStatement.remove()
@@ -479,13 +560,16 @@ function getSliceCodeTransform(filteredCoverage) {
         // console.log(binding.scope.getBinding(binding.node.name).referencePaths)
         const {parentPath: callPath} = binding
         const {parentPath: usePath} = callPath
-        const removedNode = binding.findParent(parentPath => removedPaths.has(parentPath))
+        const removedNode = binding.findParent(parentPath =>
+          removedPaths.has(parentPath))
         if (removedNode) {
           // no need to remove any children
           return
         }
         if (usePath.type === 'LogicalExpression') {
-          const otherSideOfLogicalExpressionKey = callPath.key === 'left' ? 'right' : 'left'
+          const otherSideOfLogicalExpressionKey = callPath.key === 'left' ?
+            'right' :
+            'left'
           // console.log('3266')
           usePath.replaceWith(usePath.node[otherSideOfLogicalExpressionKey])
         } else if (usePath.type === 'ConditionalExpression') {
@@ -499,7 +583,11 @@ function getSliceCodeTransform(filteredCoverage) {
       function removeConditionalExpressionSide(condPath) {
         const {key} = condPath
         const otherKey = key === 'consequent' ? 'alternate' : 'consequent'
-        if (!condPath.removed && condPath.parentPath === path && (key === 'consequent' || key === 'alternate')) {
+        if (
+          !condPath.removed &&
+          condPath.parentPath === path &&
+          (key === 'consequent' || key === 'alternate')
+        ) {
           // console.log('3266')
           replaceNodeWithNodeFromParent(condPath, otherKey)
         }
@@ -509,7 +597,9 @@ function getSliceCodeTransform(filteredCoverage) {
 }
 
 function getFunctionCoverageData(fnLocs, {body: {loc: srcLoc}}) {
-  const fnCov = Object.keys(fnLocs).map(key => fnLocs[key]).find(({loc}) => isLocationEqual(loc, srcLoc))
+  const fnCov = Object.keys(fnLocs)
+    .map(key => fnLocs[key])
+    .find(({loc}) => isLocationEqual(loc, srcLoc))
   return fnCov
 }
 
@@ -567,7 +657,8 @@ function isLocationEqual(loc1, loc2) {
   if (!loc1 || !loc2) {
     return false
   }
-  const isEqual = isLineColumnEqual(loc1.start, loc2.start) && isLineColumnEqual(loc1.end, loc2.end)
+  const isEqual = isLineColumnEqual(loc1.start, loc2.start) &&
+    isLineColumnEqual(loc1.end, loc2.end)
   return isEqual
 }
 
@@ -598,7 +689,10 @@ function isStatementCovered(coveredStatements, statement) {
 }
 
 function getLogicalExpressionNodesToPreserve(path, branchMap) {
-  const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(branchMap, path.node)
+  const branchCoverageInfo = getLogicalExpressionBranchCoverageInfo(
+    branchMap,
+    path.node,
+  )
   // console.log('branchCoverageInfo', branchCoverageInfo)
   if (!branchCoverageInfo) {
     // if there's not branch coverage info available, that could mean that this
@@ -608,7 +702,8 @@ function getLogicalExpressionNodesToPreserve(path, branchMap) {
   const nodesToPreserve = []
   path.traverse({
     enter(childPath) {
-      const location = branchCoverageInfo.locations.find(loc => isLocationEqual(loc, childPath.node.loc))
+      const location = branchCoverageInfo.locations.find(loc =>
+        isLocationEqual(loc, childPath.node.loc))
       if (location && location.covered) {
         nodesToPreserve.push(childPath.node)
       }

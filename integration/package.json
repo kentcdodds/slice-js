@@ -12,6 +12,7 @@
     "watch:process-coverage": "nodemon --watch ./scripts/ --watch ./__tests__/ --watch ../src --exec \"npm run process-coverage\""
   },
   "dependencies": {
+    "common-tags": "^1.4.0",
     "jest-snapshot": "^17.0.3",
     "redux": "^3.6.0"
   },

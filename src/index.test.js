@@ -1,11 +1,12 @@
-
 import path from 'path'
 import spawn from 'spawn-command'
 import glob from 'glob'
 
 const BABEL_BIN_PATH = require.resolve('babel-cli/bin/babel-node')
 
-const slicers = glob.sync(path.resolve(__dirname, '../test/fixtures/**/*.slicer.js'))
+const slicers = glob.sync(
+  path.resolve(__dirname, '../test/fixtures/**/*.slicer.js'),
+)
 
 slicers.forEach(slicer => {
   test(relativeizePath(slicer), () => {

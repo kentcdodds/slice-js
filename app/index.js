@@ -1,4 +1,5 @@
-// copied from https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md
+// copied from
+// https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md
 const {app, BrowserWindow} = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will

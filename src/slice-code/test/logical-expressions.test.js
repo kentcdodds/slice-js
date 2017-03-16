@@ -1,11 +1,16 @@
 import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
-// fit(
-//   'orAndOr(false, false, true, true)',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/logical-expressions'), ({orAndOr}) => {
-//     return [orAndOr(false, false, true, true)]
-//   })
-// )
+/*
+test.only(
+  'orAndOr(false, false, true, true)',
+  require('./helpers/utils').snapSlice(
+    require.resolve('./fixtures/logical-expressions'),
+    ({orAndOr}) => {
+      return [orAndOr(false, false, true, true)]
+    },
+  ),
+)
+/* */
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/logical-expressions'),

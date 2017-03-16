@@ -5,7 +5,11 @@ function customDeadCodeElimination({types: t}) {
     visitor: {
       AssignmentExpression(path) {
         const {left, right} = path.node
-        if (t.isIdentifier(left) && t.isIdentifier(right) && left.name === right.name) {
+        if (
+          t.isIdentifier(left) &&
+          t.isIdentifier(right) &&
+          left.name === right.name
+        ) {
           path.remove()
         }
       },
@@ -13,7 +17,10 @@ function customDeadCodeElimination({types: t}) {
         const id = path.get('id')
         if (t.isObjectPattern(id)) {
           id.get('properties').forEach(objectProperty => {
-            findAndRemoveUnusedBindings(objectProperty, objectProperty.get('value'))
+            findAndRemoveUnusedBindings(
+              objectProperty,
+              objectProperty.get('value'),
+            )
           })
         } else if (t.isArrayPattern(id)) {
           id.get('elements').forEach(element => {
@@ -23,17 +30,24 @@ function customDeadCodeElimination({types: t}) {
           const keepReferences = true // TODO, there appears to be a bug with
           findAndRemoveUnusedBindings(path, id, keepReferences)
         } else {
-          throw new Error(`slice-js does not yet support VariableDeclarators with an id of type ${id.type}`)
+          throw new Error(
+            `
+              slice-js does not yet support
+              VariableDeclarators with an id of type ${id.type}
+            `,
+          )
         }
       },
       ExpressionStatement(path) {
         if (t.isMemberExpression(path.node.expression)) {
-          // foo.bar; (this could break code if there are side-effects via getters)
+          // foo.bar; (this could break code if there
+          // are side-effects via getters)
           path.remove()
         }
       },
       Program: {
-        // these are things we can only reasonably try to remove after everything else has been removed.
+        // these are things we can only reasonably
+        // try to remove after everything else has been removed.
         exit(path) {
           path.traverse({
             ObjectPattern(objPath) {
@@ -82,5 +96,4 @@ function customDeadCodeElimination({types: t}) {
   function isNotRemoved(path) {
     return !isRemoved(path)
   }
-
 }

@@ -1,11 +1,16 @@
 import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
-// fit(
-//   'ifElse(true)',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/if-statements'), ({ifElse}) => {
-//     ifElse(true)
-//   })
-// )
+/*
+test.only(
+  'ifElse(true)',
+  require('./helpers/utils').snapSlice(
+    require.resolve('./fixtures/if-statements'),
+    ({ifElse}) => {
+      ifElse(true)
+    },
+  ),
+)
+/* */
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/if-statements'),

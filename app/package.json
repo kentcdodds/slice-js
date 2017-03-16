@@ -33,7 +33,8 @@
   "eslintConfig": {
     "extends": [
       "kentcdodds",
-      "kentcdodds/react"
+      "kentcdodds/react",
+      "kentcdodds/prettier"
     ]
   }
 }

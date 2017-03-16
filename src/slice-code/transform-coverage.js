@@ -15,12 +15,16 @@ function filterToRunStatementsFunctionsAndBranches(coverageData) {
 }
 
 function filterToRunCodeOnly(obj) {
-  return _.reduce(obj, (newObj, val, key) => {
-    if (isRunBranch(val) || (_.isNumber(val) && val !== 0)) {
-      newObj[key] = val
-    }
-    return newObj
-  }, {})
+  return _.reduce(
+    obj,
+    (newObj, val, key) => {
+      if (isRunBranch(val) || (_.isNumber(val) && val !== 0)) {
+        newObj[key] = val
+      }
+      return newObj
+    },
+    {},
+  )
 }
 
 function isRunBranch(val) {
@@ -28,10 +32,13 @@ function isRunBranch(val) {
 }
 
 function filterMapToRunOnly(map, indexesRun) {
-  return Object.keys(indexesRun).reduce((newObj, indexRun) => {
-    newObj[indexRun] = map[indexRun]
-    return newObj
-  }, {})
+  return Object.keys(indexesRun).reduce(
+    (newObj, indexRun) => {
+      newObj[indexRun] = map[indexRun]
+      return newObj
+    },
+    {},
+  )
 }
 
 function annotateBranches(branchMap, branchesRun) {

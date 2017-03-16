@@ -1,11 +1,16 @@
 import {runAllCombosTests} from './helpers/utils'
 
-// test.only(
-//   'switchWithSideEffects({"name":"harry"})',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/switch-statement'), ({switchWithSideEffects}) => {
-//     return [switchWithSideEffects({name: 'harry'})]
-//   })
-// )
+/*
+test.only(
+  'switchWithSideEffects({"name":"harry"})',
+  require('./helpers/utils').snapSlice(
+    require.resolve('./fixtures/switch-statement'),
+    ({switchWithSideEffects}) => {
+      return [switchWithSideEffects({name: 'harry'})]
+    },
+  ),
+)
+/* */
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/switch-statement'),
@@ -13,21 +18,21 @@ runAllCombosTests({
     {
       methodName: 'switchWithFallThrough',
       possibleArguments: [
-        ['green'], ['blue'], ['purple'],
-        ['yellow'], ['orange'], ['red'],
+        ['green'],
+        ['blue'],
+        ['purple'],
+        ['yellow'],
+        ['orange'],
+        ['red'],
       ],
     },
     {
       methodName: 'switchWithDefault',
-      possibleArguments: [
-        ['twix'], ['snickers'],
-      ],
+      possibleArguments: [['twix'], ['snickers']],
     },
     {
       methodName: 'switchWithSideEffects',
-      possibleArguments: [
-        [{name: 'harry'}], [{name: 'ron'}],
-      ],
+      possibleArguments: [[{name: 'harry'}], [{name: 'ron'}]],
     },
   ],
 })

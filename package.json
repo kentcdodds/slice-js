@@ -8,7 +8,7 @@
     "start": "nps",
     "test": "nps test",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
-    "precommit": "opt --in pre-commit --exec \"npm start validate\""
+    "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
   "files": [
     "dist"
@@ -37,16 +37,18 @@
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.17.1",
-    "eslint-config-kentcdodds": "^12.1.1",
+    "eslint-config-kentcdodds": "^12.2.0",
     "glob": "^7.1.1",
     "husky": "^0.13.2",
     "istanbul-lib-instrument": "^1.4.2",
     "jest-cli": "^17.0.3",
+    "lint-staged": "^3.4.0",
     "match-sorter": "^1.7.0",
     "nps": "^5.0.4",
     "nps-utils": "^1.2.0",
     "opt-cli": "^1.5.1",
     "pify": "^2.3.0",
+    "prettier-eslint-cli": "^3.1.2",
     "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2",
     "spawn-command": "^0.0.2",
@@ -56,7 +58,8 @@
   "eslintConfig": {
     "extends": [
       "kentcdodds",
-      "kentcdodds/jest"
+      "kentcdodds/jest",
+      "kentcdodds/prettier"
     ]
   },
   "jest": {
@@ -75,6 +78,12 @@
         "statements": 90
       }
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {

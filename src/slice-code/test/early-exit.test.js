@@ -1,12 +1,17 @@
 import {runAllCombosTests, comboOfBools} from './helpers/utils'
 
 // this is here to make it easy to isolate tests to a specific case
-// fit(
-//   'testing ifStatement(false)',
-//   require('./helpers/utils').snapSlice(require.resolve('./fixtures/early-exit'), ({ifStatement}) => {
-//     ifStatement(false)
-//   })
-// )
+/*
+test.only(
+  'testing ifStatement(false)',
+  require('./helpers/utils').snapSlice(
+    require.resolve('./fixtures/early-exit'),
+    ({ifStatement}) => {
+      ifStatement(false)
+    },
+  ),
+)
+/* */
 
 runAllCombosTests({
   filename: require.resolve('./fixtures/early-exit'),

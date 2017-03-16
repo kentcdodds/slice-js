@@ -1,5 +1,6 @@
 /* eslint no-console:0 */
 import fs from 'fs'
+import {oneLine} from 'common-tags'
 import {SnapshotState} from 'jest-snapshot'
 import {sliceCodeAndGetInfo} from '../../src/slice-code'
 
@@ -11,8 +12,15 @@ Object.keys(allCoverage)
     const fileCoverage = allCoverage[filepath]
     const sliceInfo = sliceCodeAndGetInfo(source, fileCoverage)
     if (sliceInfo.error) {
-      console.info(`${filepath} failed to slice:\n${sliceInfo.error.message}\n\n`)
-      console.info(`Here's the filtered coverage:\n\n${JSON.stringify(sliceInfo.filteredCoverage)}\n\n`)
+      console.info(
+        `${filepath} failed to slice:\n${sliceInfo.error.message}\n\n`,
+      )
+      console.info(
+        oneLine(String.raw)`
+          Here's the filtered coverage:
+          \n\n${JSON.stringify(sliceInfo.filteredCoverage)}\n\n
+        `,
+      )
       console.info(`Here's the source:\n\n${source}\n\n`)
       // ignore...
     }
@@ -21,7 +29,11 @@ Object.keys(allCoverage)
   .filter(({slice}) => !!slice)
   .forEach(({filepath, slice}) => {
     const update = false
-    const snapshotPath = `${filepath.replace('node_modules', '__tests__/__sliceshots__')}.slice`
+    const sliceshotsPath = filepath.replace(
+      'node_modules',
+      '__tests__/__sliceshots__',
+    )
+    const snapshotPath = `${sliceshotsPath}.slice`
     const expand = false
     const state = new SnapshotState(filepath, update, snapshotPath, expand)
     state.update = true

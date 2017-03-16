@@ -13,7 +13,6 @@ const snapFunctionsSlice = curry(snapSlice)(functionsFilename)
 //   })
 // )
 
-
 const methodCombos = combs(['sum', 'subtract', 'multiply', 'divide'])
 
 methodCombos.forEach(methods => {

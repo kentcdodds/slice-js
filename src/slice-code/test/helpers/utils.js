@@ -12,7 +12,14 @@ import sliceCode from '../..'
 
 const coverageVariable = '____sliceCoverage____'
 
-export {comboOfBools, comboOfItems, snapSlice, runAllCombosTests, snapSliceCode, getSliceAndInfo}
+export {
+  comboOfBools,
+  comboOfItems,
+  snapSlice,
+  runAllCombosTests,
+  snapSliceCode,
+  getSliceAndInfo,
+}
 
 function comboOfBools(n) {
   const len = (Math.pow(2, n) - 1).toString(2).length
@@ -20,7 +27,11 @@ function comboOfBools(n) {
   for (let i = 0; i < Math.pow(2, n); i++) {
     const val = i.toString(2)
     const missing = len - val.length
-    result.push(Array.from({length: missing}).map(() => false).concat(Array.from(val).map(v => v === '1')))
+    result.push(
+      Array.from({length: missing})
+        .map(() => false)
+        .concat(Array.from(val).map(v => v === '1')),
+    )
   }
   return result
 }
@@ -52,22 +63,31 @@ function snapSlice(relativePath, tester) {
 }
 
 function snapSliceCode(sourceCode, tester, actualFilepath) {
-  // the function returned here is what you'd place in a call to Jest's `test` function
+  // the function returned here is what you'd
+  // place in a call to Jest's `test` function
   return async () => {
-    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = await getSliceAndInfo(
-      sourceCode,
-      tester,
-      actualFilepath,
-    )
+    const {
+      originalResult,
+      slicedCode,
+      isSlicedCoverage100,
+      slicedResult,
+    } = await getSliceAndInfo(sourceCode, tester, actualFilepath)
     expect(slicedCode).toMatchSnapshot()
     expect(isSlicedCoverage100).toBe(true, 'coverage should be 100%')
-    expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
+    expect(originalResult).toEqual(
+      slicedResult,
+      'originalResult should be the same as the slicedResult',
+    )
   }
 }
 
 async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const tempFilename = `./temp-sliced.${random(1, 9999999999999)}.js`
-  const mod = getInstrumentedModuleFromString(tempFilename, sourceCode, actualFilepath)
+  const mod = getInstrumentedModuleFromString(
+    tempFilename,
+    sourceCode,
+    actualFilepath,
+  )
   const originalResult = await tester(mod)
   // console.log('originalResult', originalResult)
   const coverageData = mod[coverageVariable][tempFilename]
@@ -80,14 +100,28 @@ async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
     tester,
     actualFilepath,
   )
-  return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult, filteredCoverage}
+  return {
+    mod,
+    originalResult,
+    slicedCode,
+    isSlicedCoverage100,
+    slicedResult,
+    filteredCoverage,
+  }
 }
 
 function runAllCombosTests({filename, methods}) {
-  methods.forEach(({methodName, useDefaultExport, possibleArguments, explicitArgs}) => {
+  methods.forEach(({
+    methodName,
+    useDefaultExport,
+    possibleArguments,
+    explicitArgs,
+  }) => {
     if (explicitArgs) {
       explicitArgs.forEach(args => {
-        const title = `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
+        const title = `${methodName}(${args
+          .map(a => JSON.stringify(a))
+          .join(', ')})`
         test(
           title,
           snapSlice(filename, mod => {
@@ -105,7 +139,9 @@ function runAllCombosTests({filename, methods}) {
       // generate the message for the test title
       const testTitle = comboOfArgs
         .map(args => {
-          return `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
+          return `${methodName}(${args
+            .map(a => JSON.stringify(a))
+            .join(', ')})`
         })
         .join(' && ')
 
@@ -117,8 +153,17 @@ function runAllCombosTests({filename, methods}) {
       test(
         testTitle,
         snapSlice(filename, mod => {
-          const method = useDefaultExport ? mod.default || mod : mod[methodName]
-          // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
+          const method = useDefaultExport ?
+            mod.default || mod :
+            mod[methodName]
+          /*
+          console.log(
+            useDefaultExport,
+            methodName,
+            Object.keys(mod),
+            typeof method,
+          )
+          /* */
           return comboOfArgs.map(args => method(...args))
         }),
       )
@@ -126,11 +171,24 @@ function runAllCombosTests({filename, methods}) {
   })
 }
 
-async function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
-  const mod = getInstrumentedModuleFromString(filename, slicedCode, actualFilepath)
+async function slicedCoverageIs100(
+  filename,
+  slicedCode,
+  tester,
+  actualFilepath,
+) {
+  const mod = getInstrumentedModuleFromString(
+    filename,
+    slicedCode,
+    actualFilepath,
+  )
   const slicedResult = await tester(mod)
-  // eslint-disable-next-line max-len
-  // process.stdout.write('\n\nmod[coverageVariable][filename].s\n\n' + JSON.stringify(mod[coverageVariable][filename].s, null, 2))
+  /*
+  process.stdout.write(
+    `\n\nmod[coverageVariable][filename].s\n\n${
+      JSON.stringify(mod[coverageVariable][filename].s, null, 2)}`,
+  )
+  /* */
   const is100 = coverageIs100Percent(mod[coverageVariable])
   return {slicedResult, is100}
 
@@ -138,15 +196,19 @@ async function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath)
     const cov = coverageData[filename]
     const functions100 = Object.keys(cov.f).every(k => cov.f[k] > 0)
     const statements100 = Object.keys(cov.s).every(k => cov.s[k] > 0)
-    const branches100 = Object.keys(cov.b).every(k => cov.b[k][0] > 0 && cov.b[k][1] > 0)
+    const branches100 = Object.keys(cov.b).every(
+      k => cov.b[k][0] > 0 && cov.b[k][1] > 0,
+    )
     return functions100 && statements100 && branches100
   }
 }
 
 function getInstrumentedModuleFromString(filename, sourceCode, actualFilepath) {
   // for the original source, we don't want to ignore anything
-  // but there are some cases where we have to create empty functions that aren't covered
-  // to ensure that the resulting code functions properly. So we add an obnoxiously long comment
+  // but there are some cases where we have to create
+  // empty functions that aren't covered
+  // to ensure that the resulting code functions properly.
+  // So we add an obnoxiously long comment
   // and replace it here.
   const sourceCodeWithoutIstanbulPragma = sourceCode
     .replace(/istanbul/g, 'ignore-istanbul-ignore')
@@ -187,7 +249,9 @@ function instrumenter({types: t}) {
         exit(...args) {
           this.__dv__.exit(...args)
           // expose coverage as part of the module
-          const newNode = template(`module.exports.${coverageVariable} = global.${coverageVariable};`)()
+          const newNode = template(
+            `module.exports.${coverageVariable} = global.${coverageVariable};`,
+          )()
           args[0].node.body.push(newNode)
         },
       },
