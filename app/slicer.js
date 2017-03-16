@@ -12,20 +12,13 @@ import 'codemirror/mode/javascript/javascript'
 import {getSliceAndInfo} from '../src/slice-code/test/helpers/utils'
 
 const sampleCode = fs.readFileSync(
-  require.resolve('../src/slice-code/test/fixtures/pizza.js'),
+  require.resolve('./example-code/utils'),
   'utf-8',
 )
-
-const usageSample = `
-function({makePizza}) {
-  return [
-    makePizza({
-      type: 'cheese',
-      size: 'Large',
-    })
-  ]
-}
-`.trim()
+const usageSample = fs.readFileSync(
+  require.resolve('./example-code/usage'),
+  'utf-8',
+)
 
 class App extends Component {
   state = {
@@ -219,7 +212,9 @@ ${getSlicedTransformModuleString
       .replace(/\/\* eslint.*\n/, '')}
     `.trim()
     copy(textToCopy, () => {
-      open('https://astexplorer.net/#/xgyyTvszgs')
+      const gistId = 'a0bf17981b123436e45713eb162220aa'
+      const gistCommit = '085fa28e74258e2512dea8229a9c3d06778fb399'
+      open(`https://astexplorer.net/#/gist/${gistId}/${gistCommit}`)
     })
   }
 }
