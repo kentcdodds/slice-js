@@ -20,11 +20,7 @@ function comboOfBools(n) {
   for (let i = 0; i < Math.pow(2, n); i++) {
     const val = i.toString(2)
     const missing = len - val.length
-    result.push(
-      Array.from({length: missing}).map(() => false).concat(
-        Array.from(val).map(v => v === '1'),
-      ),
-    )
+    result.push(Array.from({length: missing}).map(() => false).concat(Array.from(val).map(v => v === '1')))
   }
   return result
 }
@@ -41,15 +37,9 @@ function comboOfItems(items) {
   items.forEach((item, index) => {
     const firstHalf = items.slice(0, index)
     const secondHalf = items.slice(index + 1)
-    const remainingCombos = comboOfItems([
-      ...firstHalf,
-      ...secondHalf,
-    ])
+    const remainingCombos = comboOfItems([...firstHalf, ...secondHalf])
     remainingCombos.forEach(combo => {
-      combos.push([
-        item,
-        ...combo,
-      ])
+      combos.push([item, ...combo])
     })
   })
   return combos
@@ -64,7 +54,11 @@ function snapSlice(relativePath, tester) {
 function snapSliceCode(sourceCode, tester, actualFilepath) {
   // the function returned here is what you'd place in a call to Jest's `test` function
   return async () => {
-    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = await getSliceAndInfo(sourceCode, tester, actualFilepath)
+    const {originalResult, slicedCode, isSlicedCoverage100, slicedResult} = await getSliceAndInfo(
+      sourceCode,
+      tester,
+      actualFilepath,
+    )
     expect(slicedCode).toMatchSnapshot()
     expect(isSlicedCoverage100).toBe(true, 'coverage should be 100%')
     expect(originalResult).toEqual(slicedResult, 'originalResult should be the same as the slicedResult')
@@ -80,7 +74,12 @@ async function getSliceAndInfo(sourceCode, tester, actualFilepath) {
   const slicedCode = sliceCode(sourceCode, coverageData)
   const filteredCoverage = transformCoverage(coverageData)
   // console.log('slicedCode', slicedCode)
-  const {is100: isSlicedCoverage100, slicedResult} = await slicedCoverageIs100(tempFilename, slicedCode, tester, actualFilepath)
+  const {is100: isSlicedCoverage100, slicedResult} = await slicedCoverageIs100(
+    tempFilename,
+    slicedCode,
+    tester,
+    actualFilepath,
+  )
   return {mod, originalResult, slicedCode, isSlicedCoverage100, slicedResult, filteredCoverage}
 }
 
@@ -89,10 +88,13 @@ function runAllCombosTests({filename, methods}) {
     if (explicitArgs) {
       explicitArgs.forEach(args => {
         const title = `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
-        test(title, snapSlice(filename, mod => {
-          const method = useDefaultExport ? mod : mod[methodName]
-          return method(...args)
-        }))
+        test(
+          title,
+          snapSlice(filename, mod => {
+            const method = useDefaultExport ? mod : mod[methodName]
+            return method(...args)
+          }),
+        )
       })
     } else {
       const possibleCombinations = combs(possibleArguments)
@@ -101,20 +103,25 @@ function runAllCombosTests({filename, methods}) {
 
     function generateTests(comboOfArgs) {
       // generate the message for the test title
-      const testTitle = comboOfArgs.map(args => {
-        return `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
-      }).join(' && ')
+      const testTitle = comboOfArgs
+        .map(args => {
+          return `${methodName}(${args.map(a => JSON.stringify(a)).join(', ')})`
+        })
+        .join(' && ')
 
       // this is the call to Jest's `test` function
       let test = global.test
       if (!test) {
         test = (title, fn) => fn()
       }
-      test(testTitle, snapSlice(filename, mod => {
-        const method = useDefaultExport ? (mod.default || mod) : mod[methodName]
-        // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
-        return comboOfArgs.map(args => method(...args))
-      }))
+      test(
+        testTitle,
+        snapSlice(filename, mod => {
+          const method = useDefaultExport ? mod.default || mod : mod[methodName]
+          // console.log(useDefaultExport, methodName, Object.keys(mod), typeof method)
+          return comboOfArgs.map(args => method(...args))
+        }),
+      )
     }
   })
 }
@@ -122,6 +129,7 @@ function runAllCombosTests({filename, methods}) {
 async function slicedCoverageIs100(filename, slicedCode, tester, actualFilepath) {
   const mod = getInstrumentedModuleFromString(filename, slicedCode, actualFilepath)
   const slicedResult = await tester(mod)
+  // eslint-disable-next-line max-len
   // process.stdout.write('\n\nmod[coverageVariable][filename].s\n\n' + JSON.stringify(mod[coverageVariable][filename].s, null, 2))
   const is100 = coverageIs100Percent(mod[coverageVariable])
   return {slicedResult, is100}
@@ -149,9 +157,7 @@ function getInstrumentedModuleFromString(filename, sourceCode, actualFilepath) {
     // compact: false,
     only: filename,
     presets: ['node6', 'stage-2'],
-    plugins: [
-      instrumenter,
-    ],
+    plugins: [instrumenter],
   })
   // process.stdout.write('\n\ninstrumentedCode\n\n' + code)
   return requireFromString(code, actualFilepath || filename)
@@ -181,9 +187,7 @@ function instrumenter({types: t}) {
         exit(...args) {
           this.__dv__.exit(...args)
           // expose coverage as part of the module
-          const newNode = template(
-            `module.exports.${coverageVariable} = global.${coverageVariable};`,
-          )()
+          const newNode = template(`module.exports.${coverageVariable} = global.${coverageVariable};`)()
           args[0].node.body.push(newNode)
         },
       },

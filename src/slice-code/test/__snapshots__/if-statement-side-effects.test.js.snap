@@ -3,7 +3,7 @@ exports[`test ifWithAssignment(false) && ifWithAssignment(true) 1`] = `
 
 function ifWithAssignment(passIf) {
   let x;
-  if ((x = 'hi') && passIf) {
+  if ((x = \'hi\') && passIf) {
     return x + passIf;
   } else {
     return !passIf + x;
@@ -15,7 +15,7 @@ exports[`test ifWithAssignment(false) 1`] = `
 "export { ifWithAssignment };
 
 function ifWithAssignment(passIf) {
-  let x = 'hi';
+  let x = \'hi\';
 
   return !passIf + x;
 }"
@@ -25,7 +25,7 @@ exports[`test ifWithAssignment(true) 1`] = `
 "export { ifWithAssignment };
 
 function ifWithAssignment(passIf) {
-  let x = 'hi';
+  let x = \'hi\';
 
   return x + passIf;
 }"
@@ -37,7 +37,7 @@ exports[`test ifWithFunctionCall(false) && ifWithFunctionCall(true) 1`] = `
 function ifWithFunctionCall(passIf) {
   let thing;
 
-  if (passIf && (a => (thing = a, passIf))('hey') && function (a) {
+  if (passIf && (a => (thing = a, passIf))(\'hey\') && function (a) {
     return a;
   }(passIf)) {
     return thing + passIf;
@@ -65,7 +65,7 @@ exports[`test ifWithFunctionCall(true) 1`] = `
 function ifWithFunctionCall(passIf) {
   let thing;
 
-  passIf && (a => (thing = a, passIf))('hey');
+  passIf && (a => (thing = a, passIf))(\'hey\');
   (function (a) {
     return a;
   })(passIf);

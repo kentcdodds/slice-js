@@ -26,16 +26,13 @@ matchSorter.rankings = rankings;
 
 function matchSorter(items, value) {
   var options = {};
-  var keys = options.keys;
-
-
-  var threshold = rankings.MATCHES;
+  var keys = options.keys,
+      threshold = rankings.MATCHES;
 
   var matchedItems = items.reduce(function (matches, item, index) {
-    var _getHighestRanking = getHighestRanking(item, keys, value, options);
-
-    var rank = _getHighestRanking.rank;
-    var keyIndex = _getHighestRanking.keyIndex;
+    var _getHighestRanking = getHighestRanking(item, keys, value, options),
+        rank = _getHighestRanking.rank,
+        keyIndex = _getHighestRanking.keyIndex;
 
     if (rank >= threshold) {
       matches.push({ item: item, rank: rank, index: index, keyIndex: keyIndex });
@@ -75,7 +72,7 @@ function sortRankedItems(a, b) {
   return 1;
 }
 
-function prepareValueForComparison(value, _ref3) {
+function prepareValueForComparison(value, _ref4) {
 
   value = \'\' + value;
   value = _diacritic2.default.clean(value);

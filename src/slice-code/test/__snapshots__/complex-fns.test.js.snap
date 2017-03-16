@@ -5,7 +5,7 @@ function unusedReturnAssign() {
   const foo = {};
   function bar(msg) {
     return function () {
-      return \`bar: \${ msg }\`;
+      return \`bar: \${msg}\`;
     };
   }
   foo.getLuke = bar(\'luke\');
@@ -18,7 +18,7 @@ function unusedReturnAssign() {
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${ name }\`]();
+  return unusedReturnAssign()[\`get\${name}\`]();
 }"
 `;
 
@@ -29,7 +29,7 @@ function unusedReturnAssign() {
   const foo = {};
   function bar(msg) {
     return function () {
-      return \`bar: \${ msg }\`;
+      return \`bar: \${msg}\`;
     };
   }
   foo.getLuke = bar(\'luke\');
@@ -42,7 +42,7 @@ function unusedReturnAssign() {
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${ name }\`]();
+  return unusedReturnAssign()[\`get\${name}\`]();
 }"
 `;
 
@@ -53,7 +53,7 @@ function unusedReturnAssign() {
   const foo = {};
   function bar(msg) {
     return function () {
-      return \`bar: \${ msg }\`;
+      return \`bar: \${msg}\`;
     };
   }
   foo.getLuke = bar(\'luke\');
@@ -66,6 +66,6 @@ function unusedReturnAssign() {
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${ name }\`]();
+  return unusedReturnAssign()[\`get\${name}\`]();
 }"
 `;

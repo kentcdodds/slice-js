@@ -5,3 +5,7 @@ const store = createStore(reducer)
 const unsub = store.subscribe(() => {})
 store.dispatch({type: 'blah'})
 unsub()
+
+test('temp', () => {
+  expect(true).toBe(true)
+})
