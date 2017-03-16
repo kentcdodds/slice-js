@@ -1,4 +1,4 @@
-exports[`test clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -56,7 +56,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -114,7 +114,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -158,7 +158,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -182,7 +182,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -246,7 +246,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -310,7 +310,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -360,7 +360,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone("hello") && clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -411,7 +411,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -469,7 +469,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -527,7 +527,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -571,7 +571,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -595,7 +595,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -659,7 +659,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -723,7 +723,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -773,7 +773,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T07:00:00.000Z"}) 1`] = `
+exports[`test clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
