@@ -1,174 +1,176 @@
-exports[`test ({ default: mod }) => [mod.baz(false)] 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`({ default: mod }) => [mod.baz(false)] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'buzz\';
+  mod.baz = () => 'buzz';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.baz(false)] 2`] = `
+exports[`({ default: mod }) => [mod.baz(false)] 2`] = `
 "export default (() => {
   const mod = {};
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'buzz\';
+  mod.baz = () => 'buzz';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.baz(true)] 1`] = `
+exports[`({ default: mod }) => [mod.baz(true)] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'baz\';
+  mod.baz = () => 'baz';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foo(), mod.baz(false)] 1`] = `
+exports[`({ default: mod }) => [mod.foo(), mod.baz(false)] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.foo = () => \'foo\';
+  mod.foo = () => 'foo';
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'buzz\';
+  mod.baz = () => 'buzz';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foo(), mod.baz(true)] 1`] = `
+exports[`({ default: mod }) => [mod.foo(), mod.baz(true)] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.foo = () => \'foo\';
+  mod.foo = () => 'foo';
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'baz\';
+  mod.baz = () => 'baz';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foo()] 1`] = `
+exports[`({ default: mod }) => [mod.foo()] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.foo = () => \'foo\';
+  mod.foo = () => 'foo';
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foobar(), mod.baz(false)] 1`] = `
+exports[`({ default: mod }) => [mod.foobar(), mod.baz(false)] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
-  mod.baz = () => \'buzz\';
+  mod.baz = () => 'buzz';
 
   mod.foobar = function () {
-    return \'function assignment\';
+    return 'function assignment';
   };
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foobar(), mod.foo()] 1`] = `
+exports[`({ default: mod }) => [mod.foobar(), mod.foo()] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.foo = () => \'foo\';
+  mod.foo = () => 'foo';
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
   mod.foobar = function () {
-    return \'function assignment\';
+    return 'function assignment';
   };
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"
 `;
 
-exports[`test ({ default: mod }) => [mod.foobar()] 1`] = `
+exports[`({ default: mod }) => [mod.foobar()] 1`] = `
 "export default (() => {
   const mod = {};
 
-  mod.bar = \'bar\';
+  mod.bar = 'bar';
 
   mod.foobar = function () {
-    return \'function assignment\';
+    return 'function assignment';
   };
 
   mod.mokeypatchFn = /*slice-js-coverage-ignore ignore next*/function () {};
-  mod.mokeypatchFn.favorite = \'my favorite animal is a 🐒\';
+  mod.mokeypatchFn.favorite = 'my favorite animal is a 🐒';
 
   mod.monkeypatchArrow = /*slice-js-coverage-ignore ignore next*/() => {};
-  mod.monkeypatchArrow.favorite = \'my favorite animal is a 🐵\';
+  mod.monkeypatchArrow.favorite = 'my favorite animal is a 🐵';
 
   return mod;
 })();"

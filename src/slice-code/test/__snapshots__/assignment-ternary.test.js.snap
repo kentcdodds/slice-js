@@ -1,52 +1,54 @@
-exports[`test assignmentTernary("a") && assignmentTernary("b") 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`assignmentTernary("a") && assignmentTernary("b") 1`] = `
 "export { assignmentTernary };
 
 const output = {
   map: {
-    a: \'A\'
+    a: 'A'
   }
 };
 
 function assignmentTernary(letter) {
-  let string = \'init\';
+  let string = 'init';
   string += letter in output.map ? output.map[letter] : letter;
   return string;
 }"
 `;
 
-exports[`test assignmentTernary("a") 1`] = `
+exports[`assignmentTernary("a") 1`] = `
 "export { assignmentTernary };
 
 const output = {
   map: {
-    a: \'A\'
+    a: 'A'
   }
 };
 
 function assignmentTernary(letter) {
-  let string = \'init\';
+  let string = 'init';
   string += output.map[letter];
   return string;
 }"
 `;
 
-exports[`test assignmentTernary("b") 1`] = `
+exports[`assignmentTernary("b") 1`] = `
 "export { assignmentTernary };
 
 function assignmentTernary(letter) {
-  let string = \'init\';
+  let string = 'init';
   string += letter;
   return string;
 }"
 `;
 
-exports[`test diacriticsClean("Some Google") 1`] = `
+exports[`diacriticsClean("Some Google") 1`] = `
 "export { diacriticsClean };
 
 function diacriticsClean(input) {
 
-  var string = \'\';
-  var letters = input.split(\'\');
+  var string = '';
+  var letters = input.split('');
   var index = 0;
   var length = letters.length;
   var letter;
@@ -60,19 +62,19 @@ function diacriticsClean(input) {
 }"
 `;
 
-exports[`test diacriticsClean("Some apple") && diacriticsClean("Some Google") 1`] = `
+exports[`diacriticsClean("Some apple") && diacriticsClean("Some Google") 1`] = `
 "export { diacriticsClean };
 
 const output = {
   map: {
-    a: \'A\'
+    a: 'A'
   }
 };
 
 function diacriticsClean(input) {
 
-  var string = \'\';
-  var letters = input.split(\'\');
+  var string = '';
+  var letters = input.split('');
   var index = 0;
   var length = letters.length;
   var letter;
@@ -86,19 +88,19 @@ function diacriticsClean(input) {
 }"
 `;
 
-exports[`test diacriticsClean("Some apple") 1`] = `
+exports[`diacriticsClean("Some apple") 1`] = `
 "export { diacriticsClean };
 
 const output = {
   map: {
-    a: \'A\'
+    a: 'A'
   }
 };
 
 function diacriticsClean(input) {
 
-  var string = \'\';
-  var letters = input.split(\'\');
+  var string = '';
+  var letters = input.split('');
   var index = 0;
   var length = letters.length;
   var letter;

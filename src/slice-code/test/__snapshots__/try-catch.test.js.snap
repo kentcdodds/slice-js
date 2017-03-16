@@ -1,4 +1,6 @@
-exports[`test statementsAfterThrow() 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`statementsAfterThrow() 1`] = `
 "export { statementsAfterThrow };
 
 function statementsAfterThrow() {
@@ -6,7 +8,7 @@ function statementsAfterThrow() {
   try {
     ret.before = true;
 
-    throw new Error(\'throw error\');
+    throw new Error('throw error');
   } catch (error) {
     ret.error = error;
   } finally {
@@ -15,14 +17,14 @@ function statementsAfterThrow() {
 }"
 `;
 
-exports[`test tryCatch(false) && tryCatch(true) 1`] = `
+exports[`tryCatch(false) && tryCatch(true) 1`] = `
 "export { tryCatch };
 
 function tryCatch(shouldThrow) {
   const ret = {};
   try {
     if (shouldThrow) {
-      throw new Error(\'throw error\');
+      throw new Error('throw error');
     }
     ret.noThrow = true;
   } catch (error) {
@@ -34,7 +36,7 @@ function tryCatch(shouldThrow) {
 }"
 `;
 
-exports[`test tryCatch(false) 1`] = `
+exports[`tryCatch(false) 1`] = `
 "export { tryCatch };
 
 function tryCatch() {
@@ -46,13 +48,13 @@ function tryCatch() {
 }"
 `;
 
-exports[`test tryCatch(true) 1`] = `
+exports[`tryCatch(true) 1`] = `
 "export { tryCatch };
 
 function tryCatch() {
   const ret = {};
   try {
-    throw new Error(\'throw error\');
+    throw new Error('throw error');
   } catch (error) {
     ret.error = error;
     return error;

@@ -1,4 +1,6 @@
-exports[`test clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -7,14 +9,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -29,7 +31,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone("hello") && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -38,8 +40,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -56,7 +58,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -65,14 +67,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -87,7 +89,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone("hello") && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -96,8 +98,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -114,7 +116,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -123,8 +125,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -138,7 +140,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"name":"Luke"}) 1`] = `
+exports[`clone("hello") && clone({"name":"Luke"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -147,7 +149,7 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
     result = {};
     for (const i in item) {
       result[i] = clone(item[i]);
@@ -158,7 +160,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -167,8 +169,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -182,7 +184,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -194,14 +196,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -216,7 +218,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -228,8 +230,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -246,7 +248,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -258,14 +260,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -280,7 +282,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -292,8 +294,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -310,7 +312,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -322,8 +324,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -337,7 +339,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"name":"Luke"}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"name":"Luke"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -349,7 +351,7 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
     result = {};
     for (const i in item) {
       result[i] = clone(item[i]);
@@ -360,7 +362,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone("hello") && clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -372,8 +374,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -387,7 +389,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") && clone(null) 1`] = `
+exports[`clone("hello") && clone(null) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -401,7 +403,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone("hello") 1`] = `
+exports[`clone("hello") 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -411,7 +413,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -420,14 +422,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -442,7 +444,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -451,8 +453,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -469,7 +471,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -478,14 +480,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -500,7 +502,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -509,8 +511,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -527,7 +529,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -536,8 +538,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -551,7 +553,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"name":"Luke"}) 1`] = `
+exports[`clone({"name":"Luke"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -560,7 +562,7 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
     result = {};
     for (const i in item) {
       result[i] = clone(item[i]);
@@ -571,7 +573,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -580,8 +582,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -595,7 +597,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone(null) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -607,14 +609,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -629,7 +631,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone(null) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -641,8 +643,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -659,7 +661,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -671,14 +673,14 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
       });
     } else {
-      if (string === \'[object Date]\') {
+      if (string === '[object Date]') {
         result = new Date(item);
       } else {
         result = {};
@@ -693,7 +695,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
+exports[`clone(null) && clone({"name":"Luke"}) && clone({"friends":[{"name":"Rebecca"}]}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -705,8 +707,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Array]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Array]') {
       result = [];
       item.forEach((child, index) => {
         result[index] = clone(child);
@@ -723,7 +725,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone(null) && clone({"name":"Luke"}) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -735,8 +737,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -750,7 +752,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"name":"Luke"}) 1`] = `
+exports[`clone(null) && clone({"name":"Luke"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -762,7 +764,7 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
     result = {};
     for (const i in item) {
       result[i] = clone(item[i]);
@@ -773,7 +775,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
+exports[`clone(null) && clone({"title":"How to Train Your Dragon","releaseDate":"2010-03-26T06:00:00.000Z"}) 1`] = `
 "export default clone;
 
 function clone(item) {
@@ -785,8 +787,8 @@ function clone(item) {
 
   let result = item;
 
-  if (!(type !== \"object\" && type !== \"function\")) {
-    if (string === \'[object Date]\') {
+  if (!(type !== \\"object\\" && type !== \\"function\\")) {
+    if (string === '[object Date]') {
       result = new Date(item);
     } else {
       result = {};
@@ -800,7 +802,7 @@ function clone(item) {
 }"
 `;
 
-exports[`test clone(null) 1`] = `
+exports[`clone(null) 1`] = `
 "export default clone;
 
 function clone(item) {

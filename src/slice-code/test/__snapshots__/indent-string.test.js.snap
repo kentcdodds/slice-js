@@ -1,160 +1,162 @@
-exports[`test indentString("hello world") && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`indentString("hello world") && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", , "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", , "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = 1;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", 2) 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", 2) 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = \' \';
+	indent = ' ';
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = \' \';
+	indent = ' ';
 	count = 1;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", , "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", , "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
 	count = 1;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", 2) && indentString("hello world", , "@") && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", 2) && indentString("hello world", , "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 	count = count === undefined ? 1 : count;
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", 2) && indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = indent === undefined ? \' \' : indent;
+	indent = indent === undefined ? ' ' : indent;
 
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", 2) 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", 2) 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
-	indent = \' \';
+	indent = ' ';
 
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;
 
-exports[`test indentString("hello world", 4, "@") 1`] = `
-"\'use strict\';
+exports[`indentString("hello world", 4, "@") 1`] = `
+"'use strict';
 
 module.exports = (str, count, indent) => {
 
-	return str.replace(/^(?!\\s*$)/mg, indent.repeat(count));
+	return str.replace(/^(?!\\\\s*$)/mg, indent.repeat(count));
 };"
 `;

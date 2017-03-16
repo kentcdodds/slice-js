@@ -1,4 +1,6 @@
-exports[`test get("Han") 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get("Han") 1`] = `
 "export { unusedReturnAssign, get };
 
 function unusedReturnAssign() {
@@ -8,11 +10,11 @@ function unusedReturnAssign() {
       return \`bar: \${msg}\`;
     };
   }
-  foo.getLuke = bar(\'luke\');
-  foo.getLuke.characterName = \'luke\';
+  foo.getLuke = bar('luke');
+  foo.getLuke.characterName = 'luke';
 
-  foo.getHan = bar(\'han\');
-  foo.getHan.characterName = \'han\';
+  foo.getHan = bar('han');
+  foo.getHan.characterName = 'han';
 
   return foo;
 }
@@ -22,7 +24,7 @@ function get(name) {
 }"
 `;
 
-exports[`test get("Luke") && get("Han") 1`] = `
+exports[`get("Luke") && get("Han") 1`] = `
 "export { unusedReturnAssign, get };
 
 function unusedReturnAssign() {
@@ -32,11 +34,11 @@ function unusedReturnAssign() {
       return \`bar: \${msg}\`;
     };
   }
-  foo.getLuke = bar(\'luke\');
-  foo.getLuke.characterName = \'luke\';
+  foo.getLuke = bar('luke');
+  foo.getLuke.characterName = 'luke';
 
-  foo.getHan = bar(\'han\');
-  foo.getHan.characterName = \'han\';
+  foo.getHan = bar('han');
+  foo.getHan.characterName = 'han';
 
   return foo;
 }
@@ -46,7 +48,7 @@ function get(name) {
 }"
 `;
 
-exports[`test get("Luke") 1`] = `
+exports[`get("Luke") 1`] = `
 "export { unusedReturnAssign, get };
 
 function unusedReturnAssign() {
@@ -56,11 +58,11 @@ function unusedReturnAssign() {
       return \`bar: \${msg}\`;
     };
   }
-  foo.getLuke = bar(\'luke\');
-  foo.getLuke.characterName = \'luke\';
+  foo.getLuke = bar('luke');
+  foo.getLuke.characterName = 'luke';
 
-  foo.getHan = bar(\'han\');
-  foo.getHan.characterName = \'han\';
+  foo.getHan = bar('han');
+  foo.getHan.characterName = 'han';
 
   return foo;
 }

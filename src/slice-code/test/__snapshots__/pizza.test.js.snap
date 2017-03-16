@@ -1,13 +1,15 @@
-exports[`test makePizza({"type":"cheese","size":"Large"}) 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makePizza({"type":"cheese","size":"Large"}) 1`] = `
 "export { makePizza };
 
-const getCrust = (size, crustType) => \`\${size}: \${crustType || \'Hand tossed pizza\'}\`;
+const getCrust = (size, crustType) => \`\${size}: \${crustType || 'Hand tossed pizza'}\`;
 
 function makePizza(order) {
   const pizza = {
     type: order.type,
     crust: getCrust(order.size, order.crustType),
-    crustEdge: order.crustEdge || \'Garlic Buttery Blend\',
+    crustEdge: order.crustEdge || 'Garlic Buttery Blend',
     sauce: undefined,
     cheese: undefined,
     meats: undefined,

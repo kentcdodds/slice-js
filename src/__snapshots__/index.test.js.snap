@@ -1,4 +1,6 @@
-exports[`test ./test/fixtures/module.slicer.js 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`./test/fixtures/module.slicer.js 1`] = `
 "./test/fixtures/module.js: multiply multiplies numbers together
 
     export { sum, multiply };

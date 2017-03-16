@@ -26,7 +26,7 @@
   "devDependencies": {
     "all-contributors-cli": "^4.0.1",
     "babel-cli": "^6.24.0",
-    "babel-jest": "^17.0.2",
+    "babel-jest": "^19.0.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-node6": "^11.0.0",
     "babel-preset-stage-2": "^6.22.0",
@@ -41,7 +41,7 @@
     "glob": "^7.1.1",
     "husky": "^0.13.2",
     "istanbul-lib-instrument": "^1.4.2",
-    "jest-cli": "^17.0.3",
+    "jest-cli": "^19.0.2",
     "lint-staged": "^3.4.0",
     "match-sorter": "^1.7.0",
     "nps": "^5.0.4",
