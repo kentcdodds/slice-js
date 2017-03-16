@@ -4,15 +4,14 @@ exports[`statementsAfterThrow() 1`] = `
 "export { statementsAfterThrow };
 
 function statementsAfterThrow() {
-  const ret = {};
+  const ret = {}
   try {
-    ret.before = true;
-
+    ret.before = true
     throw new Error('throw error');
   } catch (error) {
-    ret.error = error;
+    ret.error = error
   } finally {
-    return ret;
+    return ret
   }
 }"
 `;
@@ -21,17 +20,17 @@ exports[`tryCatch(false) && tryCatch(true) 1`] = `
 "export { tryCatch };
 
 function tryCatch(shouldThrow) {
-  const ret = {};
+  const ret = {}
   try {
     if (shouldThrow) {
-      throw new Error('throw error');
+      throw new Error('throw error')
     }
-    ret.noThrow = true;
+    ret.noThrow = true
   } catch (error) {
-    ret.error = error;
-    return error;
+    ret.error = error
+    return error
   } finally {
-    return ret;
+    return ret
   }
 }"
 `;
@@ -41,9 +40,7 @@ exports[`tryCatch(false) 1`] = `
 
 function tryCatch() {
   const ret = {};
-
-  ret.noThrow = true;
-
+  ret.noThrow = true
   return ret;
 }"
 `;
@@ -52,14 +49,14 @@ exports[`tryCatch(true) 1`] = `
 "export { tryCatch };
 
 function tryCatch() {
-  const ret = {};
+  const ret = {}
   try {
     throw new Error('throw error');
   } catch (error) {
-    ret.error = error;
-    return error;
+    ret.error = error
+    return error
   } finally {
-    return ret;
+    return ret
   }
 }"
 `;

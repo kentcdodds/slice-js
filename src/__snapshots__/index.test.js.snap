@@ -2,20 +2,24 @@
 
 exports[`./test/fixtures/module.slicer.js 1`] = `
 "./test/fixtures/module.js: multiply multiplies numbers together
-
+    /*
+     * this file may seem odd, but trust me, this is intended to help
+     * ensure we're developing a good slice, not to have a good math
+     * module :)
+     */
     export { sum, multiply };
 
     function sum(a, b) {
-      return a + b;
+      return a + b
     }
 
     function multiply(a, b) {
-      let product, i;
-      product = 0;
+      let product, i
+      product = 0
       for (i = 0; i < b; i++) {
-        product = sum(product, a);
+        product = sum(product, a)
       }
-      return product;
+      return product
     }
 "
 `;

@@ -1,4 +1,5 @@
 import * as babel from 'babel-core'
+import recast from 'recast'
 import deadCodeElimination from 'babel-plugin-minify-dead-code-elimination'
 import customDeadCodeElimination
   from './babel-plugin-custom-dead-code-elimination'
@@ -34,6 +35,8 @@ function sliceCodeFromFilteredCoverage(sourceCode, filteredCoverage) {
   const commonOptions = {
     filename,
     babelrc: false,
+    parserOpts: {parser: recast.parse},
+    generatorOpts: {generator: recast.print},
   }
   const {code: sliced} = babel.transform(sourceCode, {
     ...commonOptions,

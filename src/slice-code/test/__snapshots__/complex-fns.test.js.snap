@@ -1,73 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`get("Han") 1`] = `
-"export { unusedReturnAssign, get };
+"export {unusedReturnAssign, get}
 
 function unusedReturnAssign() {
-  const foo = {};
+  const foo = {}
   function bar(msg) {
-    return function () {
-      return \`bar: \${msg}\`;
-    };
+    return function() {
+      return \`bar: \${msg}\`
+    }
   }
-  foo.getLuke = bar('luke');
-  foo.getLuke.characterName = 'luke';
+  foo.getLuke = bar('luke')
+  foo.getLuke.characterName = 'luke'
 
-  foo.getHan = bar('han');
-  foo.getHan.characterName = 'han';
+  foo.getHan = bar('han')
+  foo.getHan.characterName = 'han'
 
-  return foo;
+  return foo
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${name}\`]();
-}"
+  return unusedReturnAssign()[\`get\${name}\`]()
+}
+"
 `;
 
 exports[`get("Luke") && get("Han") 1`] = `
-"export { unusedReturnAssign, get };
+"export {unusedReturnAssign, get}
 
 function unusedReturnAssign() {
-  const foo = {};
+  const foo = {}
   function bar(msg) {
-    return function () {
-      return \`bar: \${msg}\`;
-    };
+    return function() {
+      return \`bar: \${msg}\`
+    }
   }
-  foo.getLuke = bar('luke');
-  foo.getLuke.characterName = 'luke';
+  foo.getLuke = bar('luke')
+  foo.getLuke.characterName = 'luke'
 
-  foo.getHan = bar('han');
-  foo.getHan.characterName = 'han';
+  foo.getHan = bar('han')
+  foo.getHan.characterName = 'han'
 
-  return foo;
+  return foo
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${name}\`]();
-}"
+  return unusedReturnAssign()[\`get\${name}\`]()
+}
+"
 `;
 
 exports[`get("Luke") 1`] = `
-"export { unusedReturnAssign, get };
+"export {unusedReturnAssign, get}
 
 function unusedReturnAssign() {
-  const foo = {};
+  const foo = {}
   function bar(msg) {
-    return function () {
-      return \`bar: \${msg}\`;
-    };
+    return function() {
+      return \`bar: \${msg}\`
+    }
   }
-  foo.getLuke = bar('luke');
-  foo.getLuke.characterName = 'luke';
+  foo.getLuke = bar('luke')
+  foo.getLuke.characterName = 'luke'
 
-  foo.getHan = bar('han');
-  foo.getHan.characterName = 'han';
+  foo.getHan = bar('han')
+  foo.getHan.characterName = 'han'
 
-  return foo;
+  return foo
 }
 
 function get(name) {
-  return unusedReturnAssign()[\`get\${name}\`]();
-}"
+  return unusedReturnAssign()[\`get\${name}\`]()
+}
+"
 `;

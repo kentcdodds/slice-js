@@ -1,257 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`allAnd(false, false, false) 1`] = `"export const allAnd = a => a;"`;
+exports[`allAnd(false, false, false) 1`] = `"export const allAnd = a => a"`;
 
-exports[`allAnd(false, false, true) 1`] = `"export const allAnd = a => a;"`;
+exports[`allAnd(false, false, true) 1`] = `"export const allAnd = a => a"`;
 
-exports[`allAnd(false, true, false) 1`] = `"export const allAnd = a => a;"`;
+exports[`allAnd(false, true, false) 1`] = `"export const allAnd = a => a"`;
 
-exports[`allAnd(false, true, true) 1`] = `"export const allAnd = a => a;"`;
+exports[`allAnd(false, true, true) 1`] = `"export const allAnd = a => a"`;
 
-exports[`allAnd(true, false, false) 1`] = `"export const allAnd = (a, b) => a && b;"`;
+exports[`allAnd(true, false, false) 1`] = `"export const allAnd = (a, b) => a && b"`;
 
-exports[`allAnd(true, false, true) 1`] = `"export const allAnd = (a, b) => a && b;"`;
+exports[`allAnd(true, false, true) 1`] = `"export const allAnd = (a, b) => a && b"`;
 
-exports[`allAnd(true, true, false) 1`] = `"export const allAnd = (a, b, c) => a && b && c;"`;
+exports[`allAnd(true, true, false) 1`] = `"export const allAnd = (a, b, c) => a && b && c"`;
 
-exports[`allAnd(true, true, true) 1`] = `"export const allAnd = (a, b, c) => a && b && c;"`;
+exports[`allAnd(true, true, true) 1`] = `"export const allAnd = (a, b, c) => a && b && c"`;
 
-exports[`allOr(false, false, false) 1`] = `
-"
-export const allOr = (a, b, c) => a || b || c;"
-`;
+exports[`allOr(false, false, false) 1`] = `"export const allOr = (a, b, c) => a || b || c"`;
 
-exports[`allOr(false, false, true) 1`] = `
-"
-export const allOr = (a, b, c) => a || b || c;"
-`;
+exports[`allOr(false, false, true) 1`] = `"export const allOr = (a, b, c) => a || b || c"`;
 
-exports[`allOr(false, true, false) 1`] = `
-"
-export const allOr = (a, b) => a || b;"
-`;
+exports[`allOr(false, true, false) 1`] = `"export const allOr = (a, b) => a || b"`;
 
-exports[`allOr(false, true, true) 1`] = `
-"
-export const allOr = (a, b) => a || b;"
-`;
+exports[`allOr(false, true, true) 1`] = `"export const allOr = (a, b) => a || b"`;
 
-exports[`allOr(true, false, false) 1`] = `
-"
-export const allOr = a => a;"
-`;
+exports[`allOr(true, false, false) 1`] = `"export const allOr = a => a"`;
 
-exports[`allOr(true, false, true) 1`] = `
-"
-export const allOr = a => a;"
-`;
+exports[`allOr(true, false, true) 1`] = `"export const allOr = a => a"`;
 
-exports[`allOr(true, true, false) 1`] = `
-"
-export const allOr = a => a;"
-`;
+exports[`allOr(true, true, false) 1`] = `"export const allOr = a => a"`;
 
-exports[`allOr(true, true, true) 1`] = `
-"
-export const allOr = a => a;"
-`;
+exports[`allOr(true, true, true) 1`] = `"export const allOr = a => a"`;
 
-exports[`andOr(false, false, false) 1`] = `
-"
-export const andOr = (a, b, c) => a || c;"
-`;
+exports[`andOr(false, false, false) 1`] = `"export const andOr = (a, b, c) => a || c"`;
 
-exports[`andOr(false, false, true) 1`] = `
-"
-export const andOr = (a, b, c) => a || c;"
-`;
+exports[`andOr(false, false, true) 1`] = `"export const andOr = (a, b, c) => a || c"`;
 
-exports[`andOr(false, true, false) 1`] = `
-"
-export const andOr = (a, b, c) => a || c;"
-`;
+exports[`andOr(false, true, false) 1`] = `"export const andOr = (a, b, c) => a || c"`;
 
-exports[`andOr(false, true, true) 1`] = `
-"
-export const andOr = (a, b, c) => a || c;"
-`;
+exports[`andOr(false, true, true) 1`] = `"export const andOr = (a, b, c) => a || c"`;
 
-exports[`andOr(true, false, false) 1`] = `
-"
-export const andOr = (a, b, c) => a && b || c;"
-`;
+exports[`andOr(true, false, false) 1`] = `"export const andOr = (a, b, c) => a && b || c"`;
 
-exports[`andOr(true, false, true) 1`] = `
-"
-export const andOr = (a, b, c) => a && b || c;"
-`;
+exports[`andOr(true, false, true) 1`] = `"export const andOr = (a, b, c) => a && b || c"`;
 
-exports[`andOr(true, true, false) 1`] = `
-"
-export const andOr = (a, b) => a && b;"
-`;
+exports[`andOr(true, true, false) 1`] = `"export const andOr = (a, b) => a && b"`;
 
-exports[`andOr(true, true, true) 1`] = `
-"
-export const andOr = (a, b) => a && b;"
-`;
+exports[`andOr(true, true, true) 1`] = `"export const andOr = (a, b) => a && b"`;
 
-exports[`andOrAnd(false, false, false, false) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a || c;"
-`;
+exports[`andOrAnd(false, false, false, false) 1`] = `"export const andOrAnd = (a, b, c) => (a) || (c)"`;
 
-exports[`andOrAnd(false, false, false, true) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a || c;"
-`;
+exports[`andOrAnd(false, false, false, true) 1`] = `"export const andOrAnd = (a, b, c) => (a) || (c)"`;
 
-exports[`andOrAnd(false, false, true, false) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a || c && d;"
-`;
+exports[`andOrAnd(false, false, true, false) 1`] = `"export const andOrAnd = (a, b, c, d) => (a) || (c && d)"`;
 
-exports[`andOrAnd(false, false, true, true) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a || c && d;"
-`;
+exports[`andOrAnd(false, false, true, true) 1`] = `"export const andOrAnd = (a, b, c, d) => (a) || (c && d)"`;
 
-exports[`andOrAnd(false, true, false, false) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a || c;"
-`;
+exports[`andOrAnd(false, true, false, false) 1`] = `"export const andOrAnd = (a, b, c) => (a) || (c)"`;
 
-exports[`andOrAnd(false, true, false, true) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a || c;"
-`;
+exports[`andOrAnd(false, true, false, true) 1`] = `"export const andOrAnd = (a, b, c) => (a) || (c)"`;
 
-exports[`andOrAnd(false, true, true, false) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a || c && d;"
-`;
+exports[`andOrAnd(false, true, true, false) 1`] = `"export const andOrAnd = (a, b, c, d) => (a) || (c && d)"`;
 
-exports[`andOrAnd(false, true, true, true) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a || c && d;"
-`;
+exports[`andOrAnd(false, true, true, true) 1`] = `"export const andOrAnd = (a, b, c, d) => (a) || (c && d)"`;
 
-exports[`andOrAnd(true, false, false, false) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a && b || c;"
-`;
+exports[`andOrAnd(true, false, false, false) 1`] = `"export const andOrAnd = (a, b, c) => (a && b) || (c)"`;
 
-exports[`andOrAnd(true, false, false, true) 1`] = `
-"
-export const andOrAnd = (a, b, c) => a && b || c;"
-`;
+exports[`andOrAnd(true, false, false, true) 1`] = `"export const andOrAnd = (a, b, c) => (a && b) || (c)"`;
 
-exports[`andOrAnd(true, false, true, false) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a && b || c && d;"
-`;
+exports[`andOrAnd(true, false, true, false) 1`] = `"export const andOrAnd = (a, b, c, d) => (a && b) || (c && d)"`;
 
-exports[`andOrAnd(true, false, true, true) 1`] = `
-"
-export const andOrAnd = (a, b, c, d) => a && b || c && d;"
-`;
+exports[`andOrAnd(true, false, true, true) 1`] = `"export const andOrAnd = (a, b, c, d) => (a && b) || (c && d)"`;
 
-exports[`andOrAnd(true, true, false, false) 1`] = `
-"
-export const andOrAnd = (a, b) => a && b;"
-`;
+exports[`andOrAnd(true, true, false, false) 1`] = `"export const andOrAnd = (a, b) => a && b"`;
 
-exports[`andOrAnd(true, true, false, true) 1`] = `
-"
-export const andOrAnd = (a, b) => a && b;"
-`;
+exports[`andOrAnd(true, true, false, true) 1`] = `"export const andOrAnd = (a, b) => a && b"`;
 
-exports[`andOrAnd(true, true, true, false) 1`] = `
-"
-export const andOrAnd = (a, b) => a && b;"
-`;
+exports[`andOrAnd(true, true, true, false) 1`] = `"export const andOrAnd = (a, b) => a && b"`;
 
-exports[`andOrAnd(true, true, true, true) 1`] = `
-"
-export const andOrAnd = (a, b) => a && b;"
-`;
+exports[`andOrAnd(true, true, true, true) 1`] = `"export const andOrAnd = (a, b) => a && b"`;
 
-exports[`orAndOr(false, false, false, false) 1`] = `
-"
-export const orAndOr = (a, b) => a || b;"
-`;
+exports[`orAndOr(false, false, false, false) 1`] = `"export const orAndOr = (a, b) => a || b"`;
 
-exports[`orAndOr(false, false, false, true) 1`] = `
-"
-export const orAndOr = (a, b) => a || b;"
-`;
+exports[`orAndOr(false, false, false, true) 1`] = `"export const orAndOr = (a, b) => a || b"`;
 
-exports[`orAndOr(false, false, true, false) 1`] = `
-"
-export const orAndOr = (a, b) => a || b;"
-`;
+exports[`orAndOr(false, false, true, false) 1`] = `"export const orAndOr = (a, b) => a || b"`;
 
-exports[`orAndOr(false, false, true, true) 1`] = `
-"
-export const orAndOr = (a, b) => a || b;"
-`;
+exports[`orAndOr(false, false, true, true) 1`] = `"export const orAndOr = (a, b) => a || b"`;
 
-exports[`orAndOr(false, true, false, false) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => (a || b) && (c || d);"
-`;
+exports[`orAndOr(false, true, false, false) 1`] = `"export const orAndOr = (a, b, c, d) => (a || b) && (c || d)"`;
 
-exports[`orAndOr(false, true, false, true) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => (a || b) && (c || d);"
-`;
+exports[`orAndOr(false, true, false, true) 1`] = `"export const orAndOr = (a, b, c, d) => (a || b) && (c || d)"`;
 
-exports[`orAndOr(false, true, true, false) 1`] = `
-"
-export const orAndOr = (a, b, c) => (a || b) && c;"
-`;
+exports[`orAndOr(false, true, true, false) 1`] = `"export const orAndOr = (a, b, c) => (a || b) && (c)"`;
 
-exports[`orAndOr(false, true, true, true) 1`] = `
-"
-export const orAndOr = (a, b, c) => (a || b) && c;"
-`;
+exports[`orAndOr(false, true, true, true) 1`] = `"export const orAndOr = (a, b, c) => (a || b) && (c)"`;
 
-exports[`orAndOr(true, false, false, false) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => a && (c || d);"
-`;
+exports[`orAndOr(true, false, false, false) 1`] = `"export const orAndOr = (a, b, c, d) => (a) && (c || d)"`;
 
-exports[`orAndOr(true, false, false, true) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => a && (c || d);"
-`;
+exports[`orAndOr(true, false, false, true) 1`] = `"export const orAndOr = (a, b, c, d) => (a) && (c || d)"`;
 
-exports[`orAndOr(true, false, true, false) 1`] = `
-"
-export const orAndOr = (a, b, c) => a && c;"
-`;
+exports[`orAndOr(true, false, true, false) 1`] = `"export const orAndOr = (a, b, c) => (a) && (c)"`;
 
-exports[`orAndOr(true, false, true, true) 1`] = `
-"
-export const orAndOr = (a, b, c) => a && c;"
-`;
+exports[`orAndOr(true, false, true, true) 1`] = `"export const orAndOr = (a, b, c) => (a) && (c)"`;
 
-exports[`orAndOr(true, true, false, false) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => a && (c || d);"
-`;
+exports[`orAndOr(true, true, false, false) 1`] = `"export const orAndOr = (a, b, c, d) => (a) && (c || d)"`;
 
-exports[`orAndOr(true, true, false, true) 1`] = `
-"
-export const orAndOr = (a, b, c, d) => a && (c || d);"
-`;
+exports[`orAndOr(true, true, false, true) 1`] = `"export const orAndOr = (a, b, c, d) => (a) && (c || d)"`;
 
-exports[`orAndOr(true, true, true, false) 1`] = `
-"
-export const orAndOr = (a, b, c) => a && c;"
-`;
+exports[`orAndOr(true, true, true, false) 1`] = `"export const orAndOr = (a, b, c) => (a) && (c)"`;
 
-exports[`orAndOr(true, true, true, true) 1`] = `
-"
-export const orAndOr = (a, b, c) => a && c;"
-`;
+exports[`orAndOr(true, true, true, true) 1`] = `"export const orAndOr = (a, b, c) => (a) && (c)"`;

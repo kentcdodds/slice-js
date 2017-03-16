@@ -5,9 +5,9 @@ exports[`condExpr(false) && condExpr(true) 1`] = `
 
 function condExpr(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
-  return 'reached CondExpr Consequent';
+  return \\"reached CondExpr Consequent\\";
 }"
 `;
 
@@ -23,7 +23,7 @@ exports[`condExpr(true) 1`] = `
 "export { condExpr };
 
 function condExpr() {
-  return 'reached CondExpr Consequent';
+  return \\"reached CondExpr Consequent\\";
 }"
 `;
 
@@ -32,9 +32,8 @@ exports[`ifStatement(false) && ifStatement(true) 1`] = `
 
 function ifStatement(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
-
   return 'reached IfStatement';
 }"
 `;
@@ -60,9 +59,9 @@ exports[`logicalExpr(false) && logicalExpr(true) 1`] = `
 
 function logicalExpr(passIf) {
   if (!passIf) {
-    return 'did not reach IfStatement';
+    return 'did not reach IfStatement'
   }
-  return passIf && 'reached LogicalExpression';
+  return passIf && 'reached LogicalExpression'
 }"
 `;
 
@@ -78,6 +77,6 @@ exports[`logicalExpr(true) 1`] = `
 "export { logicalExpr };
 
 function logicalExpr(passIf) {
-  return passIf && 'reached LogicalExpression';
+  return passIf && 'reached LogicalExpression'
 }"
 `;

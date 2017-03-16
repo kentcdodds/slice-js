@@ -4,7 +4,7 @@ exports[`isConsequentOrAlternate(false) && isConsequentOrAlternate(true) 1`] = `
 "export { isConsequentOrAlternate };
 
 function isConsequentOrAlternate(isConsequent) {
-  return isConsequent ? isConsequent : !isConsequent;
+  return isConsequent ? isConsequent : !isConsequent
 }"
 `;
 
@@ -28,7 +28,7 @@ exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConseq
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
+  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent
 }"
 `;
 
@@ -36,7 +36,7 @@ exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConseq
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
+  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent
 }"
 `;
 
@@ -44,7 +44,7 @@ exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConseq
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
+  return isConsequent ? isConsequent : isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent
 }"
 `;
 
@@ -52,7 +52,7 @@ exports[`isConsequentOrAlternatesConsequentOrAlternate(false, false) && isConseq
 "export { isConsequentOrAlternatesConsequentOrAlternate };
 
 function isConsequentOrAlternatesConsequentOrAlternate(isConsequent, isAlternatesConsequent) {
-  return isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent;
+  return (isAlternatesConsequent ? isAlternatesConsequent : !isConsequent && !isAlternatesConsequent);
 }"
 `;
 
@@ -151,7 +151,7 @@ function uncoveredConditionalExpression(cover) {
   if (cover) {
     return cover;
   }
-  return !cover;
+  return !cover
 }"
 `;
 
@@ -159,7 +159,7 @@ exports[`uncoveredConditionalExpression(false) 1`] = `
 "export { uncoveredConditionalExpression };
 
 function uncoveredConditionalExpression(cover) {
-  return !cover;
+  return !cover
 }"
 `;
 
