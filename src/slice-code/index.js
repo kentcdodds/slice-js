@@ -36,7 +36,17 @@ function sliceCodeFromFilteredCoverage(sourceCode, filteredCoverage) {
     filename,
     babelrc: false,
   }
-  const {code: sliced} = babel.transform(sourceCode, {
+  const {code: customDeadCodeElimiated} = babel.transform(sourceCode, {
+    ...commonOptions,
+    passPerPreset: true,
+    presets: [
+      {plugins: [getSliceCodeTransform(filteredCoverage)]},
+      {plugins: [deadCodeElimination]},
+      {plugins: [customDeadCodeElimination]},
+    ],
+  })
+  /*
+  const {code: sliced, ast: slicedAST} = babel.transform(sourceCode, {
     ...commonOptions,
     plugins: [getSliceCodeTransform(filteredCoverage)],
   })
@@ -46,7 +56,7 @@ function sliceCodeFromFilteredCoverage(sourceCode, filteredCoverage) {
   // This will probably significantly speed things up.
   // Unfortunately, when I tried the first time,
   // I couldn't get it working :shrug:
-  const {code: deadCodeEliminated} = babel.transform(sliced, {
+  const {code: deadCodeEliminated} = babel.transformFromAst(slicedAST, {
     ...commonOptions,
     plugins: [deadCodeElimination],
   })
@@ -56,6 +66,7 @@ function sliceCodeFromFilteredCoverage(sourceCode, filteredCoverage) {
     plugins: [customDeadCodeElimination],
   })
   // console.log('customDeadCodeElimiated', customDeadCodeElimiated)
+  */
   try {
     const formattedCode = prettierEslint({
       text: customDeadCodeElimiated,
